@@ -6,31 +6,28 @@ public class SpawnObjects : MonoBehaviour {
 	public GameObject objectToSpawn;
 	public float spawnDelay = 1f;
     public int enemySupply;
-    public float scrollSpeed;
-    private bool startSpawning = false;
+    public float scrollSpeed = 1f;
+    private bool startedSpawning = false;
+    public float homeYPosition = 5.16f; //location for spawners to warp to once they touch the level
 
 	// Use this for initialization
 	void Start () {
-        if (enemySupply > 0)
-        {
-            enemySupply--;
-            Invoke("Spawn", spawnDelay);
-        }
+
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
         rbody.velocity = transform.up * scrollSpeed; //This is really down
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    void LateUpdate()
+    void Update()
     {
         if (transform.position.y < 5.16f)
         {
-            transform.position = new Vector2(transform.position.x, 5.16f);
-            startSpawning = true;
+            transform.position = new Vector2(transform.position.x, homeYPosition);
+            if (!startedSpawning)
+            {
+                Invoke("Spawn", spawnDelay);
+                startedSpawning = true;
+            }
         }
     }
 
@@ -38,7 +35,7 @@ public class SpawnObjects : MonoBehaviour {
 	{
         enemySupply--;
 		Instantiate (objectToSpawn, transform.position, transform.rotation);
-        if (enemySupply > 0 && startSpawning)
+        if (enemySupply > 0)
         {
             Invoke("Spawn", spawnDelay);
         }

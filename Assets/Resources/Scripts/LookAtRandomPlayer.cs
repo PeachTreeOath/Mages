@@ -23,6 +23,5 @@ public class LookAtRandomPlayer : MonoBehaviour
 			float angle = (Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg) - 90;
 			transform.rotation  = Quaternion.AngleAxis(angle, Vector3.forward);
 		}
-
 	}
 }

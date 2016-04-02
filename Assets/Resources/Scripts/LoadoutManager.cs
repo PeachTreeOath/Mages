@@ -45,10 +45,12 @@ public class LoadoutManager : MonoBehaviour {
 
 	private int points = 0;
 	private Text pointsText;
+	private Text warningText;
 
 	// Use this for initialization
 	void Start () {
 		pointsText = GameObject.Find ("PointsText").GetComponent<Text> ();
+		warningText = GameObject.Find ("Warning").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -96,6 +98,11 @@ public class LoadoutManager : MonoBehaviour {
 
 	public void ReadyPressed()
 	{
-		Application.LoadLevel (1);
+		if (points >= 0) {
+			warningText.enabled = false;
+			Application.LoadLevel (1);
+		} else {
+			warningText.enabled = true;
+		}
 	}
 }

@@ -18,11 +18,6 @@ public class Bullet : MonoBehaviour
 
 	}
 
-	void OnBecameInvisible ()
-	{
-		Destroy (gameObject);
-	}
-
 	public void SetType (int newType)
 	{
 		SpriteRenderer sprite = GetComponent<SpriteRenderer> ();

@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 484808}
   - 198: {fileID: 19837786}
   - 199: {fileID: 19901168}
+  - 114: {fileID: 11490320}
   m_Layer: 0
   m_Name: Gib
   m_TagString: Untagged
@@ -29,6 +30,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11490320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32ae9a2852e6f36468b3f286de795467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19837786
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -36,7 +48,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115988}
   serializedVersion: 2
-  lengthInSec: 5
+  lengthInSec: 0.25
   startDelay:
     scalar: 0
     maxCurve:

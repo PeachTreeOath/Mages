@@ -289,6 +289,10 @@ Prefab:
       propertyPath: m_SortingLayerID
       value: -354108773
       objectReference: {fileID: 0}
+    - target: {fileID: 11452722, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
+      propertyPath: timeToDie
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
   m_IsPrefabParent: 0

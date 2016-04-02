@@ -6,6 +6,7 @@ public class DestroyOnInvisible : MonoBehaviour {
 
 	void OnBecameInvisible()
 	{
+        Debug.Log("Destroying cuz invis");
 		if (destroyTarget == null) {
 			Destroy (gameObject);
 		} else {

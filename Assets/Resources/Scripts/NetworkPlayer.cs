@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 
-public class NetworkPlayerMovement : NetworkBehaviour {
+public class NetworkPlayer : NetworkBehaviour {
 
 	public float speed;
 	public GameObject bulletPrefab;

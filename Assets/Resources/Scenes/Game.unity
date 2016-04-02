@@ -285,13 +285,13 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447576408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  speed: 0
+  speed: 5
   shotDelay: 0.25
   type: 0
 --- !u!1 &755719462
@@ -428,7 +428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11445364, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 158606, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
       propertyPath: m_TagString
@@ -437,6 +437,10 @@ Prefab:
     - target: {fileID: 11452722, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
       propertyPath: timeToDie
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445364, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
+      propertyPath: speed
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13585948, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
@@ -565,13 +569,13 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253544474}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  speed: 0
+  speed: 5
   shotDelay: 0.25
   type: 0
 --- !u!1001 &1254522222

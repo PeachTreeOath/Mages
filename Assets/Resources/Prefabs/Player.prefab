@@ -263,7 +263,8 @@ MonoBehaviour:
   playerState: 0
   deathState: 0
   speed: 4
-  timeToDie: 4
+  timeToDie: 2
+  unconscious: 0
 --- !u!114 &11473490
 MonoBehaviour:
   m_ObjectHideFlags: 1

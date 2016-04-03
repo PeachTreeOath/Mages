@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Player : NetLifecycleObj {
 
@@ -20,13 +21,19 @@ public class Player : NetLifecycleObj {
     private Renderer rend;
     public float timeForWeaponSwitches = 10f;
     private float timeOfLastWeaponSwitch;
+    public List<Weapon> weaponLoadout = new List<Weapon>();
+    private int currentWeaponIndex = 0;
+    private Weapon currentWeapon;
 
     void Start() {
         //generally this is called when the scene is first loaded
         Debug.Log("Player Start called");
         spawnPlayer();
-        timeOfLastWeaponSwitch = Time.time;
         
+        Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
+        currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+        currentWeapon.transform.parent = this.transform;
+        timeOfLastWeaponSwitch = Time.time;
     }
 
     //Client side code only
@@ -53,7 +60,28 @@ public class Player : NetLifecycleObj {
     void Update() {
         if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches)
         {
-            //TODO Really swap weapons
+            //Remove existing weapon
+            Debug.Log("Removing existing weapon.");
+            //Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
+
+            if (currentWeapon != null)
+            {
+                 GameObject go = currentWeapon.gameObject;
+                 Destroy(go);
+            }
+            if (currentWeaponIndex == weaponLoadout.Count - 1)
+            {
+                currentWeaponIndex = 0;
+            }
+            else
+            {
+                currentWeaponIndex++;
+            }
+            Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
+            Instantiate<Weapon>(nextWeapon);
+            Weapon instantiatedWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+            instantiatedWeapon.transform.parent = this.transform;
+            timeOfLastWeaponSwitch = Time.time;
         }
         if(!initDone) {
             return;

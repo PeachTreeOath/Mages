@@ -24,8 +24,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438686}
+  - 114: {fileID: 11479390}
   m_Layer: 12
-  m_Name: Weapon Big
+  m_Name: WeaponBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,6 +72,18 @@ MonoBehaviour:
   speed: 4
   shotDelay: 4
   type: 0
+  isPassable: 1
+--- !u!114 &11479390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b8a301266e7054d92d77b91f00499b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

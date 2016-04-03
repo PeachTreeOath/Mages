@@ -16,5 +16,6 @@ public class GibOnTrigger : MonoBehaviour {
 			Instantiate (gib, transform.position, transform.rotation);
 		}
 		Destroy (gameObject);
+
 	}
 }

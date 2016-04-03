@@ -16,13 +16,20 @@ public class EnemyScarab : Enemy {
 
 	void OnTriggerEnter2d(Collider2D col)
 	{
-		string name = col.gameObject.name;
+        Debug.Log("Collision: Scarab and something");
+        string name = col.gameObject.name;
 
 		if (name == "Player") {
 			col.gameObject.GetComponent<Head> ().Die ();
 		}
 		if (name == "Bullet(Clone)") {
-			Destroy (gameObject);
+            Debug.Log("Collision: Scarab and Bullet");
+            Bullet bullet = col.gameObject.GetComponent<Bullet>();
+            if (!bullet.isPassable)
+            {
+                Debug.Log("Bullet is not passable.");
+                Destroy(gameObject);
+            }
 		}
 	}
 }

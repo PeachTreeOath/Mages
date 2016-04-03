@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
 	
 	public float speed;
+    public bool isPassable; //Whether the bullet keeps going after it collides or not.
 
 	// Use this for initialization
 	void Start ()
@@ -17,6 +18,13 @@ public class Bullet : MonoBehaviour
 	{
 
 	}
+
+    void OnDestroy()
+    {
+        Debug.Log("Bullet was destroyed.");
+        Debug.Log(StackTraceUtility.ExtractStackTrace());
+        Debug.Break();
+    }
 
 	public void SetType (int newType)
 	{
@@ -47,4 +55,5 @@ public class Bullet : MonoBehaviour
 	{
 		GetComponent<Rigidbody2D> ().velocity = transform.up * speed;
 	}
+
 }

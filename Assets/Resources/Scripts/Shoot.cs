@@ -7,6 +7,7 @@ public class Shoot : MonoBehaviour {
 	public float speed;
 	public float shotDelay;
 	public int type;
+    public bool isPassable;
 
 	private bool readyToShoot = true;
 
@@ -34,6 +35,7 @@ public class Shoot : MonoBehaviour {
 		Bullet bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet>();
 		bullet.SetType (type);
 		bullet.SetSpeed (speed);
+        bullet.isPassable = isPassable;
 		bullet.Fire ();
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using System;
 
 public class LoadoutManager : MonoBehaviour {
@@ -99,8 +100,10 @@ public class LoadoutManager : MonoBehaviour {
 	public void ReadyPressed()
 	{
 		if (points >= 0) {
+            Debug.Log("Ready pressed, loading game");
 			warningText.enabled = false;
-			Application.LoadLevel (1);
+            //SceneManager.LoadScene(SceneState.getFirstScene());
+            NetworkManager.singleton.ServerChangeScene(SceneState.getFirstScene());
 		} else {
 			warningText.enabled = true;
 		}

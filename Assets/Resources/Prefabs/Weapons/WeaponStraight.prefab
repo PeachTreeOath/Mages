@@ -39,10 +39,9 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 476950}
-  - 114: {fileID: 11418156}
-  m_Layer: 0
-  m_Name: Barrel
+  - 4: {fileID: 440232}
+  m_Layer: 12
+  m_Name: WeaponStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

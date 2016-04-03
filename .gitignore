@@ -74,5 +74,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-Assets/Resources/Materials/BG/bg.mat
+#Assets/Resources/Materials/BG/bg.mat
 ProjectSettings/ProjectVersion.txt

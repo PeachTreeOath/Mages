@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System;
 
-public class Player : NetworkBehaviour {
+public class Player : NetLifecycleObj {
 
     [SyncVar]
     public PlayerState playerState;
@@ -33,6 +34,8 @@ public class Player : NetworkBehaviour {
         playerState = PlayerState.SPAWNING;
         deathState = DeathState.STARTING;
         rend = GetComponent<SpriteRenderer>().GetComponent<Renderer>();
+        GameObject parent = SpawnDelegate.getInstance().getPlayerSpawnLocation();
+        transform.parent = parent.transform; //will this work???? //TODO no.
         initDone = true;
         Debug.Log("Player init done");
         StartCoroutine(Flash(SPAWNING_TIME, 0.05f));
@@ -76,6 +79,14 @@ public class Player : NetworkBehaviour {
 
 
     void LateUpdate() {
+        if(!initDone) {
+            return;
+        }
+
+        if(!isLocalPlayer) {
+            return;
+        }
+
         if (transform.position.x < -8.5f) {
             transform.position = new Vector2(-8.5f, transform.position.y);
         } else if (transform.position.x > 8.5f) {
@@ -87,6 +98,21 @@ public class Player : NetworkBehaviour {
         } else if (transform.position.y > 4.5f) {
             transform.position = new Vector2(transform.position.x, 4.5f);
         }
+    }
+
+    public override void endLife() {
+        Debug.Log("Player received request to die");
+        Die();
+    }
+
+    public override void createLife() {
+        Debug.Log("Player received request to respawn");
+        CmdServerRespawn();
+    }
+
+    [Command] //enter server mode
+    private void CmdServerRespawn() {
+        serverRespawn(); 
     }
 
     //This is called on collision trigger by the head
@@ -125,24 +151,25 @@ public class Player : NetworkBehaviour {
         //this needs work
         float timeElapsed = Time.time - deathStateTime;
         if (timeElapsed < timeToDie) {
-            transform.localPosition = (Vector2)transform.position + (Random.insideUnitCircle * timeElapsed * 0.02f);
+            transform.localPosition = (Vector2)transform.position + (UnityEngine.Random.insideUnitCircle * timeElapsed * 0.02f);
         } else {
             GetComponent<GibManual>().Explode();
             deathState = DeathState.FINISHED;
-            actuallyDie();
+            serverRespawn();
         }
     }
 
-    private void actuallyDie() {
+    private void serverRespawn() {
         //still on the server
         Debug.Log("Server respawning player");
         RpcRespawn();
-
     }
 
     [ClientRpc]
     private void RpcRespawn() {
-        if (isLocalPlayer) {
+        if (isLocalPlayer && deathState == DeathState.FINISHED) {
+            deathState = DeathState.STARTING;
+            initDone = false;
             spawnPlayer();
         }
     }

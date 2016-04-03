@@ -14,7 +14,13 @@ public class GibManual : MonoBehaviour {
 	if (gib != null) {
 			Instantiate (gib, transform.position, transform.rotation);
 		}
-		Destroy (gameObject);
+        NetLifecycleObj netObj = gameObject.GetComponentInChildren<NetLifecycleObj>();
+        if(netObj != null) {
+            netObj.endLife();
+        } else {
+            Debug.Log("GibManual destroying " + gameObject.name);
+		    Destroy (gameObject);
+        }
 	}
 
 }

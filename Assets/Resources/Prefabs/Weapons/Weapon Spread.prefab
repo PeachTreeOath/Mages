@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 419930}
   m_Layer: 0
-  m_Name: Weapon A
+  m_Name: Weapon Spread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   speed: 5
   shotDelay: 0.25
   type: 0
+  isPassable: 0
 --- !u!114 &11466530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +145,7 @@ MonoBehaviour:
   speed: 5
   shotDelay: 0.25
   type: 0
+  isPassable: 0
 --- !u!114 &11488430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,6 +161,7 @@ MonoBehaviour:
   speed: 5
   shotDelay: 0.25
   type: 0
+  isPassable: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

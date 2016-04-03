@@ -14,9 +14,10 @@ public class Head : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		string name = col.gameObject.name;
-        if (name == "Bullet(Clone)" ||
-            name == "Scarab(Clone)") {
+        Bullet bullet = col.gameObject.GetComponent<Bullet>();
+        Enemy enemy = col.gameObject.GetComponent<Enemy>();
+        if ((bullet != null && bullet.type >= 1) ||
+            enemy != null) {
 			Die ();
 		}
 	}

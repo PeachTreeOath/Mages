@@ -17,14 +17,12 @@ public class Enemy : MonoBehaviour {
 
 	public virtual void OnTriggerEnter2D(Collider2D col)
 	{
-        Debug.Log("Collision: Enemy and something");
-        string name = col.gameObject.name;
-//		Destroy (col.gameObject);
-		if (name == "Player") {
+        Head playerHead = col.gameObject.GetComponent<Head>();
+        Bullet bullet = col.gameObject.GetComponent<Bullet>();
+		if (playerHead != null) {
 			//destroy player
 		}
-		if (name == "Bullet(Clone)") {
-            Debug.Log("Collision: Enemy and Bullet");
+		if (bullet != null && bullet.type == 0) {
             Destroy (gameObject);
 		}
 

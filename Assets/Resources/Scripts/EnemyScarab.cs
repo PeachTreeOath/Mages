@@ -16,7 +16,7 @@ public class EnemyScarab : Enemy {
 
 	public override void OnTriggerEnter2D(Collider2D col)
 	{
-        string name = col.gameObject.name;
+
         Bullet bullet = col.gameObject.GetComponent<Bullet>();
         Head playerHead = col.gameObject.GetComponent<Head>();
 

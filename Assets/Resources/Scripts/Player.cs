@@ -17,11 +17,15 @@ public class Player : NetworkBehaviour {
     private const float UNCONSCIOUS_TIME = 2.0f;
     private const float EXPLODE_TIME = 2.0f;
     private Renderer rend;
+    public float timeForWeaponSwitches = 10f;
+    private float timeOfLastWeaponSwitch;
 
     void Start() {
         //generally this is called when the scene is first loaded
         Debug.Log("Player Start called");
         spawnPlayer();
+        timeOfLastWeaponSwitch = Time.time;
+        
     }
 
     //Client side code only
@@ -44,6 +48,10 @@ public class Player : NetworkBehaviour {
     }
 
     void Update() {
+        if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches)
+        {
+            //TODO Really swap weapons
+        }
         if(!initDone) {
             return;
         }

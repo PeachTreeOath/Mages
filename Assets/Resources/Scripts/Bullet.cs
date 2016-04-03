@@ -61,7 +61,6 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D col)
     {
-        string name = col.gameObject.name;
         Enemy enemy = col.gameObject.GetComponent<Enemy>();
         Head playerHead = col.gameObject.GetComponent<Head>();
 

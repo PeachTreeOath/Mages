@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  timeToDie: 4
+  timeToDie: 2
   unconscious: 0
 --- !u!114 &11473490
 MonoBehaviour:

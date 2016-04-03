@@ -10,14 +10,13 @@ public class Head : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
 		string name = col.gameObject.name;
-
-		if (name == "Bullet(Clone)") {
+        if (name == "Bullet(Clone)" ||
+            name == "Scarab(Clone)") {
 			Die ();
 		}
 	}

@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11402438}
   - 114: {fileID: 11458804}
   - 114: {fileID: 11446284}
+  - 50: {fileID: 5082084}
   m_Layer: 9
   m_Name: Scarab
   m_TagString: Untagged
@@ -63,6 +64,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 404924}
   m_RootOrder: 0
+--- !u!50 &5082084
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102556}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6130024
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -102,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
   speed: 3
-  shotDelay: 0.25
+  shotDelay: 0.5
   type: 1
 --- !u!114 &11416562
 MonoBehaviour:

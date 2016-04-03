@@ -8,13 +8,13 @@ public class BGScroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		savedOffset = GetComponent<Renderer> ().sharedMaterial.GetTextureOffset ("_MainTex");
+		savedOffset = GetComponent<Renderer> ().material.GetTextureOffset ("_MainTex");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		float y = Mathf.Repeat (Time.time * scrollSpeed, 1);
 		Vector2 offset = new Vector2 (savedOffset.x, y);
-		GetComponent<Renderer> ().sharedMaterial.SetTextureOffset ("_MainTex",offset);
+		GetComponent<Renderer> ().material.SetTextureOffset ("_MainTex",offset);
 	}
 }

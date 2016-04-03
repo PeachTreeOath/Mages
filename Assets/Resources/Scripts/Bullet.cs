@@ -23,7 +23,8 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log("Bullet was destroyed.");
         Debug.Log(StackTraceUtility.ExtractStackTrace());
-        Debug.Break();
+        //Debug.Break();
+        
     }
 
 	public void SetType (int newType)

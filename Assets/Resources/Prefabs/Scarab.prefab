@@ -15,6 +15,8 @@ GameObject:
   - 114: {fileID: 11458804}
   - 114: {fileID: 11446284}
   - 50: {fileID: 5082084}
+  - 114: {fileID: 11465926}
+  - 114: {fileID: 11429014}
   m_Layer: 9
   m_Name: Scarab
   m_TagString: Untagged
@@ -135,6 +137,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
+--- !u!114 &11429014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &11446284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +183,38 @@ MonoBehaviour:
   speed: 1
   sinAmplitude: 1
   sinFrequency: 0.2
+--- !u!114 &11465926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 163
+    i1: 31
+    i2: 121
+    i3: 142
+    i4: 33
+    i5: 222
+    i6: 205
+    i7: 212
+    i8: 153
+    i9: 109
+    i10: 136
+    i11: 210
+    i12: 140
+    i13: 90
+    i14: 66
+    i15: 42
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11474714
 MonoBehaviour:
   m_ObjectHideFlags: 1

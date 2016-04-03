@@ -78,9 +78,9 @@ public class Player : NetLifecycleObj {
                 currentWeaponIndex++;
             }
             Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
-            Instantiate<Weapon>(nextWeapon);
-            Weapon instantiatedWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
-            instantiatedWeapon.transform.parent = this.transform;
+            currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+            currentWeapon.transform.parent = this.transform;
+
             timeOfLastWeaponSwitch = Time.time;
         }
         if(!initDone) {

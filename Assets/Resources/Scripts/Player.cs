@@ -35,7 +35,7 @@ public class Player : NetLifecycleObj {
         deathState = DeathState.STARTING;
         rend = GetComponent<SpriteRenderer>().GetComponent<Renderer>();
         GameObject parent = SpawnDelegate.getInstance().getPlayerSpawnLocation();
-        transform.parent = parent.transform; //will this work???? //TODO no.
+        //transform.parent = parent.transform; //will this work???? //TODO no.
         initDone = true;
         Debug.Log("Player init done");
         StartCoroutine(Flash(SPAWNING_TIME, 0.05f));

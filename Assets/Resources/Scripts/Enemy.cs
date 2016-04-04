@@ -19,9 +19,9 @@ public class Enemy : MonoBehaviour {
 	{
         Head playerHead = col.gameObject.GetComponent<Head>();
         Bullet bullet = col.gameObject.GetComponent<Bullet>();
-		if (playerHead != null) {
-			//destroy player
-		}
+		//if (playerHead != null) {
+		//	//destroy player
+		//}
 		if (bullet != null && bullet.type == 0) {
             Destroy (gameObject);
 		}

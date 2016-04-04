@@ -16,10 +16,27 @@ public class Head : MonoBehaviour {
 	{
         Bullet bullet = col.gameObject.GetComponent<Bullet>();
         Enemy enemy = col.gameObject.GetComponent<Enemy>();
-        if ((bullet != null && bullet.type >= 1) ||
-            enemy != null) {
-			Die ();
-		}
+
+        if (bullet != null)
+        {
+            if (bullet.type == 1)
+            {
+                //Enemy bullets.
+                Die();
+            }
+            else if (bullet.type == 2 && !GetComponentInParent<Player>().Equals(bullet.owner))
+            {
+                //Only die to other player's negative bullets
+                Die();
+            }
+
+        }
+        if (enemy != null)
+        {
+            //We ran into an enemy.
+            Die();
+        }
+        
 	}
 
 	public void Die()

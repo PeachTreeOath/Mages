@@ -155,8 +155,15 @@ public class Player : NetLifecycleObj {
     public void Die() {
         //Can only die from the neutral state currently
         if (playerState == PlayerState.NETURAL) {
+            Debug.Log("Carrying on with Killing player.");
+            Debug.Log("isServer: " + isServer);
+            Debug.Log("isClient: " + isClient);
             playerState = PlayerState.DYING;
             CmdDie(); //offload to server so everyone can see death animation
+        }
+        else
+        {
+            Debug.Log("Don't need to die, we aren't in neutral state.");
         }
     }
 

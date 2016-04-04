@@ -20,9 +20,9 @@ public class EnemyScarab : Enemy {
         Bullet bullet = col.gameObject.GetComponent<Bullet>();
         Head playerHead = col.gameObject.GetComponent<Head>();
 
-        if (playerHead != null) {
-			col.gameObject.GetComponent<Head> ().Die ();
-		}
+  //      if (playerHead != null) {
+		//	col.gameObject.GetComponent<Head> ().Die ();
+		//}
 		if (bullet != null && bullet.type==0) {
             Destroy(gameObject);
 		}

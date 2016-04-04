@@ -35,6 +35,7 @@ public class Shoot : MonoBehaviour {
 		Bullet bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet>();
 		bullet.SetType (type);
 		bullet.SetSpeed (speed);
+        bullet.owner = GetComponentInParent<Player>();
         bullet.isPassable = isPassable;
 		bullet.Fire ();
 	}

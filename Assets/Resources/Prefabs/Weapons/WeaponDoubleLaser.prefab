@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 411582}
   - 114: {fileID: 11421504}
+  - 114: {fileID: 11446532}
   m_Layer: 12
   m_Name: WeaponDoubleLaser
   m_TagString: Untagged
@@ -111,6 +112,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3d7bdfde14bd942819aeb0f4698458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11446532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11483544

@@ -15,7 +15,7 @@ GameObject:
   - 60: {fileID: 6082020}
   - 114: {fileID: 11403858}
   - 114: {fileID: 11482560}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Bullet Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}

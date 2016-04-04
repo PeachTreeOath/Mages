@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400600}
   - 114: {fileID: 11416682}
+  - 114: {fileID: 11452190}
   m_Layer: 12
   m_Name: WeaponStraight
   m_TagString: Untagged
@@ -129,6 +130,17 @@ MonoBehaviour:
   shotDelay: 0.25
   type: 0
   isPassable: 0
+--- !u!114 &11452190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

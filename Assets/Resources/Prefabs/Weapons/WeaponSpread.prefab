@@ -25,6 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438362}
   - 114: {fileID: 11440682}
+  - 114: {fileID: 11442506}
   m_Layer: 12
   m_Name: WeaponSpread
   m_TagString: Untagged
@@ -140,6 +141,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f64cb2c58c5dca4e9bdc0b4d8cd41ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11442506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11452354

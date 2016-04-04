@@ -65,37 +65,25 @@ public class Bullet : MonoBehaviour
     {
         if (!isPassable)
         {
-            Destroy(gameObject);
+            if (type == 2)
+            {
+                Head playerHead = col.gameObject.GetComponent<Head>();
+                if (playerHead != null && owner.Equals(col.gameObject.GetComponentInParent<Player>()))
+                {
+                    //This is a collision between a player and its own negative bullets.
+                    //We do not want to destroy the bullet in this case.
+                }
+                else
+                {
+                    //Collided with another player, go ahead and destroy the bullet in this case."
+                    Destroy(gameObject);
+                }
+            }
+            else { 
+                //Destroy on collisions with most things.
+                Destroy(gameObject);
+            }
         }
-
-        //Enemy enemy = col.gameObject.GetComponent<Enemy>();
-        //Head playerHead = col.gameObject.GetComponent<Head>();
-
-        //switch (type)
-        //{
-        //    case 0:
-        //        //Friendly bullets
-
-        //        if (enemy != null && !isPassable)
-        //        {
-        //            Destroy(gameObject);
-        //        }
-        //        break;
-        //    case 1:
-        //    case 2:
-        //        //same case for 1 and 2;
-        //        if (playerHead != null && !isPassable)
-        //        {
-        //            Destroy(gameObject);
-        //        }
-        //        //Enemy bullets or pvp bullets
-        //        //if (playerHead != null)
-        //        //{
-        //        //    col.gameObject.GetComponent<Head>().Die();
-        //        //}
-
-        //        break;
-        //}
 
     }
 }

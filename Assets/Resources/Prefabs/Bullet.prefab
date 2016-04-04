@@ -29,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.0739, y: -3.246795, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,14 +65,14 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 0.009525299, y: 0.09708786}
-      - {x: -0.00896883, y: 0.0973196}
-      - {x: -0.05222988, y: 0.035333395}
-      - {x: -0.053073883, y: -0.017665863}
-      - {x: -0.010451317, y: -0.07520366}
-      - {x: 0.007180214, y: -0.07545829}
-      - {x: 0.058125973, y: -0.020577908}
-      - {x: 0.05643797, y: 0.03621316}
+    - - {x: 0.009525299, y: 0.10044952}
+      - {x: -0.010649656, y: 0.1006812}
+      - {x: -0.06399558, y: 0.030290924}
+      - {x: -0.06315875, y: -0.024389131}
+      - {x: -0.007089692, y: -0.08696935}
+      - {x: 0.009701476, y: -0.08638356}
+      - {x: 0.06400885, y: -0.019737499}
+      - {x: 0.062320776, y: 0.032011103}
 --- !u!114 &11423044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,22 +99,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
+    i0: 41
+    i1: 186
+    i2: 95
+    i3: 89
+    i4: 248
+    i5: 144
+    i6: 246
+    i7: 164
+    i8: 138
+    i9: 12
+    i10: 13
+    i11: 95
+    i12: 138
+    i13: 150
+    i14: 223
+    i15: 161
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &11480554
@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   isPassable: 0
+  type: 0
+  owner: {fileID: 0}
 --- !u!212 &21264156
 SpriteRenderer:
   m_ObjectHideFlags: 1

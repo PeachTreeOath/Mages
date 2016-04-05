@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 447946}
-  - 114: {fileID: 11417928}
   - 50: {fileID: 5003764}
+  - 114: {fileID: 11431954}
   m_Layer: 0
   m_Name: SpawnerCamel
   m_TagString: Untagged
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 165740}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -5, y: 5.16, z: 0}
+  m_LocalPosition: {x: -12, y: 5.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -46,7 +46,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &11417928
+--- !u!114 &11431954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -54,14 +54,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 165740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cebca94388742c44a251a1be15a1026, type: 3}
+  m_Script: {fileID: 11500000, guid: 44d19ea39642ce44d82b7562b22d9803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 132874, guid: 5f564ef4fddd4c4418dd85b3c7b9f228, type: 2}
+  objectToSpawn: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
   spawnDelay: 2
   enemySupply: 10
   scrollSpeed: 1
   homeYPosition: 4
+  isFacingRight: 0
+  moveSpeed: {x: 150, y: -25}
+  weaponRotateSpeed: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

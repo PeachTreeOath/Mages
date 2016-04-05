@@ -7,7 +7,7 @@ public class SpawnObjects : MonoBehaviour {
 	public float spawnDelay = 1f;
     public int enemySupply;
     public float scrollSpeed = 1f;
-    private bool startedSpawning = false;
+    protected bool startedSpawning = false;
     public float homeYPosition = 5.16f; //location for spawners to warp to once they touch the level
 
 	// Use this for initialization
@@ -31,10 +31,10 @@ public class SpawnObjects : MonoBehaviour {
         }
     }
 
-    private void Spawn()
+	protected virtual GameObject Spawn()
 	{
         enemySupply--;
-		Instantiate (objectToSpawn, transform.position, transform.rotation);
+		GameObject obj = (GameObject)Instantiate (objectToSpawn, transform.position, transform.rotation);
         if (enemySupply > 0)
         {
             Invoke("Spawn", spawnDelay);
@@ -44,5 +44,6 @@ public class SpawnObjects : MonoBehaviour {
             Destroy(gameObject);
         }
 
+		return obj;
     }
 }

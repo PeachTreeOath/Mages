@@ -121,10 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  speed: 3
+  speed: 1.5
   shotDelay: 0.5
   type: 1
   isPassable: 0
+  useParentVelocity: 0
 --- !u!114 &11416562
 MonoBehaviour:
   m_ObjectHideFlags: 1

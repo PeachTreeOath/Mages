@@ -14,14 +14,4 @@ public class EnemyScarab : Enemy {
 	}
 
 
-	public override void OnTriggerEnter2D(Collider2D col)
-	{
-        Bullet bullet = col.gameObject.GetComponent<Bullet>();
-        Head playerHead = col.gameObject.GetComponent<Head>();
-
-		if (bullet != null && bullet.type==0) {
-			//TODO change to hp dmg
-            Destroy(gameObject);
-		}
-	}
 }

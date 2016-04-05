@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11417928}
   - 50: {fileID: 5003764}
   m_Layer: 0
-  m_Name: CamelSpawner
+  m_Name: SpawnerCamel
   m_TagString: Untagged
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cebca94388742c44a251a1be15a1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 102556, guid: a31f798e21decdd4996d88d28c5a422a, type: 2}
+  objectToSpawn: {fileID: 132874, guid: 5f564ef4fddd4c4418dd85b3c7b9f228, type: 2}
   spawnDelay: 2
   enemySupply: 10
   scrollSpeed: 1
-  homeYPosition: 5.16
+  homeYPosition: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

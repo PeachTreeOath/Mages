@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyCamel : Enemy {
 
 	public bool isFacingRight;
-	public float moveSpeed;
+	public Vector2 moveSpeed;
 	public float weaponRotateSpeed;
 	private Shoot[] barrels;
 
@@ -12,12 +12,13 @@ public class EnemyCamel : Enemy {
 	public override void Start () {
 		hp = 1;
 		barrels = GetComponentsInChildren<Shoot> ();
+		Rigidbody2D body = GetComponent<Rigidbody2D> ();
 		if (isFacingRight) {
-			GetComponent<Rigidbody2D> ().AddForce (moveSpeed * Vector2.right);
+			body.AddForce (moveSpeed.x * Vector2.right);
 		} else {
-			GetComponent<Rigidbody2D> ().AddForce (moveSpeed * Vector2.left);
+			body.AddForce (moveSpeed.x * Vector2.left);
 		}
-
+		body.AddForce (moveSpeed.y * Vector2.up);
 	}
 	
 	// Update is called once per frame

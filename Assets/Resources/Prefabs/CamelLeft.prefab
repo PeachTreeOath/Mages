@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   isFacingRight: 0
-  moveSpeed: 150
+  moveSpeed: {x: 150, y: 25}
   weaponRotateSpeed: 1
 --- !u!114 &11447448
 MonoBehaviour:

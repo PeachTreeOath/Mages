@@ -9,16 +9,18 @@ public class Bullet : MonoBehaviour
     public int type;
     public Player owner;
 
+	private Rigidbody2D body;
+
     // Use this for initialization
     void Start()
     {
-
+		
     }
 
     // Update is called once per frame
     void Update()
     {
-
+		transform.up = body.velocity;
     }
 
     void OnDestroy()
@@ -44,7 +46,7 @@ public class Bullet : MonoBehaviour
                 type = 1;
                 break;
             case 2:
-                sprite.material = Resources.Load<Material>("Materials/yellowMat");
+                sprite.material = Resources.Load<Material>("Materials/orangeMat");
                 gameObject.layer = LayerMask.NameToLayer("EnemyBullets");
                 type = 2;
                 break;
@@ -58,7 +60,8 @@ public class Bullet : MonoBehaviour
 
     public void Fire()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.up * speed;
+		body = GetComponent<Rigidbody2D> ();
+        body.velocity = transform.up * speed;
     }
 
     public void OnTriggerEnter2D(Collider2D col)

@@ -5,7 +5,7 @@ public class EnemyScarab : Enemy {
 
 	// Use this for initialization
 	public override void Start () {
-		hp = 1;
+
 	}
 	
 	// Update is called once per frame
@@ -14,17 +14,4 @@ public class EnemyScarab : Enemy {
 	}
 
 
-	public override void OnTriggerEnter2D(Collider2D col)
-	{
-
-        Bullet bullet = col.gameObject.GetComponent<Bullet>();
-        Head playerHead = col.gameObject.GetComponent<Head>();
-
-  //      if (playerHead != null) {
-		//	col.gameObject.GetComponent<Head> ().Die ();
-		//}
-		if (bullet != null && bullet.type==0) {
-            Destroy(gameObject);
-		}
-	}
 }

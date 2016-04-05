@@ -301,10 +301,122 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a201bcc5113d4a54080312960d534b85, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &361821124
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000016292068
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 165740, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_Name
+      value: SpawnerCamel A
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: homeYPosition
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &660074021 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 160898, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
   m_PrefabInternal: {fileID: 1267972801}
+--- !u!1001 &704615611
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000016292068
+      objectReference: {fileID: 0}
+    - target: {fileID: 447946, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 165740, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: m_Name
+      value: SpawnerCamel B
+      objectReference: {fileID: 0}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: homeYPosition
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &755719462
 GameObject:
   m_ObjectHideFlags: 0

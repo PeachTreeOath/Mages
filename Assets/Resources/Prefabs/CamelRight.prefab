@@ -222,6 +222,7 @@ MonoBehaviour:
   shotDelay: 0.1
   type: 1
   isPassable: 0
+  useParentVelocity: 1
 --- !u!114 &11439944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,8 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   isFacingRight: 1
-  moveSpeed: 200
-  weaponRotateSpeed: 0.5
+  moveSpeed: 150
+  weaponRotateSpeed: 1
 --- !u!114 &11458614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,6 +254,7 @@ MonoBehaviour:
   shotDelay: 0.1
   type: 1
   isPassable: 0
+  useParentVelocity: 1
 --- !u!114 &11466382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,6 +323,7 @@ MonoBehaviour:
   shotDelay: 0.1
   type: 1
   isPassable: 0
+  useParentVelocity: 1
 --- !u!114 &11480516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,6 +340,7 @@ MonoBehaviour:
   shotDelay: 0.1
   type: 1
   isPassable: 0
+  useParentVelocity: 1
 --- !u!212 &21277444
 SpriteRenderer:
   m_ObjectHideFlags: 1

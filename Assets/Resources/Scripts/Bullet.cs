@@ -9,16 +9,18 @@ public class Bullet : MonoBehaviour
     public int type;
     public Player owner;
 
+	private Rigidbody2D body;
+
     // Use this for initialization
     void Start()
     {
-
+		
     }
 
     // Update is called once per frame
     void Update()
     {
-
+		transform.up = body.velocity;
     }
 
     void OnDestroy()
@@ -58,7 +60,8 @@ public class Bullet : MonoBehaviour
 
     public void Fire()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.up * speed;
+		body = GetComponent<Rigidbody2D> ();
+        body.velocity = transform.up * speed;
     }
 
     public void OnTriggerEnter2D(Collider2D col)

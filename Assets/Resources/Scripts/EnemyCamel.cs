@@ -24,9 +24,7 @@ public class EnemyCamel : Enemy {
 	public override void Update () {
 		foreach(Shoot barrel in barrels)
 		{
-			//float newRot = barrel.transform.rotation.z + weaponRotateSpeed;
 			barrel.transform.Rotate (0, 0, weaponRotateSpeed);
-			//barrel.transform.rotation = new Quaternion(barrel.transform.rotation.x, barrel.transform.rotation.y, newRot, barrel.transform.rotation.w);
 		}
 	}
 }

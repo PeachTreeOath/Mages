@@ -51,7 +51,7 @@ public class Shoot : MonoBehaviour {
             //bulletPosition.y = bulletPosition.y + radiusFromTether;
             //bullet.transform.position = bulletPosition;
             //bullet.transform.rotation = tether.transform.rotation;
-            //bullet.speed = 0;
+            bullet.speed = 1;
 
             //currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
             //currentWeapon.transform.parent = this.transform;

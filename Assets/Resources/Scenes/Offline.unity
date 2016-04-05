@@ -2099,8 +2099,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2075714291}
   m_HandleRect: {fileID: 2075714290}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2181,7 +2181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
       propertyPath: m_LogLevel
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11407340, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
       propertyPath: m_Enabled
@@ -2633,7 +2633,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2011507956

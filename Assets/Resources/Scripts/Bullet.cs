@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
                 type = 1;
                 break;
             case 2:
-                sprite.material = Resources.Load<Material>("Materials/yellowMat");
+                sprite.material = Resources.Load<Material>("Materials/orangeMat");
                 gameObject.layer = LayerMask.NameToLayer("EnemyBullets");
                 type = 2;
                 break;

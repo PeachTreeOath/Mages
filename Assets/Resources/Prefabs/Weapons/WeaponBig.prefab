@@ -24,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438686}
-  - 114: {fileID: 11440110}
   - 114: {fileID: 11439446}
   m_Layer: 12
   m_Name: WeaponBig
@@ -67,17 +66,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11440110
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b8a301266e7054d92d77b91f00499b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11450200

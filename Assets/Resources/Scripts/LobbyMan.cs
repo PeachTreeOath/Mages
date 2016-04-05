@@ -57,7 +57,6 @@ public class LobbyMan : MonoBehaviour {
             netMan.SetMatchHost("mm.unet.unity3d.com", 443, true);
             netMan.StartMatchMaker();
             mm = netMan.matchMaker;
-            //mm.SetProgramAppID((AppID)Application.cloudProjectId);
         }
         refreshTimeDue = Time.time + refreshInterval;
     }
@@ -72,7 +71,7 @@ public class LobbyMan : MonoBehaviour {
             Debug.LogError("No room list gameobject set");
             return;
         }
-        mm.ListMatches(1, 100, "", roomListCallback);
+        mm.ListMatches(1, 10, "", roomListCallback);
     }
 
     public virtual void roomListCallback(ListMatchResponse resp) {
@@ -92,13 +91,15 @@ public class LobbyMan : MonoBehaviour {
     public void createRoom(GameObject text) {
         string roomName = text.GetComponent<InputField>().text;
         if(roomName != null && roomName.Length > 0) {
-            mm.CreateMatch(roomName, 8, true, "", createRoomCallback);
+            Debug.Log("CREATING SUPER SMALL ROOM BECAUSE WE NEED MORE CCUS");
+            mm.CreateMatch(roomName, 2, true, "", createRoomCallback);
         }
     }
 
     public virtual void createRoomCallback(CreateMatchResponse resp) {
         Debug.Log("Room creation was successful: " + resp.success);
         doRefreshNow();
+        //netMan.OnMatchCreate(resp);
     }
 
 

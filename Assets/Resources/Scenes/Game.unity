@@ -348,6 +348,10 @@ Prefab:
       propertyPath: m_Name
       value: SpawnerCamel A
       objectReference: {fileID: 0}
+    - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
+      propertyPath: homeYPosition
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
   m_IsPrefabParent: 0
@@ -408,7 +412,7 @@ Prefab:
       objectReference: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
     - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
       propertyPath: homeYPosition
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}

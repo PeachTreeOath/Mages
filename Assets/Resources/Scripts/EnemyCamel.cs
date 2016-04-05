@@ -27,10 +27,6 @@ public class EnemyCamel : Enemy {
 		if (isFacingRight) {
 			body.AddForce (moveSpeed.x * Vector2.right);
 			GetComponent<SpriteRenderer> ().flipX = true;
-			foreach(Shoot barrel in barrels)
-			{
-				barrel.transform.position = new Vector2 (-barrel.transform.position.x, -barrel.transform.position.y);
-			}
 		} else {
 			body.AddForce (moveSpeed.x * Vector2.left);
 		}

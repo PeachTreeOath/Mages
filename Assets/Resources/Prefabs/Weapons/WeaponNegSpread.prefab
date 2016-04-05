@@ -24,7 +24,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 460212}
-  - 114: {fileID: 11473690}
   - 114: {fileID: 11473008}
   m_Layer: 12
   m_Name: WeaponNegSpread
@@ -366,17 +365,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11473690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f64cb2c58c5dca4e9bdc0b4d8cd41ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11473980

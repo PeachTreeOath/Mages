@@ -14,7 +14,7 @@ public class SpawnObjects : MonoBehaviour {
 	void Start () {
 
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
-        rbody.velocity = transform.up * scrollSpeed; //This is really down
+		rbody.velocity = new Vector2(0,-1) * scrollSpeed; //This is really down
 	}
 	
 	// Update is called once per frame

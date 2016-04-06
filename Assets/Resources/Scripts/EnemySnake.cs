@@ -10,25 +10,35 @@ public class EnemySnake : MonoBehaviour
 	public float moveDistance;
 	public float moveDelay;
 
+	private Vector2 prevLocation;
 	private Vector2 nextLocation;
+	private bool needLocation = true;
 
 	// Use this for initialization
 	void Start ()
 	{
-	
+		prevLocation = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (nextLocation == null) {
+		if (needLocation) {
+			ChooseNextLocation ();
+		}
 
+		float delta = Time.deltaTime * moveSpeed;
+		transform.position = Vector2.Lerp (prevLocation, nextLocation, delta);
+		if (delta > 1 + moveDelay) {
+			prevLocation = nextLocation;
+			needLocation = true;
 		}
 	}
 
 	private void ChooseNextLocation ()
 	{
 		Vector2 newLoc;
+		// yolo levels of risky
 		while (true) {
 			newLoc = (UnityEngine.Random.insideUnitCircle * moveDistance) + (Vector2)transform.position;
 			if (newLoc.x > topLeftBound.x && newLoc.x < bottomRightBound.x &&
@@ -36,7 +46,7 @@ public class EnemySnake : MonoBehaviour
 				break;
 			}
 		}
-
-
+		nextLocation = newLoc;
+		needLocation = false;
 	}
 }

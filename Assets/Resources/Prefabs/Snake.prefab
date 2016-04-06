@@ -119,6 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topLeftBound: {x: -9, y: 5}
   bottomRightBound: {x: 9, y: 0}
+  moveSpeed: 1
+  moveDistance: 1
+  moveDelay: 1
 --- !u!114 &11435422
 MonoBehaviour:
   m_ObjectHideFlags: 1

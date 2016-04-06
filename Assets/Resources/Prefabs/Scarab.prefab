@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
   speed: 1.5
   shotDelay: 0.5
   type: 1

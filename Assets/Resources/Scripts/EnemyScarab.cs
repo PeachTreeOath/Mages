@@ -12,6 +12,5 @@ public class EnemyScarab : Enemy {
 	public override void Update () {
 		 
 	}
-
-
+		
 }

@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
 
-		//transform.up = body.velocity;
+		transform.up = body.velocity;
         //transform.Rotate(0f, 0f, -50f * angularVelocity * Time.deltaTime, Space.World);
     }
 

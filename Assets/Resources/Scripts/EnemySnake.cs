@@ -13,6 +13,8 @@ public class EnemySnake : MonoBehaviour
 	private Vector2 prevLocation;
 	private Vector2 nextLocation;
 	private bool needLocation = true;
+	private float timeElapsed;
+	private float distance;
 
 	// Use this for initialization
 	void Start ()
@@ -27,9 +29,10 @@ public class EnemySnake : MonoBehaviour
 			ChooseNextLocation ();
 		}
 
-		float delta = Time.deltaTime * moveSpeed;
-		transform.position = Vector2.Lerp (prevLocation, nextLocation, delta);
-		if (delta > 1 + moveDelay) {
+		timeElapsed += Time.deltaTime * moveSpeed;
+
+		transform.position = Vector2.Lerp (prevLocation, nextLocation, timeElapsed);
+		if (timeElapsed > 1 + moveDelay) {
 			prevLocation = nextLocation;
 			needLocation = true;
 		}
@@ -48,5 +51,6 @@ public class EnemySnake : MonoBehaviour
 		}
 		nextLocation = newLoc;
 		needLocation = false;
+		timeElapsed = 0;
 	}
 }

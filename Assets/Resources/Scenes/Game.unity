@@ -346,7 +346,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 165740, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
       propertyPath: m_Name
-      value: SpawnerCamel A
+      value: SpawnCamel1
       objectReference: {fileID: 0}
     - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
       propertyPath: homeYPosition
@@ -375,56 +375,6 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &434234469
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 11435394, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: angularVelocity
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 11435394, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: numberOfBullets
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &660074021 stripped
 GameObject:
@@ -475,7 +425,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 165740, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
       propertyPath: m_Name
-      value: SpawnerCamel B
+      value: SpawnCamel2
       objectReference: {fileID: 0}
     - target: {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
       propertyPath: objectToSpawn
@@ -728,7 +678,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 160898, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
       propertyPath: m_Name
-      value: EnemySpawner B
+      value: SpawnScarab2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
@@ -774,7 +724,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 160898, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
       propertyPath: m_Name
-      value: EnemySpawner A
+      value: SpawnScarab1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
@@ -837,3 +787,49 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 152076, guid: a201bcc5113d4a54080312960d534b85, type: 2}
   m_PrefabInternal: {fileID: 288138980}
+--- !u!1001 &1908325106
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000016292068
+      objectReference: {fileID: 0}
+    - target: {fileID: 461074, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 125104, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+      propertyPath: m_Name
+      value: SpawnSnake1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c1036f21414db4f4f9fe0f05b7bf9240, type: 2}
+  m_IsPrefabParent: 0

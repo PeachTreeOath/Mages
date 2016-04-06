@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
         {
             transform.up = body.velocity;
         }
+
     }
 
     void OnDestroy()

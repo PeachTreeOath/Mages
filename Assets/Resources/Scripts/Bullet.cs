@@ -21,9 +21,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-		//transform.up = body.velocity;
-        //transform.Rotate(0f, 0f, -50f * angularVelocity * Time.deltaTime, Space.World);
+        if (body.velocity.magnitude > 0.001f) //accounting for floating point impression.
+        {
+            transform.up = body.velocity;
+        }
     }
 
     void OnDestroy()

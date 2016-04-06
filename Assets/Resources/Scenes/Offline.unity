@@ -285,7 +285,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1437087626}
+      - m_Target: {fileID: 1437087627}
         m_MethodName: refreshMultiplayerRooms
         m_Mode: 1
         m_Arguments:
@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1437087626}
+      - m_Target: {fileID: 1437087627}
         m_MethodName: createRoom
         m_Mode: 2
         m_Arguments:
@@ -1762,7 +1762,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1437087626}
+      - m_Target: {fileID: 1437087627}
         m_MethodName: startSinglePlayer
         m_Mode: 1
         m_Arguments:
@@ -2181,11 +2181,52 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
       propertyPath: m_LogLevel
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11407340, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: roomListParent
+      value: 
+      objectReference: {fileID: 2011507954}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: roomTextPrefab
+      value: 
+      objectReference: {fileID: 106952, guid: aef192e61c3120e4288eaeba1ba33bea, type: 2}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_OfflineScene
+      value: Offline
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_LobbyScene
+      value: Offline
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_OnlineScene
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_PlayScene
+      value: Loadout
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_LobbyPlayerPrefab
+      value: 
+      objectReference: {fileID: 11442354, guid: 2e0e0f2a204c08b4eb8d1cbe54d097b7,
+        type: 2}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_GamePlayerPrefab
+      value: 
+      objectReference: {fileID: 158606, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_ShowLobbyGUI
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_MinPlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
@@ -2200,13 +2241,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1437087625}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3aeaf07e7d6fc04eb9b168d693ac693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomListParent: {fileID: 2011507954}
-  roomTextPrefab: {fileID: 106952, guid: aef192e61c3120e4288eaeba1ba33bea, type: 2}
+--- !u!114 &1437087627 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72,
+    type: 2}
+  m_PrefabInternal: {fileID: 1437087624}
+  m_Script: {fileID: 11500000, guid: eae4fd5c0792b6742ba516cefdeffd76, type: 3}
 --- !u!1 &1565749384
 GameObject:
   m_ObjectHideFlags: 0

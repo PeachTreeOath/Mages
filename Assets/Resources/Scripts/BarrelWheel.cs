@@ -22,18 +22,19 @@ public class BarrelWheel : MonoBehaviour
         body.angularVelocity = angularVelocity;
 
         float preTheta = (2f * Mathf.PI) / numberOfBullets; //calculate this outside of the loop
-        float piOver2 = Mathf.PI / 2f;
+        float twoPi = Mathf.PI * 2f;
 
         for (int i = 0; i < numberOfBullets; i++)
         {
             float theta = i * preTheta;
+            float thetaInDegs = (360 * theta) / twoPi;
 
             Vector3 bulletPosition = transform.position;
             bulletPosition.x = transform.position.x + radius * Mathf.Cos(theta);
             bulletPosition.y = transform.position.y + radius * Mathf.Sin(theta);
 
 
-            Quaternion bulletRotation = Quaternion.Euler(0f, 0f, theta + piOver2) ;
+            Quaternion bulletRotation = Quaternion.Euler(0f, 0f, thetaInDegs + 180f) ;
 
             Bullet bullet = ((GameObject)Instantiate(bulletPrefab, bulletPosition, bulletRotation)).GetComponent<Bullet>();
             bullet.SetType(type);
@@ -56,7 +57,7 @@ public class BarrelWheel : MonoBehaviour
     void Update()
     {
 
-        transform.Rotate(0f, 0f, 50f * angularVelocity * Time.deltaTime, Space.World);
+        transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World);
         //Bullet[] bullets = gameObject.GetComponentsInChildren<Bullet>();
         //foreach (Bullet bullet in bullets)
         //{

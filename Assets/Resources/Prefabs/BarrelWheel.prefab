@@ -59,8 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
   radius: 1
-  numberOfBullets: 4
-  angularVelocity: 3
+  numberOfBullets: 12
+  angularVelocity: 120
   type: 2
   isPassable: 0
 --- !u!1001 &100100000

@@ -376,6 +376,56 @@ Prefab:
     - {fileID: 11417928, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b74be76ed9b821b44949adfd4f104cd1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &434234469
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435394, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: angularVelocity
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435394, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+      propertyPath: numberOfBullets
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &660074021 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 160898, guid: 0da1d12a83b99c140a5c6d699c32bf08, type: 2}
@@ -637,56 +687,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!1001 &1249647242
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 417312, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445780, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: numberOfBullets
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 11445780, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-      propertyPath: angularVelocity
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: be75cdaaad58dba4094fdccdc2989a9a, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1254522222
 Prefab:
   m_ObjectHideFlags: 0

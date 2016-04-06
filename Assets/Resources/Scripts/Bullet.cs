@@ -8,19 +8,22 @@ public class Bullet : MonoBehaviour
     public bool isPassable; //Whether the bullet keeps going after it collides or not.
     public int type;
     public Player owner;
+    public float angularVelocity = 0f;
 
 	private Rigidbody2D body;
 
     // Use this for initialization
     void Start()
     {
-		
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
 		transform.up = body.velocity;
+        transform.Rotate(0f, 0f, 50f * angularVelocity * Time.deltaTime, Space.Self);
     }
 
     void OnDestroy()

@@ -38,15 +38,17 @@ public class Shoot : MonoBehaviour {
 
 	private void CmdFire()
 	{
-        
-		Bullet bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet>();
+
+        Bullet bullet = null;
+
         if (tetherPrefab != null)
         {
             RotatingTether tether = ((GameObject)Instantiate(tetherPrefab, transform.position, transform.rotation)).GetComponent<RotatingTether>();
             //tether.objectToCircle = gameObject;
             tether.transform.parent = transform;
 
-            bullet.transform.parent = tether.transform;
+            bullet = ((GameObject)Instantiate(bulletPrefab, tether.transform.position, tether.transform.rotation)).GetComponent<Bullet>();
+            //bullet.transform.parent = tether.transform;
             //Vector3 bulletPosition = tether.transform.position;
             //bulletPosition.y = bulletPosition.y + radiusFromTether;
             //bullet.transform.position = bulletPosition;
@@ -58,6 +60,7 @@ public class Shoot : MonoBehaviour {
         }
         else
         {
+            bullet = ((GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet>();
             bullet.SetSpeed(speed);
         }
 

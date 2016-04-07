@@ -44,7 +44,6 @@ public class BarrelWheel : MonoBehaviour
             bullet.angularVelocity = angularVelocity;
 
             bullet.transform.parent = transform;
-            //bullet.GetComponent<Rigidbody2D>().velocity += body.velocity;
             
         }
 
@@ -58,12 +57,7 @@ public class BarrelWheel : MonoBehaviour
     {
 
         transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World);
-        //Bullet[] bullets = gameObject.GetComponentsInChildren<Bullet>();
-        //foreach (Bullet bullet in bullets)
-        //{
-        //    bullet.transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World );
-        //    bullet.transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.Self);
-        //}
+
     }
 
 }

@@ -137,6 +137,7 @@ MonoBehaviour:
   tetherPrefab: {fileID: 0}
   radiusFromTether: 0
   speed: 1.5
+  angularSpeed: 120
   shotDelay: 1
   type: 1
   isPassable: 0

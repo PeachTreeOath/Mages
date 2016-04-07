@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!60 &6005532
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -152,6 +152,7 @@ MonoBehaviour:
   isPassable: 0
   type: 0
   owner: {fileID: 0}
+  angularVelocity: 0
 --- !u!212 &21264156
 SpriteRenderer:
   m_ObjectHideFlags: 1

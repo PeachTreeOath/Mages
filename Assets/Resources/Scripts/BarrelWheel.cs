@@ -4,13 +4,13 @@ using System.Collections;
 public class BarrelWheel : MonoBehaviour
 {
 
-    public GameObject bulletPrefab;
-    public float radius = 1f;
-    public int numberOfBullets = 1;
-    public float angularVelocity = 60f;
-    public int type;
-    public bool isPassable = false;
-    
+	public GameObject bulletPrefab;
+	public float radius = 1f;
+	public int numberOfBullets = 1;
+	public float angularVelocity = 60f;
+	public int type;
+	public bool isPassable = false;
+
     private Rigidbody2D body;
 
     // Use this for initialization
@@ -41,7 +41,6 @@ public class BarrelWheel : MonoBehaviour
             bullet.owner = GetComponentInParent<Player>();
             bullet.isPassable = isPassable;
             bullet.speed = 0f;
-            bullet.angularVelocity = angularVelocity;
 
             bullet.transform.parent = transform;
             

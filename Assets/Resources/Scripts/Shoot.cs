@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
 	public float radiusFromTether;
 	public float speed;
 	public float angularSpeed;
+	public float angularDrag;
 	public float shotDelay;
 	public int type;
 	public bool isPassable;
@@ -61,7 +62,7 @@ public class Shoot : MonoBehaviour
 			//currentWeapon.transform.parent = this.transform;
 		} else {
 			bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet> ();
-			bullet.SetSpeed (speed, angularSpeed);
+			bullet.SetSpeed (speed, angularSpeed, angularDrag);
 		}
 
 		bullet.SetType (type);

@@ -5,11 +5,12 @@ public class Bullet : MonoBehaviour
 {
 
 	public float speed;
-	public bool isPassable;
+	public float angularVelocity;
+	public float angularDrag;
 	//Whether the bullet keeps going after it collides or not.
+	public bool isPassable;
 	public int type;
 	public Player owner;
-	public float angularVelocity;
 
 	private Rigidbody2D body;
 
@@ -26,7 +27,10 @@ public class Bullet : MonoBehaviour
 			transform.up = body.velocity;
 		}
 		if (angularVelocity != 0) {
-			transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World);
+			transform.Rotate(0f, 0f, Time.deltaTime * angularVelocity);
+			body.velocity = transform.up * speed;
+			angularVelocity -= Time.deltaTime * angularDrag;
+
 		}
 	}
 
@@ -59,10 +63,11 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	public void SetSpeed (float newSpeed, float newAngularVel)
+	public void SetSpeed (float newSpeed, float newAngularVel, float newAngularDrag)
 	{
 		speed = newSpeed;
 		angularVelocity = newAngularVel;
+		angularDrag = newAngularDrag;
 	}
 
 	public void Fire ()
@@ -70,6 +75,7 @@ public class Bullet : MonoBehaviour
 		body = GetComponent<Rigidbody2D> ();
 		body.velocity = transform.up * speed;
 		body.angularVelocity = angularVelocity;
+		body.angularDrag = angularDrag;
 	}
 
 	public void OnTriggerEnter2D (Collider2D col)

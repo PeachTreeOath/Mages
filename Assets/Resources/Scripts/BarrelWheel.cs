@@ -4,13 +4,13 @@ using System.Collections;
 public class BarrelWheel : MonoBehaviour
 {
 
-    public GameObject bulletPrefab;
-    public float radius = 1f;
-    public int numberOfBullets = 1;
-    public float angularVelocity = 60f;
-    public int type;
-    public bool isPassable = false;
-    
+	public GameObject bulletPrefab;
+	public float radius = 1f;
+	public int numberOfBullets = 1;
+	public float angularVelocity = 60f;
+	public int type;
+	public bool isPassable = false;
+
     private Rigidbody2D body;
 
     // Use this for initialization
@@ -41,10 +41,8 @@ public class BarrelWheel : MonoBehaviour
             bullet.owner = GetComponentInParent<Player>();
             bullet.isPassable = isPassable;
             bullet.speed = 0f;
-            bullet.angularVelocity = angularVelocity;
 
             bullet.transform.parent = transform;
-            //bullet.GetComponent<Rigidbody2D>().velocity += body.velocity;
             
         }
 
@@ -58,12 +56,7 @@ public class BarrelWheel : MonoBehaviour
     {
 
         transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World);
-        //Bullet[] bullets = gameObject.GetComponentsInChildren<Bullet>();
-        //foreach (Bullet bullet in bullets)
-        //{
-        //    bullet.transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.World );
-        //    bullet.transform.Rotate(0f, 0f, angularVelocity * Time.deltaTime, Space.Self);
-        //}
+
     }
 
 }

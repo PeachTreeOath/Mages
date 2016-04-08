@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.EventSystems;
@@ -13,9 +14,9 @@ public class GameNetMan : NetworkLobbyManager {
     [SerializeField]
     private GameObject roomTextPrefab;
     [SerializeField]
-    private GameObject joinRoomInput;  //obviously view should be separated out here...but, uh, not my game
-    //[SerializeField]
-    //private GameObject joinRoomBut;
+    private GameObject joinRoomInput;  //Type InputField, obviously view should be separated out here...but, uh, not my game
+                                       //[SerializeField]
+                                       //private GameObject joinRoomBut;
 
     private bool singlePlayer = false;
     private bool doRefresh = false;
@@ -25,6 +26,9 @@ public class GameNetMan : NetworkLobbyManager {
 
     // Use this for initialization
     void Start() {
+        if(joinRoomInput == null || joinRoomInput.GetComponentInChildren<Text>() == null) {
+            Debug.LogError("No join room input field assigned to GameNetMan.  Shit's weak");
+        }
 
     }
 
@@ -53,6 +57,17 @@ public class GameNetMan : NetworkLobbyManager {
         }
     }
 
+    public void stopMultiplayer() {
+        doRefresh = false;
+        StopHost(); //This should stop server, client, and matchmaker
+    }
+
+    public void exitGame() {
+        Destroy(gameObject);
+        Shutdown();
+        Debug.Log("YOLO");
+        Application.Quit();
+    }
 
     //onclick handler
     public void refreshMultiplayerRooms() {
@@ -61,6 +76,7 @@ public class GameNetMan : NetworkLobbyManager {
             Debug.Log("CloudID is: " + Application.cloudProjectId);
             SetMatchHost("mm.unet.unity3d.com", 443, true);
             StartMatchMaker();
+            doRefreshNow();
         }
         refreshTimeDue = Time.time + refreshInterval;
     }
@@ -100,22 +116,9 @@ public class GameNetMan : NetworkLobbyManager {
 
             //setup data for the selection obj
             RoomData rd = go.AddComponent<RoomData>();
-            rd.setRec(joinRoomInput);
+            rd.setReceiver(joinRoomInput);
             rd.setData(d);
 
-            //TODO: tie the selectable onclick to populate the text field with the server name. A SEEMINGLY IMPOSSIBLE TASK.
-            EventTrigger t = go.AddComponent<EventTrigger>();
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.Select;
-            entry.callback.AddListener((eventData) => { if (eventData.selectedObject == gameObject) {
-                    Debug.Log("Shit happened");
-                    } else {
-                    Debug.Log("Almost..." + gameObject.name);
-                    }
-                RoomData.handleSelection(eventData);
-            });
-            t.triggers.Add(entry);
-            
         }
         OnMatchList(resp); //maybe unnecessary
     }
@@ -151,6 +154,41 @@ public class GameNetMan : NetworkLobbyManager {
         }
     }
 
+    public void joinGame(GameObject text) {
+        string roomName = text.GetComponent<InputField>().text;
+        if (roomName != null && roomName.Length > 0) {
+            Debug.Log("Joining room named " + roomName);
+            //find the info for the given room
+            MatchDesc j = null;
+            foreach(MatchDesc d in matches) {
+                if (roomName.Equals(d.name)){
+                    j = d;
+                    break;
+                }
+            }
+            if(j == null) {
+                Debug.LogError("Match not found: " + roomName);
+                return;
+            }
+            JoinMatchRequest matchReq = new JoinMatchRequest();
+            matchReq.networkId = j.networkId;
+            matchReq.password = "";
+            matchMaker.JoinMatch(matchReq, joinGameCallback);
+        }
+    }
+
+    public virtual void joinGameCallback(JoinMatchResponse resp) {
+        Debug.Log("Join response: " + resp.ToString());
+        if(resp.success == true) {
+            Debug.Log("JOIN OK");
+            doRefresh = false;
+            OnMatchJoined(resp);
+            ServerChangeScene(playScene);  //is this necessary??
+        }
+    }
+
+
+    //This should intercept and do nothing so the bastard lobby code won't try to doubley start the game
     public override void OnClientSceneChanged(NetworkConnection conn) {
         Debug.Log("Intercepting lobby scene change handler");
         //base.OnClientSceneChanged(conn);

@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Ww]eb/
+builds/
 
 # My stuff
 /Assets/Resources/Materials/BG/

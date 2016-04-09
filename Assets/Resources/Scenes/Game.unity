@@ -364,7 +364,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 445876, guid: a201bcc5113d4a54080312960d534b85, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 445876, guid: a201bcc5113d4a54080312960d534b85, type: 2}
       propertyPath: m_LocalPosition.y
@@ -398,11 +398,6 @@ Prefab:
       propertyPath: m_Name
       value: PlayerSafeSpawn
       objectReference: {fileID: 0}
-    - target: {fileID: 152076, guid: a201bcc5113d4a54080312960d534b85, type: 2}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2270504221434485236, guid: 0000000000000000d000000000000000,
-        type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a201bcc5113d4a54080312960d534b85, type: 2}
   m_IsPrefabParent: 0

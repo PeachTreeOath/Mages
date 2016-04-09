@@ -23,11 +23,12 @@ public class GameNetMan : NetworkManager {
     private bool doRefresh = false;
     private float refreshInterval = 2.0f;
     private float refreshTimeDue = 0;
+    private bool stopping = false; //indicates game is shutting down
 
 
     // Use this for initialization
     void Start() {
-        if( instance == null) {
+        if (instance == null) {
             instance = this;
         }
         if (joinRoomInput == null || joinRoomInput.GetComponentInChildren<Text>() == null) {
@@ -60,8 +61,7 @@ public class GameNetMan : NetworkManager {
     public void startSinglePlayer() {
         Debug.Log("Starting network host: isNetworkActive=" + singleton.isNetworkActive);
         singlePlayer = true;
-        NetworkClient nc = StartHost();
-
+        StartHost();
 
         Debug.Log("Starting network host: isNetworkActive=" + singleton.isNetworkActive);
     }
@@ -90,10 +90,21 @@ public class GameNetMan : NetworkManager {
     }
 
     public void exitGame() {
-        Destroy(gameObject);
-        Shutdown();
-        Debug.Log("YOLO");
-        Application.Quit();
+        if (!stopping) {
+            stopping = true;
+            NetworkServer.Shutdown();
+            NetworkClient.ShutdownAll();
+            stopMultiplayer();
+            Destroy(gameObject);
+            Shutdown();
+            Debug.Log("YOLO");
+            Application.Quit();
+        }
+    }
+
+    void OnApplicationQuit() {
+        Debug.Log("Quit called, attempting to stop game");
+        exitGame();
     }
 
     //onclick handler
@@ -217,11 +228,11 @@ public class GameNetMan : NetworkManager {
 
     //This should intercept and do nothing so the bastard lobby code won't try to doubley start the game
     //public override void OnClientSceneChanged(NetworkConnection conn) {
-        //Debug.Log("Intercepting lobby scene change handler");
-        //if (singleton.numPlayers <= 0) {
-            //Debug.Log("Adding new player");
-            //ClientScene.AddPlayer(conn, 0);
-        //}
+    //Debug.Log("Intercepting lobby scene change handler");
+    //if (singleton.numPlayers <= 0) {
+    //Debug.Log("Adding new player");
+    //ClientScene.AddPlayer(conn, 0);
+    //}
     //}
 
     //Called when the player is ready to enter the playing game

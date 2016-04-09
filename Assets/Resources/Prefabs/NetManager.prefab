@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 473738}
   - 114: {fileID: 11407340}
   - 114: {fileID: 11470468}
-  - 114: {fileID: 11414010}
   m_Layer: 0
   m_Name: NetManager
   m_TagString: Untagged
@@ -36,7 +35,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179218}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 227461547, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
   m_Name: 
@@ -45,17 +44,6 @@ MonoBehaviour:
   showGUI: 1
   offsetX: 0
   offsetY: 0
---- !u!114 &11414010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3aeaf07e7d6fc04eb9b168d693ac693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11470468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,7 +68,7 @@ MonoBehaviour:
   m_AutoCreatePlayer: 0
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Offline
-  m_OnlineScene: 
+  m_OnlineScene: Loadout
   m_SpawnPrefabs: []
   m_CustomConfig: 0
   m_MaxConnections: 4
@@ -121,18 +109,6 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   matchName: default
   matchSize: 4
-  m_ShowLobbyGUI: 0
-  m_MaxPlayers: 4
-  m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 1
-  m_LobbyPlayerPrefab: {fileID: 11442354, guid: 2e0e0f2a204c08b4eb8d1cbe54d097b7,
-    type: 2}
-  m_GamePlayerPrefab: {fileID: 158606, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
-  m_LobbyScene: Offline
-  m_PlayScene: Loadout
-  lobbySlots: []
-  roomListParent: {fileID: 0}
-  roomTextPrefab: {fileID: 106952, guid: aef192e61c3120e4288eaeba1ba33bea, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

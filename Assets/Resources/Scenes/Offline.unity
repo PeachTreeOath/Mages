@@ -2272,6 +2272,18 @@ Prefab:
       propertyPath: joinRoomInput
       value: 
       objectReference: {fileID: 1332069923}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_UseWebSockets
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_LogLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+      propertyPath: m_ScriptCRCCheck
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11414010, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
     - {fileID: 11407340, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}

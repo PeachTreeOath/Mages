@@ -26,7 +26,7 @@ public class GameNetMan : NetworkLobbyManager {
 
     // Use this for initialization
     void Start() {
-        if(joinRoomInput == null || joinRoomInput.GetComponentInChildren<Text>() == null) {
+        if (joinRoomInput == null || joinRoomInput.GetComponentInChildren<Text>() == null) {
             Debug.LogError("No join room input field assigned to GameNetMan.  Shit's weak");
         }
 
@@ -40,19 +40,42 @@ public class GameNetMan : NetworkLobbyManager {
         }
     }
 
+    //Use a single server/client setup for single player.  The majority of the code is run via StartHost.  This does the following:
+    //OnStartHost [empty]
+    //StartServer
+    //    -Initialize singleton
+    //    -OnStartServer [empty]
+    //    -Network.Listen on specified port (and IP if it is bound)
+    //    -Change to online scene if it is not already showing.  If it is, call NetworkServer.SpawnObjects
+    //ConnectLocalClient
+    //    -ClientScene.ConnectLocalServer - Local objects now ready to spawn
+    //OnServerConnect [empty]
+    //OnStartClient [empty]
+    //
     //onclick handler
     public void startSinglePlayer() {
         Debug.Log("Starting network host: isNetworkActive=" + singleton.isNetworkActive);
         singlePlayer = true;
-        StartHost();
+        NetworkClient nc = StartHost();
+
+
         Debug.Log("Starting network host: isNetworkActive=" + singleton.isNetworkActive);
     }
 
+    //I think the player needs to be added or readied at this stage, before the client can do its automagic.  not sure tho, doesn't seem to be working.
+    // public override void OnServerReady(NetworkConnection conn) {
+    //    Debug.Log("OnServerReady intercepted");
+    //     ClientScene.AddPlayer(conn, 0);
+    //    //base.OnServerReady(conn);
+    // }
+
     public override void OnStartHost() {
-        if(!singlePlayer) {
+        if (!singlePlayer) {
             base.OnStartHost();
         } else {
             //we can't call start client here or unity will bitch
+            Debug.Log("Calling manual scene load");
+            //WTF do we do here?!
             SceneManager.LoadScene(playScene); //jump to the "lobby" screen
         }
     }
@@ -100,18 +123,18 @@ public class GameNetMan : NetworkLobbyManager {
     }
 
     public virtual void roomListCallback(ListMatchResponse resp) {
-        if(!doRefresh) {
+        if (!doRefresh) {
             return; //refreshes halted
         }
         Debug.Log("Found " + resp.matches.Count + " rooms");
         matches = resp.matches;
         //cleanup existing list
         foreach (Transform child in roomListParent.transform) {
-        Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
         foreach (MatchDesc d in resp.matches) {
             GameObject go = GameObject.Instantiate(roomTextPrefab);
-            go.GetComponentInChildren<Text>().text = d.name + "\t(" + d.currentSize + "/" + d.maxSize + ")" ; //may be sub-sub component
+            go.GetComponentInChildren<Text>().text = d.name + "\t(" + d.currentSize + "/" + d.maxSize + ")"; //may be sub-sub component
             go.transform.SetParent(roomListParent.transform, false); //Just parent the object to the panel and let the panel lay it out
 
             //setup data for the selection obj
@@ -160,13 +183,13 @@ public class GameNetMan : NetworkLobbyManager {
             Debug.Log("Joining room named " + roomName);
             //find the info for the given room
             MatchDesc j = null;
-            foreach(MatchDesc d in matches) {
-                if (roomName.Equals(d.name)){
+            foreach (MatchDesc d in matches) {
+                if (roomName.Equals(d.name)) {
                     j = d;
                     break;
                 }
             }
-            if(j == null) {
+            if (j == null) {
                 Debug.LogError("Match not found: " + roomName);
                 return;
             }
@@ -179,7 +202,7 @@ public class GameNetMan : NetworkLobbyManager {
 
     public virtual void joinGameCallback(JoinMatchResponse resp) {
         Debug.Log("Join response: " + resp.ToString());
-        if(resp.success == true) {
+        if (resp.success == true) {
             Debug.Log("JOIN OK");
             doRefresh = false;
             OnMatchJoined(resp);
@@ -191,7 +214,10 @@ public class GameNetMan : NetworkLobbyManager {
     //This should intercept and do nothing so the bastard lobby code won't try to doubley start the game
     public override void OnClientSceneChanged(NetworkConnection conn) {
         Debug.Log("Intercepting lobby scene change handler");
-        //base.OnClientSceneChanged(conn);
+        if (singleton.numPlayers < 0) {
+            Debug.Log("Adding new player");
+            ClientScene.AddPlayer(0);
+        }
     }
 
 

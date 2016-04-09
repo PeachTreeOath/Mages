@@ -29,7 +29,7 @@ public class Player : NetLifecycleObj {
         //generally this is called when the scene is first loaded
         Debug.Log("Player Start called");
         spawnPlayer();
-        
+
         Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
         currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
         currentWeapon.transform.parent = this.transform;
@@ -41,12 +41,13 @@ public class Player : NetLifecycleObj {
         Debug.Log("in spawn player code");
         if (!isLocalPlayer) {
             Debug.LogError("Tried to call spawnPlayer from non-local client");
+            return;
         }
         playerState = PlayerState.SPAWNING;
         deathState = DeathState.STARTING;
         rend = GetComponent<SpriteRenderer>().GetComponent<Renderer>();
         GameObject parent = SpawnDelegate.getInstance().getPlayerSpawnLocation();
-        //transform.parent = parent.transform; //will this work???? //TODO no.
+        gameObject.transform.SetParent(parent.transform, false);
         initDone = true;
         Debug.Log("Player init done");
         StartCoroutine(Flash(SPAWNING_TIME, 0.05f));
@@ -58,23 +59,18 @@ public class Player : NetLifecycleObj {
     }
 
     void Update() {
-        if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches)
-        {
+        if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
             //Remove existing weapon
             Debug.Log("Removing existing weapon.");
             //Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
 
-            if (currentWeapon != null)
-            {
-                 GameObject go = currentWeapon.gameObject;
-                 Destroy(go);
+            if (currentWeapon != null) {
+                GameObject go = currentWeapon.gameObject;
+                Destroy(go);
             }
-            if (currentWeaponIndex == weaponLoadout.Count - 1)
-            {
+            if (currentWeaponIndex == weaponLoadout.Count - 1) {
                 currentWeaponIndex = 0;
-            }
-            else
-            {
+            } else {
                 currentWeaponIndex++;
             }
             Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
@@ -83,11 +79,12 @@ public class Player : NetLifecycleObj {
 
             timeOfLastWeaponSwitch = Time.time;
         }
-        if(!initDone) {
+        if (!initDone) {
             return;
         }
 
-        if (!isLocalPlayer) {
+        //Only client code from here
+        if (!isLocalPlayer || !isClient) {
             return;
         }
 
@@ -115,24 +112,26 @@ public class Player : NetLifecycleObj {
 
 
     void LateUpdate() {
-        if(!initDone) {
+        if (!initDone) {
             return;
         }
 
-        if(!isLocalPlayer) {
+        if (!isLocalPlayer) {
             return;
         }
 
-        if (transform.position.x < -8.5f) {
-            transform.position = new Vector2(-8.5f, transform.position.y);
-        } else if (transform.position.x > 8.5f) {
-            transform.position = new Vector2(8.5f, transform.position.y);
-        }
+        if (isClient) {
+            if (transform.position.x < -8.5f) {
+                transform.position = new Vector2(-8.5f, transform.position.y);
+            } else if (transform.position.x > 8.5f) {
+                transform.position = new Vector2(8.5f, transform.position.y);
+            }
 
-        if (transform.position.y < -4.5f) {
-            transform.position = new Vector2(transform.position.x, -4.5f);
-        } else if (transform.position.y > 4.5f) {
-            transform.position = new Vector2(transform.position.x, 4.5f);
+            if (transform.position.y < -4.5f) {
+                transform.position = new Vector2(transform.position.x, -4.5f);
+            } else if (transform.position.y > 4.5f) {
+                transform.position = new Vector2(transform.position.x, 4.5f);
+            }
         }
     }
 
@@ -148,26 +147,24 @@ public class Player : NetLifecycleObj {
 
     [Command] //enter server mode
     private void CmdServerRespawn() {
-        serverRespawn(); 
+        serverRespawn();
     }
 
     //This is called on collision trigger by the head
     public void Die() {
-        //Can only die from the neutral state currently
-        if (playerState == PlayerState.NETURAL) {
-            Debug.Log("Carrying on with Killing player.");
-            Debug.Log("isServer: " + isServer);
-            Debug.Log("isClient: " + isClient);
-            playerState = PlayerState.DYING;
-            CmdDie(); //offload to server so everyone can see death animation
-        }
-        else
-        {
-            Debug.Log("Don't need to die, we aren't in neutral state.");
+        if (isClient) {
+            //Can only die from the neutral state currently
+            if (playerState == PlayerState.NETURAL) {
+                Debug.Log("Carrying on with Killing player.");
+                playerState = PlayerState.DYING;
+                CmdDie(); //offload to server so everyone can see death animation
+            } else {
+                Debug.Log("Don't need to die, we aren't in neutral state.");
+            }
         }
     }
 
-    [Command] //run on server
+    [Command] //run on server (called from client, obviously)
     private void CmdDie() {
         //time transitions between states are handled in update
         if (deathState == DeathState.STARTING) {
@@ -194,7 +191,7 @@ public class Player : NetLifecycleObj {
         //this needs work
         float timeElapsed = Time.time - deathStateTime;
         if (timeElapsed < timeToDie) {
-            transform.localPosition = (Vector2)transform.position + (UnityEngine.Random.insideUnitCircle * timeElapsed * 0.02f);
+            //transform.localPosition = (Vector2)transform.position + (UnityEngine.Random.insideUnitCircle * timeElapsed * 0.02f);
         } else {
             GetComponent<GibManual>().Explode();
             deathState = DeathState.FINISHED;

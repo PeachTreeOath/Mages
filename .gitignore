@@ -2,8 +2,8 @@
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
+/[Bb]uilds/
 /[Ww]eb/
-builds/
 
 # My stuff
 /Assets/Resources/Materials/BG/

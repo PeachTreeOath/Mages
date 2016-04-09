@@ -75,19 +75,17 @@ public class LobbyMan : MonoBehaviour {
     }
 
     public virtual void roomListCallback(ListMatchResponse resp) {
-        Debug.Log("List rooms was successful: " + resp.success);
         Debug.Log("Found " + resp.matches.Count + " rooms");
         lastResp = resp;
         //cleanup existing list
-        //foreach (Transform child in roomListParent.transform) {
-            //Destroy(child.gameObject);
-        //}
+        foreach (Transform child in roomListParent.transform) {
+            Destroy(child.gameObject);
+        }
         foreach (MatchDesc d in resp.matches) {
             GameObject.Instantiate(roomTextPrefab);
             roomTextPrefab.GetComponent<Text>().text = d.name;
             roomTextPrefab.transform.SetParent(roomListParent.transform, false);
         }
-        //netMan.OnMatchList(resp);
     }
 
     public void createRoom(GameObject text) {

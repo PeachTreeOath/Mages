@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.EventSystems;
 
-public class GameNetMan : NetworkLobbyManager {
+public class GameNetMan : NetworkManager {
 
     [SerializeField]
     private GameObject roomListParent;
@@ -18,6 +18,7 @@ public class GameNetMan : NetworkLobbyManager {
                                        //[SerializeField]
                                        //private GameObject joinRoomBut;
 
+    public static GameNetMan instance;
     private bool singlePlayer = false;
     private bool doRefresh = false;
     private float refreshInterval = 2.0f;
@@ -26,6 +27,9 @@ public class GameNetMan : NetworkLobbyManager {
 
     // Use this for initialization
     void Start() {
+        if( instance == null) {
+            instance = this;
+        }
         if (joinRoomInput == null || joinRoomInput.GetComponentInChildren<Text>() == null) {
             Debug.LogError("No join room input field assigned to GameNetMan.  Shit's weak");
         }
@@ -76,7 +80,7 @@ public class GameNetMan : NetworkLobbyManager {
             //we can't call start client here or unity will bitch
             Debug.Log("Calling manual scene load");
             //WTF do we do here?!
-            SceneManager.LoadScene(playScene); //jump to the "lobby" screen
+            SceneManager.LoadScene(onlineScene); //jump to the "lobby" screen
         }
     }
 
@@ -168,7 +172,7 @@ public class GameNetMan : NetworkLobbyManager {
             doRefreshNow();
             doRefresh = false;
             OnMatchCreate(resp); //this will join immediately, which may be what we want once testing is done
-            ServerChangeScene(playScene);  //is this necessary??
+            ServerChangeScene(onlineScene);  //is this necessary??
             Debug.Log("Joined");
 
             Debug.Log("Scene switched");
@@ -206,19 +210,24 @@ public class GameNetMan : NetworkLobbyManager {
             Debug.Log("JOIN OK");
             doRefresh = false;
             OnMatchJoined(resp);
-            ServerChangeScene(playScene);  //is this necessary??
+            ServerChangeScene(onlineScene);  //is this necessary??
         }
     }
 
 
     //This should intercept and do nothing so the bastard lobby code won't try to doubley start the game
-    public override void OnClientSceneChanged(NetworkConnection conn) {
-        Debug.Log("Intercepting lobby scene change handler");
-        if (singleton.numPlayers < 0) {
-            Debug.Log("Adding new player");
-            ClientScene.AddPlayer(0);
-        }
-    }
+    //public override void OnClientSceneChanged(NetworkConnection conn) {
+        //Debug.Log("Intercepting lobby scene change handler");
+        //if (singleton.numPlayers <= 0) {
+            //Debug.Log("Adding new player");
+            //ClientScene.AddPlayer(conn, 0);
+        //}
+    //}
 
+    //Called when the player is ready to enter the playing game
+    public void LoadoutReady() {
+        Debug.Log("Loadout Ready called");
+        ServerChangeScene(SceneState.getFirstScene());
+    }
 
 }

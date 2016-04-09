@@ -11,18 +11,19 @@ public class GameSceneLoad : NetworkBehaviour {
     }
 
     void Start() {
+        Debug.Log("GameSceneLoad Start called");
         doInitAtSomePoint();
     }
 
-    IEnumerator doInitAtSomePoint() {
+    void doInitAtSomePoint() {
         Debug.Log("Scene load startup");
-        yield return new WaitForSeconds(2);  //wait for shit
+        //yield return new WaitForSeconds(2);  //wait for shit
         if (isServer) {
             Debug.Log("Server spawning players");
             NetworkServer.Spawn(NetworkManager.singleton.playerPrefab);
         }
         if(isClient) {
-            if(NetworkManager.singleton.numPlayers < 0) {
+            if(NetworkManager.singleton.numPlayers <= 0) {
                 Debug.Log("Adding client player");
                 ClientScene.AddPlayer(ClientScene.readyConnection, 0); //Players must be added before being ready
             }

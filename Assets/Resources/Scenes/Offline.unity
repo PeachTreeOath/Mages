@@ -2273,20 +2273,18 @@ Prefab:
       value: 
       objectReference: {fileID: 1332069923}
     - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
-      propertyPath: m_UseWebSockets
+      propertyPath: m_AutoCreatePlayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
-      propertyPath: m_LogLevel
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 158606, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
     - target: {fileID: 11470468, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
-      propertyPath: m_ScriptCRCCheck
-      value: 1
+      propertyPath: m_OnlineScene
+      value: Loadout
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11414010, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
-    - {fileID: 11407340, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b23260a1c69bff048b4ac846629d1b72, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1437087627 stripped

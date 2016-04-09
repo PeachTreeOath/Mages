@@ -1,23 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shoot : MonoBehaviour {
+public class Shoot : MonoBehaviour
+{
 
 	public GameObject bulletPrefab;
+	public GameObject tetherPrefab;
+	public float radiusFromTether;
 	public float speed;
+	public float angularSpeed;
+	public float angularDrag;
 	public float shotDelay;
 	public int type;
-    public bool isPassable;
+	public bool isPassable;
+	public bool useParentVelocity;
 
 	private bool readyToShoot = true;
+	private Rigidbody2D body;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+		if (useParentVelocity) {
+			body = gameObject.GetComponentInParent<Rigidbody2D> ();
+		}
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		if (readyToShoot) {
 			CmdFire ();
 			readyToShoot = false;
@@ -25,18 +36,43 @@ public class Shoot : MonoBehaviour {
 		}
 	}
 
-	void ResetReadyToShoot()
+	void ResetReadyToShoot ()
 	{
 		readyToShoot = true;
 	}
 
-	private void CmdFire()
+	private void CmdFire ()
 	{
-		Bullet bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet>();
+		Bullet bullet = null;
+
+		if (tetherPrefab != null) {
+			RotatingTether tether = ((GameObject)Instantiate (tetherPrefab, transform.position, transform.rotation)).GetComponent<RotatingTether> ();
+			//tether.objectToCircle = gameObject;
+			tether.transform.parent = transform;
+
+			bullet = ((GameObject)Instantiate (bulletPrefab, tether.transform.position, tether.transform.rotation)).GetComponent<Bullet> ();
+			//bullet.transform.parent = tether.transform;
+			//Vector3 bulletPosition = tether.transform.position;
+			//bulletPosition.y = bulletPosition.y + radiusFromTether;
+			//bullet.transform.position = bulletPosition;
+			//bullet.transform.rotation = tether.transform.rotation;
+			bullet.speed = 1;
+
+			//currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+			//currentWeapon.transform.parent = this.transform;
+		} else {
+			bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<Bullet> ();
+			bullet.SetSpeed (speed, angularSpeed, angularDrag);
+		}
+
 		bullet.SetType (type);
-		bullet.SetSpeed (speed);
-        bullet.owner = GetComponentInParent<Player>();
-        bullet.isPassable = isPassable;
+		bullet.owner = GetComponentInParent<Player> ();
+		bullet.isPassable = isPassable;
+        
 		bullet.Fire ();
+
+		if (useParentVelocity) {
+			bullet.GetComponent<Rigidbody2D> ().velocity += body.velocity;
+		}
 	}
 }

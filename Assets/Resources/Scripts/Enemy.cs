@@ -14,17 +14,14 @@ public class Enemy : MonoBehaviour {
 	public virtual void Update () {
 
 	}
-
+		
 	public virtual void OnTriggerEnter2D(Collider2D col)
 	{
-        Head playerHead = col.gameObject.GetComponent<Head>();
-        Bullet bullet = col.gameObject.GetComponent<Bullet>();
-		//if (playerHead != null) {
-		//	//destroy player
-		//}
-		if (bullet != null && bullet.type == 0) {
-            Destroy (gameObject);
-		}
+		Bullet bullet = col.gameObject.GetComponent<Bullet>();
 
+		if (bullet != null && bullet.type==0) {
+			//TODO change to hp dmg
+			Destroy(gameObject);
+		}
 	}
 }

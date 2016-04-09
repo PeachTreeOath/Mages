@@ -3,9 +3,9 @@ using System.Collections;
 
 public class FodderAI : MonoBehaviour {
 
-	public float speed = 1f;
-	public float sinAmplitude = 1.0f;
-	public float sinFrequency = 1.0f;
+	public float speed;
+	public float sinAmplitude;
+	public float sinFrequency ;
 	private float horizontalOffset = 0f;
 	private float time;
 
@@ -21,5 +21,12 @@ public class FodderAI : MonoBehaviour {
 		transform.position += transform.up * speed * Time.deltaTime;
 		horizontalOffset = Mathf.Sin (time * sinFrequency * 2 * Mathf.PI) * sinAmplitude;
 		transform.position += horizontalOffset * transform.right;
+	}
+
+	public void BeginMoving(float moveSpeed, float amp, float freq)
+	{
+		speed = moveSpeed;
+		sinAmplitude = amp;
+		sinFrequency = freq;
 	}
 }

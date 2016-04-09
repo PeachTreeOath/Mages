@@ -55,6 +55,21 @@ GameObject:
   m_Component:
   - 4: {fileID: 483510}
   m_Layer: 0
+  m_Name: ShootPoint5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &120584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 407390}
+  m_Layer: 0
   m_Name: ShootPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +112,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &157088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 484692}
+  m_Layer: 0
+  m_Name: ShootPoint4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407390
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495604}
+  m_RootOrder: 1
 --- !u!4 &410992
 Transform:
   m_ObjectHideFlags: 1
@@ -128,11 +170,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 495604}
-  m_RootOrder: 1
+  m_RootOrder: 5
 --- !u!4 &483868
 Transform:
   m_ObjectHideFlags: 1
@@ -146,6 +188,18 @@ Transform:
   - {fileID: 410992}
   m_Father: {fileID: 495604}
   m_RootOrder: 0
+--- !u!4 &484692
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 495604}
+  m_RootOrder: 4
 --- !u!4 &491886
 Transform:
   m_ObjectHideFlags: 1
@@ -169,9 +223,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483868}
-  - {fileID: 483510}
+  - {fileID: 407390}
   - {fileID: 491886}
   - {fileID: 427058}
+  - {fileID: 484692}
+  - {fileID: 483510}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5020176
@@ -256,10 +312,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phase: 0
   markers:
-  - {fileID: 483510}
+  - {fileID: 407390}
   - {fileID: 491886}
   - {fileID: 427058}
-  speed: 3
+  - {fileID: 484692}
+  - {fileID: 491886}
+  - {fileID: 483510}
+  speed: 3.5
   pauseTime: 1
 --- !u!114 &11475724
 MonoBehaviour:

@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &126880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 474478}
+  - 114: {fileID: 11461042}
+  m_Layer: 0
+  m_Name: BurstBarrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &198436
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +30,6 @@ GameObject:
   - 114: {fileID: 11477008}
   - 60: {fileID: 6050794}
   - 50: {fileID: 5097012}
-  - 95: {fileID: 9579536}
   m_Layer: 0
   m_Name: Genie
   m_TagString: Untagged
@@ -22,6 +37,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &474478
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126880}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 479810}
+  m_RootOrder: 0
 --- !u!4 &479810
 Transform:
   m_ObjectHideFlags: 1
@@ -31,7 +58,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 474478}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5097012
@@ -71,23 +99,6 @@ PolygonCollider2D:
       - {x: 0.027181879, y: -1.8238202}
       - {x: 0.8621202, y: -0.60691607}
       - {x: 0.9297995, y: 0.7437625}
---- !u!95 &9579536
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198436}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4fcc103dae3c171439d1715b5b3d4709, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11406992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +110,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18096625dd14ad4f89d975bc4032934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phase: 0
+  markers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 3
+  pauseTime: 1
+--- !u!114 &11461042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b556252267da034f88d67aa9ac7cf84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  radius: 0.5
+  numberOfBullets: 24
+  angularSpeed: 0.1
+  angularDrag: 0
+  speed: 1.5
+  type: 1
+  isPassable: 0
+  shotDelay: 0.1
+  burstTime: 1
+  burstDelay: 3
+  perturbation: 0.1
 --- !u!114 &11477008
 MonoBehaviour:
   m_ObjectHideFlags: 1

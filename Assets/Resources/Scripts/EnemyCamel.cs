@@ -7,13 +7,13 @@ public class EnemyCamel : Enemy {
 	private Shoot[] barrels;
 
 	// Use this for initialization
-	public override void Start () {
+	public void Start () {
 		hp = 1;
 		barrels = GetComponentsInChildren<Shoot> ();
 	}
 	
 	// Update is called once per frame
-	public override void Update () {
+	public void Update () {
 		foreach(Shoot barrel in barrels)
 		{
 			barrel.transform.Rotate (0, 0, weaponRotateSpeed);

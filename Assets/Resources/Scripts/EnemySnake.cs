@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySnake : MonoBehaviour
+public class EnemySnake : Enemy
 {
-
 	public Vector2 topLeftBound;
 	public Vector2 bottomRightBound;
 	public float moveSpeed;

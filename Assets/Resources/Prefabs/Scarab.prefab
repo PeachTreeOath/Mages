@@ -12,7 +12,6 @@ GameObject:
   - 114: {fileID: 11416562}
   - 61: {fileID: 6130024}
   - 114: {fileID: 11402438}
-  - 114: {fileID: 11458804}
   - 114: {fileID: 11446284}
   - 50: {fileID: 5082084}
   - 114: {fileID: 11465926}
@@ -124,6 +123,8 @@ MonoBehaviour:
   tetherPrefab: {fileID: 0}
   radiusFromTether: 0
   speed: 1.5
+  angularSpeed: 0
+  angularDrag: 0
   shotDelay: 0.5
   type: 1
   isPassable: 0
@@ -140,6 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
+  speed: 1
+  sinAmplitude: 1
+  sinFrequency: 0.2
 --- !u!114 &11429014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,20 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTarget: {fileID: 0}
---- !u!114 &11458804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d66a3ac04fbf348967277ff1bc4a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  sinAmplitude: 1
-  sinFrequency: 0.2
 --- !u!114 &11465926
 MonoBehaviour:
   m_ObjectHideFlags: 1

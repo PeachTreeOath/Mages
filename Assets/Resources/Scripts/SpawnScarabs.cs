@@ -10,7 +10,7 @@ public class SpawnScarabs :  SpawnObjects
 	protected override GameObject Spawn ()
 	{
 		GameObject obj = base.Spawn ();
-		obj.GetComponent<FodderAI>().BeginMoving(moveSpeed, sinAmplitude, sinFrequency);
+		obj.GetComponent<EnemyScarab>().BeginMoving(moveSpeed, sinAmplitude, sinFrequency);
 
 		return obj;
 	}

@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 426774}
   - 114: {fileID: 11484922}
+  - 114: {fileID: 11407558}
   m_Layer: 0
   m_Name: BarrelBurst
   m_TagString: Untagged
@@ -28,6 +29,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11407558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 78
+    i1: 191
+    i2: 186
+    i3: 55
+    i4: 19
+    i5: 12
+    i6: 188
+    i7: 116
+    i8: 248
+    i9: 148
+    i10: 0
+    i11: 23
+    i12: 194
+    i13: 223
+    i14: 200
+    i15: 84
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &11484922
 MonoBehaviour:
   m_ObjectHideFlags: 1

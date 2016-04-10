@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 419274}
   - 114: {fileID: 11477302}
   - 50: {fileID: 5072942}
+  - 114: {fileID: 11488502}
   m_Layer: 0
   m_Name: BarrelWheel
   m_TagString: Untagged
@@ -63,6 +64,38 @@ MonoBehaviour:
   angularVelocity: 120
   type: 2
   isPassable: 0
+--- !u!114 &11488502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 154
+    i1: 166
+    i2: 30
+    i3: 101
+    i4: 64
+    i5: 253
+    i6: 215
+    i7: 164
+    i8: 40
+    i9: 136
+    i10: 220
+    i11: 253
+    i12: 129
+    i13: 49
+    i14: 212
+    i15: 204
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

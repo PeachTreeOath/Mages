@@ -37,7 +37,7 @@ public class BossGenie : MonoBehaviour {
         transform.position = Vector3.Lerp(markers[lastIndexReached].position, markers[nextIndex].position, fracJourney);
 
         float debugLength = Vector3.Distance(origPosition, transform.position);
-        Debug.Log("DebugLength = " + debugLength);
+        //Debug.Log("DebugLength = " + debugLength);
     }
 
 }

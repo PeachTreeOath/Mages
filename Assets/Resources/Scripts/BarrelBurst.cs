@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class BarrelBurst : MonoBehaviour {
+public class BarrelBurst : NetworkBehaviour {
 
     public GameObject bulletPrefab;
     public float radius = 1f;
@@ -24,8 +25,7 @@ public class BarrelBurst : MonoBehaviour {
     private float twoPi;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
 
         body = gameObject.GetComponentInParent<Rigidbody2D>();
 
@@ -36,37 +36,39 @@ public class BarrelBurst : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update()
-    {
-        if (!inBurst && Time.time > burstTimer + burstDelay)
-        {
-            inBurst = true;
-            burstTimer = Time.time;
+    void Update() {
+        if (isServer) {
+            if (!inBurst && Time.time > burstTimer + burstDelay) {
+                inBurst = true;
+                burstTimer = Time.time;
+            }
+            if (inBurst && Time.time > burstTimer + burstTime) {
+                inBurst = false;
+                burstTimer = Time.time;
+            }
+            if (inBurst && readyToShoot) {
+                CmdFire();
+                readyToShoot = false;
+                Invoke("ResetReadyToShoot", shotDelay);
+            }
+            transform.Rotate(0f, 0f, angularSpeed * Time.deltaTime, Space.World);
         }
-        if (inBurst && Time.time > burstTimer + burstTime)
-        {
-            inBurst = false;
-            burstTimer = Time.time;
-        }
-        if (inBurst && readyToShoot)
-        {
-            CmdFire();
-            readyToShoot = false;
-            Invoke("ResetReadyToShoot", shotDelay);
-        }
-        transform.Rotate(0f, 0f, angularSpeed * Time.deltaTime, Space.World);
 
     }
 
-    void ResetReadyToShoot()
-    {
+    void ResetReadyToShoot() {
         readyToShoot = true;
     }
 
-    private void CmdFire()
-    {
-        for (int i = 0; i < numberOfBullets; i++)
-        {
+    private void doFire() {
+        if (isLocalPlayer) {
+            CmdFire();
+        }
+    }
+
+    [Command] //this will run on the server only
+    private void CmdFire() {
+        for (int i = 0; i < numberOfBullets; i++) {
             float theta = i * preTheta;
             float thetaInDegs = (360 * theta) / twoPi;
 
@@ -77,7 +79,8 @@ public class BarrelBurst : MonoBehaviour {
 
             Quaternion bulletRotation = Quaternion.Euler(0f, 0f, thetaInDegs - 90f);
 
-            Bullet bullet = ((GameObject)Instantiate(bulletPrefab, bulletPosition, bulletRotation)).GetComponent<Bullet>();
+            GameObject bulletObj = ((GameObject)Instantiate(bulletPrefab, bulletPosition, bulletRotation));
+            Bullet bullet = bulletObj.GetComponent<Bullet>();
             bullet.SetType(type);
             bullet.owner = GetComponentInParent<Player>();
             bullet.isPassable = isPassable;
@@ -85,6 +88,8 @@ public class BarrelBurst : MonoBehaviour {
 
             //bullet.transform.parent = transform;
             bullet.Fire();
+
+            NetworkServer.Spawn(bulletObj); //spawn on all clients
         }
 
 

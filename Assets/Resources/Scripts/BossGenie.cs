@@ -27,8 +27,9 @@ public class BossGenie : MonoBehaviour {
             lastIndexReached = (lastIndexReached + 1) % markers.Length;
             nextIndex = (lastIndexReached + 1) % markers.Length;
             journeyLength = Vector3.Distance(markers[lastIndexReached].position, markers[nextIndex].position);
-            distCovered = (Time.time - startTime) * speed;
             startTime = Time.time;
+            distCovered = (Time.time - startTime) * speed;
+            
         }
 
         float fracJourney = distCovered / journeyLength;

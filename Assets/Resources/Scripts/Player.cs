@@ -13,7 +13,7 @@ public class Player : NetLifecycleObj {
 
     public bool initDone = false;
     public float speed = 0;
-    public float timeToDie;
+    public float timeToDie = 2.0f;
     private float deathStateTime;  //used for several timings
     private const float SPAWNING_TIME = 1.0f;
     private const float UNCONSCIOUS_TIME = 2.0f;
@@ -191,7 +191,7 @@ public class Player : NetLifecycleObj {
         //this needs work
         float timeElapsed = Time.time - deathStateTime;
         if (timeElapsed < timeToDie) {
-            //transform.localPosition = (Vector2)transform.position + (UnityEngine.Random.insideUnitCircle * timeElapsed * 0.02f);
+            transform.position = (Vector2)transform.position + (UnityEngine.Random.insideUnitCircle * timeElapsed * 0.02f);
         } else {
             GetComponent<GibManual>().Explode();
             deathState = DeathState.FINISHED;

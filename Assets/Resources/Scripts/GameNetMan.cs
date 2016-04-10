@@ -169,7 +169,7 @@ public class GameNetMan : NetworkManager {
             //matchMaker.CreateMatch(roomName, 2, true, "", createRoomCallback); //we want moar control
             CreateMatchRequest matchReq = new CreateMatchRequest();
             matchReq.name = roomName;
-            matchReq.size = 2;
+            matchReq.size = 3;
             matchReq.advertise = true;
             matchReq.password = "";
             matchMaker.CreateMatch(matchReq, createRoomCallback);

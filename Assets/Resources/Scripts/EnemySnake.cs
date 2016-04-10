@@ -40,7 +40,6 @@ public class EnemySnake : Enemy
 	private void ChooseNextLocation ()
 	{
 		Vector2 newLoc;
-		// yolo levels of risky
 		while (true) {
 			newLoc = (UnityEngine.Random.insideUnitCircle * moveDistance) + (Vector2)transform.position;
 			if (newLoc.x > topLeftBound.x && newLoc.x < bottomRightBound.x &&

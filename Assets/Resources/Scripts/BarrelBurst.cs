@@ -87,7 +87,5 @@ public class BarrelBurst : MonoBehaviour {
             bullet.Fire();
         }
 
-
-
     }
 }

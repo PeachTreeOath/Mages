@@ -12,6 +12,8 @@ public class Shoot : MonoBehaviour
 	public float angularDrag;
 	public float shotDelay;
 	public int type;
+	public int ammoCount = -1;
+	// -1 is infinite bullets
 	public bool isPassable;
 	public bool useParentVelocity;
 
@@ -29,7 +31,7 @@ public class Shoot : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (readyToShoot) {
+		if (ammoCount != 0 && readyToShoot) {
 			CmdFire ();
 			readyToShoot = false;
 			Invoke ("ResetReadyToShoot", shotDelay);
@@ -41,7 +43,7 @@ public class Shoot : MonoBehaviour
 		readyToShoot = true;
 	}
 
-	private void CmdFire ()
+	protected virtual void CmdFire ()
 	{
 		Bullet bullet = null;
 
@@ -74,5 +76,7 @@ public class Shoot : MonoBehaviour
 		if (useParentVelocity) {
 			bullet.GetComponent<Rigidbody2D> ().velocity += body.velocity;
 		}
+
+		ammoCount--;
 	}
 }

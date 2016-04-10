@@ -12,25 +12,24 @@ public class Bullet : MonoBehaviour
 	public int type;
 	public Player owner;
 
-	private Rigidbody2D body;
+	protected Rigidbody2D body;
 
 	// Use this for initialization
-	void Start ()
+	public virtual void Start ()
 	{
 		body = GetComponent<Rigidbody2D> ();
 	}
 
 	// Update is called once per frame
-	void Update ()
+	public virtual void Update ()
 	{
 		if (body.velocity.magnitude > 0.001f) { //accounting for floating point impression.
 			transform.up = body.velocity;
 		}
 		if (angularVelocity != 0) {
-			transform.Rotate(0f, 0f, Time.deltaTime * angularVelocity);
+			transform.Rotate (0f, 0f, Time.deltaTime * angularVelocity);
 			body.velocity = transform.up * speed;
-			angularVelocity -= Time.deltaTime * angularDrag;
-
+			angularVelocity = Mathf.Clamp (angularVelocity - (Time.deltaTime * angularDrag), 0, Mathf.Infinity);
 		}
 	}
 
@@ -95,6 +94,5 @@ public class Bullet : MonoBehaviour
 				Destroy (gameObject);
 			}
 		}
-
 	}
 }

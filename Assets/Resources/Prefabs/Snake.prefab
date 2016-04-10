@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470270}
-  - 114: {fileID: 11435422}
+  - 114: {fileID: 11468852}
   m_Layer: 9
   m_Name: Barrel
   m_TagString: Untagged
@@ -117,31 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4e40db3f6488244b2b5aef51f57971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   topLeftBound: {x: -9, y: 5}
   bottomRightBound: {x: 9, y: 0}
   moveSpeed: 1
   moveDistance: 2.5
   moveDelay: 0
---- !u!114 &11435422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
-  speed: 1.5
-  angularSpeed: 120
-  shotDelay: 1
-  type: 1
-  isPassable: 0
-  useParentVelocity: 1
 --- !u!114 &11468226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +143,30 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &11468852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 163762, guid: b1a1be128d4806d48a7c5eec43fd6d76, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 0
+  angularDrag: 0
+  shotDelay: 2
+  type: 1
+  ammoCount: -1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11487140
 MonoBehaviour:
   m_ObjectHideFlags: 1

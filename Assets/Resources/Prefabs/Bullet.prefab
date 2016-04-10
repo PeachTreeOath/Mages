@@ -149,10 +149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  angularVelocity: 0
+  angularDrag: 0
   isPassable: 0
   type: 0
   owner: {fileID: 0}
-  angularVelocity: 0
 --- !u!212 &21264156
 SpriteRenderer:
   m_ObjectHideFlags: 1

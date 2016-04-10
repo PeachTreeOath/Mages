@@ -30,6 +30,10 @@ public class Player : NetLifecycleObj {
         Debug.Log("Player Start called");
         spawnPlayer();
 
+        //initWeapon();
+    }
+
+    private void initWeapon() {
         Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
         currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
         currentWeapon.transform.parent = this.transform;
@@ -59,26 +63,8 @@ public class Player : NetLifecycleObj {
     }
 
     void Update() {
-        if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
-            //Remove existing weapon
-            Debug.Log("Removing existing weapon.");
-            //Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
+        //updateWeapon();
 
-            if (currentWeapon != null) {
-                GameObject go = currentWeapon.gameObject;
-                Destroy(go);
-            }
-            if (currentWeaponIndex == weaponLoadout.Count - 1) {
-                currentWeaponIndex = 0;
-            } else {
-                currentWeaponIndex++;
-            }
-            Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
-            currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
-            currentWeapon.transform.parent = this.transform;
-
-            timeOfLastWeaponSwitch = Time.time;
-        }
         if (!initDone) {
             return;
         }
@@ -107,6 +93,29 @@ public class Player : NetLifecycleObj {
             default:
                 Debug.Log("Unhandled playerState " + playerState);
                 break;
+        }
+    }
+
+    private void updateWeapon() {
+        if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
+            //Remove existing weapon
+            Debug.Log("Removing existing weapon.");
+            //Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
+
+            if (currentWeapon != null) {
+                GameObject go = currentWeapon.gameObject;
+                Destroy(go);
+            }
+            if (currentWeaponIndex == weaponLoadout.Count - 1) {
+                currentWeaponIndex = 0;
+            } else {
+                currentWeaponIndex++;
+            }
+            Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
+            currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+            currentWeapon.transform.parent = this.transform;
+
+            timeOfLastWeaponSwitch = Time.time;
         }
     }
 

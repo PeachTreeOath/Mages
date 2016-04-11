@@ -29,6 +29,7 @@ public class WeaponProps : MonoBehaviour {
 
     protected Rigidbody2D body;
     protected bool readyToShoot;
+    private float burstStartTime;
 
     protected Weapon weaponInst;
 
@@ -60,7 +61,7 @@ public class WeaponProps : MonoBehaviour {
         if (readyToShoot) {
             readyToShoot = false;
             sendFireCommand();
-            Invoke("ResetReadyToShoot", shotDelay);
+            Invoke("ResetReadyToShoot", burstDelay);
         }
     }
 

@@ -29,7 +29,8 @@ public class WeaponProps : MonoBehaviour {
 
     protected Rigidbody2D body;
     protected bool readyToShoot;
-    private float burstStartTime;
+    private bool inBurst = false;
+    private float burstTimer;
 
     protected Weapon weaponInst;
 
@@ -58,10 +59,18 @@ public class WeaponProps : MonoBehaviour {
 
     //Called on update from parent object
     public virtual void doUpdate() {
-        if (readyToShoot) {
+        if (!inBurst && Time.time > burstTimer + burstDelay) {
+            inBurst = true;
+            burstTimer = Time.time;
+        }
+        if (inBurst && Time.time > burstTimer + burstTime) {
+            inBurst = false;
+            burstTimer = Time.time;
+        }
+        if (inBurst && readyToShoot) {
             readyToShoot = false;
             sendFireCommand();
-            Invoke("ResetReadyToShoot", burstDelay);
+            Invoke("ResetReadyToShoot", shotDelay);
         }
     }
 

@@ -60,7 +60,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -149,10 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  angularVelocity: 0
+  angularDrag: 0
   isPassable: 0
   type: 0
+  damage: 1
   owner: {fileID: 0}
-  angularVelocity: 0
 --- !u!212 &21264156
 SpriteRenderer:
   m_ObjectHideFlags: 1

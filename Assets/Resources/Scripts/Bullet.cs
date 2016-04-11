@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
 	//Whether the bullet keeps going after it collides or not.
 	public bool isPassable;
 	public int type;
+	public int damage = 1;
 	public Player owner;
 
 	protected Rigidbody2D body;

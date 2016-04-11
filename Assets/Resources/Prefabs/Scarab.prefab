@@ -11,14 +11,13 @@ GameObject:
   - 212: {fileID: 21200782}
   - 114: {fileID: 11416562}
   - 61: {fileID: 6130024}
-  - 114: {fileID: 11446284}
   - 50: {fileID: 5082084}
   - 114: {fileID: 11465926}
   - 114: {fileID: 11429014}
   - 114: {fileID: 11461364}
   m_Layer: 9
   m_Name: Scarab
-  m_TagString: Untagged
+  m_TagString: DeletePastBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,18 +152,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11446284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8a3c103efcbe04b94bfa608e8273e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 0}
 --- !u!114 &11461364
 MonoBehaviour:
   m_ObjectHideFlags: 1

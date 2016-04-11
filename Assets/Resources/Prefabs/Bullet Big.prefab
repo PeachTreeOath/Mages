@@ -11,13 +11,12 @@ GameObject:
   - 212: {fileID: 21218656}
   - 50: {fileID: 5008890}
   - 114: {fileID: 11459158}
-  - 114: {fileID: 11432984}
   - 60: {fileID: 6082020}
   - 114: {fileID: 11403858}
   - 114: {fileID: 11482560}
   m_Layer: 10
   m_Name: Bullet Big
-  m_TagString: Untagged
+  m_TagString: DeletePastBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,18 +104,6 @@ MonoBehaviour:
     i15: 252
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &11432984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8a3c103efcbe04b94bfa608e8273e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 0}
 --- !u!114 &11459158
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -60,6 +60,10 @@ public class Bullet : MonoBehaviour
 			gameObject.layer = LayerMask.NameToLayer ("EnemyBullets");
 			type = 2;
 			break;
+		case 3:
+			gameObject.layer = LayerMask.NameToLayer ("EnemyBullets");
+			type = 3;
+			break;
 		}
 	}
 

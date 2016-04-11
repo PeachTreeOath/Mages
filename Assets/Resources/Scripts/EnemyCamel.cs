@@ -8,7 +8,6 @@ public class EnemyCamel : Enemy {
 
 	// Use this for initialization
 	public void Start () {
-		hp = 1;
 		barrels = GetComponentsInChildren<Shoot> ();
 	}
 	

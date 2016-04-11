@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11468226}
   - 61: {fileID: 6112670}
   - 50: {fileID: 5080328}
-  - 114: {fileID: 11431684}
+  - 114: {fileID: 11480236}
   m_Layer: 9
   m_Name: Snake
   m_TagString: Untagged
@@ -94,18 +94,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1}
---- !u!114 &11431684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7275a5db5626548966072a96a56f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gib: {fileID: 0}
 --- !u!114 &11432642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4e40db3f6488244b2b5aef51f57971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 10
   topLeftBound: {x: -9, y: 5}
   bottomRightBound: {x: 9, y: 0}
   moveSpeed: 1
@@ -167,6 +155,18 @@ MonoBehaviour:
   useParentVelocity: 0
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11480236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5df99fba141654c9ac99d50c6fc5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gib: {fileID: 115988, guid: 82c9ad30bf821ac488bda8eb67b730f8, type: 2}
 --- !u!114 &11487140
 MonoBehaviour:
   m_ObjectHideFlags: 1

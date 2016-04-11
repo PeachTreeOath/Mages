@@ -12,9 +12,9 @@ GameObject:
   - 114: {fileID: 11403958}
   - 114: {fileID: 11461508}
   - 50: {fileID: 5029790}
-  - 114: {fileID: 11490096}
   - 61: {fileID: 6118344}
   - 114: {fileID: 11478396}
+  - 114: {fileID: 11447302}
   m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122600}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -174,6 +174,7 @@ MonoBehaviour:
   angularDrag: 0
   shotDelay: 0.15
   type: 1
+  ammoCount: -1
   isPassable: 0
   useParentVelocity: 0
 --- !u!114 &11444364
@@ -195,8 +196,21 @@ MonoBehaviour:
   angularDrag: 0
   shotDelay: 0.15
   type: 1
+  ammoCount: -1
   isPassable: 0
   useParentVelocity: 0
+--- !u!114 &11447302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5df99fba141654c9ac99d50c6fc5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gib: {fileID: 115988, guid: 82c9ad30bf821ac488bda8eb67b730f8, type: 2}
 --- !u!114 &11461508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,22 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e69bdc1d317424f92dff2c8abe0d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 20
   moveSpeed: 70
   minimumSpeed: 1.5
   rotateSpeed: 100
---- !u!114 &11490096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 122600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7275a5db5626548966072a96a56f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gib: {fileID: 0}
 --- !u!212 &21289412
 SpriteRenderer:
   m_ObjectHideFlags: 1

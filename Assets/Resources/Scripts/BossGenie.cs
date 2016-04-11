@@ -45,18 +45,13 @@ public class BossGenie : MonoBehaviour
 		float fracJourney = distCovered / journeyLength;
 		Vector3 origPosition = transform.position;
 		transform.position = Vector3.Lerp (markers [lastIndexReached].position, markers [nextIndex].position, fracJourney);
-
-		float debugLength = Vector3.Distance (origPosition, transform.position);
-		Debug.Log ("DebugLength = " + debugLength);
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		Debug.Log ("HIT");
 		Bullet bullet = col.GetComponent<Bullet> ();
 
 		if (bullet != null) {
-			Debug.Log ("BULLET");
 			hp -= bullet.damage;
 			if (hp <= 0) {
 				hpCanvas.SetActive (false);

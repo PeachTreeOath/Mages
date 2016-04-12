@@ -94,10 +94,10 @@ public class Player : NetLifecycleObj {
             case PlayerState.NETURAL:
             case PlayerState.INVINCIBLE:
                 float currSpeed = speed;
-                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
-                    currSpeed = 1;
+			if (Input.GetButton("Action_p1_solo")) {
+				currSpeed = speed * 0.33f;
                 }
-                transform.position = (Vector2)(transform.position) + new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * currSpeed, Input.GetAxis("Vertical") * Time.deltaTime * currSpeed);
+			transform.position = (Vector2)(transform.position) + new Vector2(Input.GetAxis("Horizontal_p1_solo") * Time.deltaTime * currSpeed, Input.GetAxis("Vertical_p1_solo") * Time.deltaTime * currSpeed);
                 break;
 
             case PlayerState.DYING:

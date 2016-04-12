@@ -4,6 +4,7 @@ using System.Collections;
 public class GlobalObject : MonoBehaviour {
 
 	public static GlobalObject instance;
+	public bool[] playerList;
 
 	void Awake () {
 		if (instance != null && instance != this) {

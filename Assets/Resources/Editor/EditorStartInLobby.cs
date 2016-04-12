@@ -26,7 +26,7 @@ public static class EditorStartInLobby {
                     //We're in playmode, right after having pressed Play
                     if(!SceneManager.GetActiveScene().name.Equals(startScene)){
                         Debug.Log("***EDITOR*** Switching to start scene");
-                        //SceneManager.LoadScene(startScene);
+                        SceneManager.LoadScene(startScene);
                     }
                     off = false;
                 } else {

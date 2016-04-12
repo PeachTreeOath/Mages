@@ -104,7 +104,9 @@ public class GameNetMan : NetworkManager {
 
     void OnApplicationQuit() {
         Debug.Log("Quit called, attempting to stop game");
-        exitGame();
+        //TODO, re-add once networking works.  This creates a dud scene in the player
+        //because of some unity bug
+        //exitGame();
     }
 
     //onclick handler

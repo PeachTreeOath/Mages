@@ -26,6 +26,8 @@ public class WeaponProps : MonoBehaviour {
     public float burstDelay;
     [SerializeField]
     public float perturbation;
+    [SerializeField]
+    public int ammoCount = -1; //-1 is infinite ammo
 
     protected Rigidbody2D body;
     protected bool readyToShoot;
@@ -59,6 +61,12 @@ public class WeaponProps : MonoBehaviour {
 
     //Called on update from parent object
     public virtual void doUpdate() {
+        if(ammoCount <= 0 && ammoCount != -1) {
+            //no ammo
+            inBurst = false;
+            readyToShoot = false;
+            return;
+        }
         if (!inBurst && Time.time > burstTimer + burstDelay) {
             inBurst = true;
             burstTimer = Time.time;
@@ -83,23 +91,25 @@ public class WeaponProps : MonoBehaviour {
         weaponInst.CmdFire();
     }
 
-    //called in server context, returns objects the server should spawn
-    public virtual List<GameObject> doFireCallback() {
-        List<GameObject> objs = new List<GameObject>();
-        for (int i = 0; i < numberOfBullets; i++) {
-
-            Vector3 bulletPosition = transform.position;
-
-            Quaternion bulletRotation = Quaternion.identity;
-
-            GameObject bulletgo = ((GameObject)Instantiate(bulletObj, bulletPosition, bulletRotation));
+    //creates a generic bullet assigned to this player
+    protected virtual GameObject createBullet(Vector3 pos, Quaternion rot) {
+            GameObject bulletgo = ((GameObject)Instantiate(bulletObj, pos, rot));
             Bullet bullet = bulletgo.GetComponent<Bullet>();
             bullet.SetType(type);
             bullet.owner = GetComponentInParent<Player>();
             bullet.isPassable = isPassable;
             bullet.SetSpeed(speed, 0, 0);
+        return bulletgo;
+    }
 
-            //bullet.transform.parent = transform;
+    //called in server context, returns objects the server should spawn
+    public virtual List<GameObject> doFireCallback() {
+        List<GameObject> objs = new List<GameObject>();
+        for (int i = 0; i < numberOfBullets; i++) {
+
+            GameObject bulletgo = createBullet(transform.position, Quaternion.identity);
+            Bullet bullet = bulletgo.GetComponent<Bullet>();
+
             bullet.Fire();
 
             if (useParentVelocity) {
@@ -109,8 +119,15 @@ public class WeaponProps : MonoBehaviour {
             objs.Add(bulletgo);
 
         }
+
+        decrementAmmo(); //-1 for each bullet or for each burst?
         return objs;
 
     }
 
+    protected virtual void decrementAmmo() {
+        if(ammoCount > 0) {
+            ammoCount -= 1;
+        }
+    }
 }

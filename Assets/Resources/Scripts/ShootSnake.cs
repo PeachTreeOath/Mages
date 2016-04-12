@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class ShootSnake : Shoot
+//TODO rename this something like "aimed shot"
+public class ShootSnake : WeaponProps
 {
 	public Vector2 topLeftShotBound;
 	public Vector2 bottomRightShotBound;
 
-	protected override void CmdFire ()
+	public override List<GameObject> doFireCallback()
 	{
-		BulletSnake bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<BulletSnake> ();
-		bullet.SetSpeed (speed, angularSpeed, angularDrag);
-		bullet.SetType (type);
-		bullet.owner = GetComponentInParent<Player> ();
-		bullet.isPassable = isPassable;
+        List<GameObject> objs = new List<GameObject>();
+        GameObject bulletgo = createBullet(transform.position, transform.rotation);
+        ExplodingBullet bullet = bulletgo.GetComponent<ExplodingBullet>();
 
 		// Determine distance to fire
 		Vector2 targetLoc = ChooseNextShotLocation ();
@@ -21,15 +21,13 @@ public class ShootSnake : Shoot
 		Vector3 vectorToTarget = targetLoc - (Vector2)transform.position;
 		float angle = (Mathf.Atan2 (vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg) - 90;
 		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
-		bullet.Fire ();
 
-		ammoCount--;
+        objs.Add(bulletgo);
+        decrementAmmo();
+
+        return objs;
 	}
 
-	public void RegularFire()
-	{
-		base.CmdFire ();
-	}
 
 	private Vector2 ChooseNextShotLocation ()
 	{	

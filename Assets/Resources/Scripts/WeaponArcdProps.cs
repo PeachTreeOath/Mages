@@ -41,6 +41,12 @@ public class WeaponArcdProps : WeaponProps {
         base.doUpdate();
     }
 
+    protected override GameObject createBullet(Vector3 pos, Quaternion rot) {
+        GameObject go = base.createBullet(pos, rot);
+        Bullet b = go.GetComponent<Bullet>();
+        b.SetSpeed(speed, angularVelocity, angularDrag);
+        return go;
+    }
     public override List<GameObject> doFireCallback() {
         List<GameObject> objs = new List<GameObject>();
         for (int i = 0; i < numberOfBullets; i++) {
@@ -51,21 +57,17 @@ public class WeaponArcdProps : WeaponProps {
             bulletPosition.x = transform.position.x + radius * Mathf.Cos(theta);
             bulletPosition.y = transform.position.y + radius * Mathf.Sin(theta);
 
-
             Quaternion bulletRotation = Quaternion.Euler(0f, 0f, thetaInDegs + 180f);
 
-            GameObject bulletgo = (GameObject)Instantiate(bulletObj, bulletPosition, bulletRotation);
+            GameObject bulletgo = createBullet(bulletPosition, bulletRotation);
             Bullet bullet = bulletgo.GetComponent<Bullet>();
-            bullet.SetType(type);
-            bullet.owner = GetComponentInParent<Player>();
-            bullet.isPassable = isPassable;
-            bullet.SetSpeed(speed, angularVelocity, angularDrag);
-
-            //bullet.transform.parent = transform;
 
             objs.Add(bulletgo);
 
         }
+
+        decrementAmmo();
+
         return objs;
 
     }

@@ -48,7 +48,6 @@ public class BossGenie : MonoBehaviour
 	}
 
 
-    }
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		Bullet bullet = col.GetComponent<Bullet> ();

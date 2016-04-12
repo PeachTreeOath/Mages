@@ -11,6 +11,7 @@ public class Bullet : NetworkBehaviour {
     public float angularVelocity;
     [SyncVar]
     public float angularDrag;
+    public float damage;
     //Whether the bullet keeps going after it collides or not.
     public bool isPassable;
     public int type;

@@ -31,6 +31,7 @@ GameObject:
   - 61: {fileID: 6112670}
   - 50: {fileID: 5080328}
   - 114: {fileID: 11480236}
+  - 114: {fileID: 11428930}
   m_Layer: 9
   m_Name: Snake
   m_TagString: Untagged
@@ -94,6 +95,30 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.75, y: 1}
+--- !u!114 &11428930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObj: {fileID: 0}
+  speed: 5
+  shotDelay: 2
+  numberOfBullets: 0
+  type: 1
+  isPassable: 0
+  useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: -1
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11432642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4e40db3f6488244b2b5aef51f57971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 0
   topLeftBound: {x: -9, y: 5}
   bottomRightBound: {x: 9, y: 0}
   moveSpeed: 1
@@ -142,17 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 163762, guid: b1a1be128d4806d48a7c5eec43fd6d76, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 0
-  angularDrag: 0
   shotDelay: 2
+  numberOfBullets: 0
   type: 1
-  ammoCount: -1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: -1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11480236

@@ -87,7 +87,8 @@ public class WeaponProps : MonoBehaviour {
     }
 
     //Fire commands need to execute in a server context.  This means a NetworkBehaviour object must do the calling.
-    protected void sendFireCommand() {
+    //This should probably not be invoked directly?
+    public void sendFireCommand() {
         weaponInst.CmdFire();
     }
 

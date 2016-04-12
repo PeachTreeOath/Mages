@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417312}
-  - 114: {fileID: 11452904}
+  - 114: {fileID: 11486004}
   m_Layer: 12
   m_Name: WeaponNegCircle2
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MonoBehaviour:
   angularVelocity: 60
   type: 2
   isPassable: 0
---- !u!114 &11452904
+--- !u!114 &11486004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -147,9 +147,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 103274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b0854f32fde5f40bf43dd094e0cc68, type: 3}
+  m_Script: {fileID: 11500000, guid: c6fdf0cc5a6ef9443a9e9334ff30c306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletObj: {fileID: 0}
+  speed: 0
+  shotDelay: 0
+  numberOfBullets: 0
+  type: 0
+  isPassable: 0
+  useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: -1
+  tether: {fileID: 0}
+  radiusFromTether: 0
+  radius: 0
+  angularSpeed: 0
+  angularDrag: 0
+  angularVelocity: 0
 --- !u!114 &11490452
 MonoBehaviour:
   m_ObjectHideFlags: 1

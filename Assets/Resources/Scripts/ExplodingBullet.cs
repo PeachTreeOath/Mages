@@ -1,41 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ExplodingBullet : Bullet {
 
 	private float distanceNeeded;
 	private Vector2 origPos;
-	private ShootSnake[] barrels;
+    //private ShootSnake[] barrels;
+    [SerializeField]
+    private List<WeaponProps> barrels; //all fire on explosion
 
     //ALL TODO
-	//public override void Start () {
-	//	base.Start ();
-	//	origPos = transform.position;
-	//	barrels = GetComponentsInChildren<ShootSnake> ();
-	//}
+	void Start () {
+		origPos = transform.position;
+		//barrels = GetComponentsInChildren<ShootSnake> (); //not sure of the best approach here
+	}
 
-	//// Update is called once per frame
-	//public override void Update () {
-	//	base.Update ();
-
-	//	if (Vector2.Distance (origPos, transform.position) > distanceNeeded) {
-	//		Detonate ();
-	//	}
-	//}
+	// Update is called once per frame
+	void Update () {
+		if (Vector2.Distance (origPos, transform.position) > distanceNeeded) {
+			Detonate ();
+		}
+	}
 
 	public void SetDistance(float setDistance)
 	{
-		//distanceNeeded = setDistance;
+		distanceNeeded = setDistance;
 	}
 
 	private void Detonate()
 	{
-	//	foreach (ShootSnake barrel in barrels) {
-	//		if (barrel.gameObject.GetInstanceID() != GetInstanceID()) {
-	//			barrel.enabled = true;
-	//			barrel.RegularFire ();
-	//		}
-	//	}
-	//	Destroy (gameObject);
+		foreach (WeaponProps barrel in barrels) {
+			if (barrel.gameObject.GetInstanceID() != GetInstanceID()) {
+				barrel.enabled = true;
+                //barrel.RegularFire ();
+                barrel.sendFireCommand();
+			}
+		}
+
+		CmdDestroy();
 	}
 }

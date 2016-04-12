@@ -12,7 +12,7 @@ public class BossGenie : MonoBehaviour
 	private int lastIndexReached = 0;
 	private float startTime;
 	public float pauseTime = 1;
-	public GameObject hpCanvas;
+	//public GameObject hpCanvas; //TODO
 	private Image hpMeterImage;
 	private bool pauseStarted = false;
 	private float totalHp;
@@ -22,8 +22,8 @@ public class BossGenie : MonoBehaviour
 	{
 		startTime = Time.time;
 		totalHp = hp;
-		hpCanvas.SetActive (true);
-		hpMeterImage = hpCanvas.GetComponentInChildren<GameObjectFinder> ().GetComponent<Image> ();
+		//hpCanvas.SetActive (true);
+		//hpMeterImage = hpCanvas.GetComponentInChildren<GameObjectFinder> ().GetComponent<Image> ();
 	}
 	
 	// Update is called once per frame
@@ -55,7 +55,7 @@ public class BossGenie : MonoBehaviour
 		if (bullet != null) {
 			hp -= bullet.damage;
 			if (hp <= 0) {
-				hpCanvas.SetActive (false);
+				//hpCanvas.SetActive (false);
 			} else {
 				hpMeterImage.fillAmount = hp / totalHp;
 			}

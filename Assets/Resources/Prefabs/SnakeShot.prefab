@@ -190,6 +190,7 @@ GameObject:
   - 58: {fileID: 5857158}
   - 50: {fileID: 5033714}
   - 114: {fileID: 11476858}
+  - 114: {fileID: 11406742}
   m_Layer: 11
   m_Name: SnakeShot
   m_TagString: DeletePastBoundary
@@ -528,6 +529,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.06834154
+--- !u!114 &11406742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163762}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObj: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 5
+  shotDelay: 1
+  numberOfBullets: 0
+  type: 1
+  isPassable: 0
+  useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
+  topLeftShotBound: {x: -8.5, y: 0}
+  bottomRightShotBound: {x: 8.5, y: -4.5}
 --- !u!114 &11410278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,17 +564,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11413834
@@ -563,17 +588,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11421508
@@ -587,17 +612,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11421960
@@ -611,17 +636,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11425124
@@ -635,17 +660,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11431744
@@ -679,17 +704,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11453674
@@ -703,17 +728,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11453750
@@ -727,17 +752,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11465512
@@ -783,17 +808,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11472988
@@ -807,17 +832,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -8.5, y: 0}
   bottomRightShotBound: {x: 8.5, y: -4.5}
 --- !u!114 &11475352
@@ -831,17 +856,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11475822
@@ -855,17 +880,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11476858
@@ -882,10 +907,12 @@ MonoBehaviour:
   speed: 10
   angularVelocity: 0
   angularDrag: 0
+  damage: 1
   isPassable: 0
   type: 1
-  damage: 1
   owner: {fileID: 0}
+  barrels:
+  - {fileID: 11406742}
 --- !u!114 &11477364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,17 +924,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11477906
@@ -921,17 +948,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11483884
@@ -945,17 +972,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11493900
@@ -969,17 +996,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
+  bulletObj: {fileID: 0}
   speed: 5
-  angularSpeed: 200
-  angularDrag: 100
   shotDelay: 1
+  numberOfBullets: 0
   type: 1
-  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  burstTime: 0
+  burstDelay: 0
+  perturbation: 0
+  ammoCount: 1
   topLeftShotBound: {x: -9, y: 0}
   bottomRightShotBound: {x: 9, y: -5}
 --- !u!212 &21202168

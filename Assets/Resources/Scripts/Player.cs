@@ -21,21 +21,22 @@ public class Player : NetLifecycleObj {
     private Renderer rend;
     public float timeForWeaponSwitches = 10f;
     private float timeOfLastWeaponSwitch;
-    public List<Weapon> weaponLoadout = new List<Weapon>();
+    public List<LoadoutWeapon> weaponLoadout = new List<LoadoutWeapon>();
     private int currentWeaponIndex = 0;
-    private Weapon currentWeapon;
+    private WeaponProps currentWeapon;
 
     void Start() {
         //generally this is called when the scene is first loaded
         Debug.Log("Player Start called");
         spawnPlayer();
 
-        //initWeapon();
+        initWeapon();
     }
 
     private void initWeapon() {
-        Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
-        currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+        LoadoutWeapon nextWeapon = weaponLoadout[currentWeaponIndex];
+        WeaponProps nextWeaponProps = nextWeapon.GetComponent<WeaponProps>();
+        currentWeapon = (WeaponProps)Instantiate(nextWeaponProps, transform.position, transform.rotation);
         currentWeapon.transform.parent = this.transform;
         timeOfLastWeaponSwitch = Time.time;
     }
@@ -63,7 +64,7 @@ public class Player : NetLifecycleObj {
     }
 
     void Update() {
-        //updateWeapon();
+        updateWeapon();
 
         if (!initDone) {
             return;
@@ -99,9 +100,7 @@ public class Player : NetLifecycleObj {
     private void updateWeapon() {
         if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
             //Remove existing weapon
-            Debug.Log("Removing existing weapon.");
-            //Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
-
+            
             if (currentWeapon != null) {
                 GameObject go = currentWeapon.gameObject;
                 Destroy(go);
@@ -111,8 +110,10 @@ public class Player : NetLifecycleObj {
             } else {
                 currentWeaponIndex++;
             }
-            Weapon nextWeapon = weaponLoadout[currentWeaponIndex];
-            currentWeapon = (Weapon)Instantiate(nextWeapon, transform.position, transform.rotation);
+            LoadoutWeapon nextWeapon = weaponLoadout[currentWeaponIndex];
+            WeaponProps nextWeaponProps = nextWeapon.GetComponent<WeaponProps>();
+            Debug.Log("nextWeaponProps: " + nextWeaponProps);
+            currentWeapon = (WeaponProps)Instantiate(nextWeaponProps, transform.position, transform.rotation);
             currentWeapon.transform.parent = this.transform;
 
             timeOfLastWeaponSwitch = Time.time;

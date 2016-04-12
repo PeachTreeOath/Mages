@@ -13,11 +13,11 @@ EditorBuildSettings:
     path: Assets/SampleScenes/Scenes/NetworkLobby.unity
   - enabled: 0
     path: Assets/SampleScenes/Scenes/NetworkSpaceship.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Resources/Scenes/Offline.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Resources/Scenes/Loadout.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/Resources/Scenes/Game.unity
   - enabled: 0
     path: Assets/Resources/Scenes/MatchMaking.unity

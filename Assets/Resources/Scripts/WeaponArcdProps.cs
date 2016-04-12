@@ -44,7 +44,7 @@ public class WeaponArcdProps : WeaponProps {
     protected override GameObject createBullet(Vector3 pos, Quaternion rot) {
         GameObject go = base.createBullet(pos, rot);
         Bullet b = go.GetComponent<Bullet>();
-        b.SetSpeed(speed, angularVelocity, angularDrag);
+        b.SetSpeed(speed, angularVelocity, angularDrag, clockAngle);
         return go;
     }
     public override List<GameObject> doFireCallback() {

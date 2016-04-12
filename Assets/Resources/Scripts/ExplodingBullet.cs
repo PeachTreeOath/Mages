@@ -8,7 +8,7 @@ public class ExplodingBullet : Bullet {
 	private Vector2 origPos;
     //private ShootSnake[] barrels;
     [SerializeField]
-    private List<WeaponProps> barrels; //all fire on explosion
+    private List<WeaponProps> shrapnelBarrels; //all fire on explosion
 
     //ALL TODO
 	void Start () {
@@ -30,12 +30,12 @@ public class ExplodingBullet : Bullet {
 
 	private void Detonate()
 	{
-		foreach (WeaponProps barrel in barrels) {
-			if (barrel.gameObject.GetInstanceID() != GetInstanceID()) {
+		foreach (WeaponProps barrel in shrapnelBarrels) {
+			//if (barrel.gameObject.GetInstanceID() != GetInstanceID()) {
 				barrel.enabled = true;
                 //barrel.RegularFire ();
                 barrel.sendFireCommand();
-			}
+			//}
 		}
 
 		CmdDestroy();

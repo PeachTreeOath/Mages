@@ -27,6 +27,8 @@ public class WeaponProps : MonoBehaviour {
     [SerializeField]
     public float perturbation;
     [SerializeField]
+    public float clockAngle; //0 is tranform.up, values go clockwise to 360 probably
+    [SerializeField]
     public int ammoCount = -1; //-1 is infinite ammo
 
     protected Rigidbody2D body;
@@ -99,7 +101,7 @@ public class WeaponProps : MonoBehaviour {
             bullet.SetType(type);
             bullet.owner = GetComponentInParent<Player>();
             bullet.isPassable = isPassable;
-            bullet.SetSpeed(speed, 0, 0);
+            bullet.SetSpeed(speed, 0, 0, clockAngle);
         return bulletgo;
     }
 
@@ -108,7 +110,7 @@ public class WeaponProps : MonoBehaviour {
         List<GameObject> objs = new List<GameObject>();
         for (int i = 0; i < numberOfBullets; i++) {
 
-            GameObject bulletgo = createBullet(transform.position, Quaternion.identity);
+            GameObject bulletgo = createBullet(transform.position, Quaternion.AngleAxis(clockAngle, transform.up));
             Bullet bullet = bulletgo.GetComponent<Bullet>();
 
             bullet.Fire();

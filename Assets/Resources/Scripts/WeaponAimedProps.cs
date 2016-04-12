@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 //TODO rename this something like "aimed shot"
-public class ShootSnake : WeaponProps
+public class WeaponAimedProps : WeaponProps
 {
 	public Vector2 topLeftShotBound;
 	public Vector2 bottomRightShotBound;
@@ -11,6 +11,7 @@ public class ShootSnake : WeaponProps
 	public override List<GameObject> doFireCallback()
 	{
         List<GameObject> objs = new List<GameObject>();
+        //GameObject bulletgo = createBullet(transform.position, Quaternion.AngleAxis(clockAngle, transform.up));
         GameObject bulletgo = createBullet(transform.position, transform.rotation);
         ExplodingBullet bullet = bulletgo.GetComponent<ExplodingBullet>();
 

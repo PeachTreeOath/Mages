@@ -2,6 +2,7 @@
 using UnityEngine.Networking;
 using System.Collections;
 
+
 public class Bullet : NetworkBehaviour {
 
     [SyncVar]
@@ -30,7 +31,8 @@ public class Bullet : NetworkBehaviour {
             //if (angularVelocity != 0) {
                 transform.Rotate(0f, 0f, Time.deltaTime * angularVelocity);
                 body.velocity = transform.up * speed;
-                angularVelocity -= Time.deltaTime * angularDrag;
+                //angularVelocity -= Time.deltaTime * angularDrag;
+		angularVelocity = Mathf.Clamp (angularVelocity - (Time.deltaTime * angularDrag), 0, Mathf.Infinity);
 
             //}
     }
@@ -98,7 +100,5 @@ public class Bullet : NetworkBehaviour {
     public void CmdDestroy() {
         NetworkServer.Destroy(gameObject);
     }
-
-
 
 }

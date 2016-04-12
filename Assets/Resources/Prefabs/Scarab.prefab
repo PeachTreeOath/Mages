@@ -11,15 +11,13 @@ GameObject:
   - 212: {fileID: 21200782}
   - 114: {fileID: 11416562}
   - 61: {fileID: 6130024}
-  - 114: {fileID: 11402438}
-  - 114: {fileID: 11458804}
-  - 114: {fileID: 11446284}
   - 50: {fileID: 5082084}
   - 114: {fileID: 11465926}
   - 114: {fileID: 11429014}
+  - 114: {fileID: 11461364}
   m_Layer: 9
   m_Name: Scarab
-  m_TagString: Untagged
+  m_TagString: DeletePastBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,18 +95,6 @@ BoxCollider2D:
   m_Offset: {x: 0.00087320805, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.37425047, y: 0.6}
---- !u!114 &11402438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7275a5db5626548966072a96a56f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gib: {fileID: 115988, guid: 82c9ad30bf821ac488bda8eb67b730f8, type: 2}
 --- !u!114 &11408284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,8 +110,11 @@ MonoBehaviour:
   tetherPrefab: {fileID: 0}
   radiusFromTether: 0
   speed: 1.5
+  angularSpeed: 0
+  angularDrag: 0
   shotDelay: 0.5
   type: 1
+  ammoCount: -1
   isPassable: 0
   useParentVelocity: 0
 --- !u!114 &11416562
@@ -139,7 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2ac7a8053938f45ab8c8cb5bf654de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 2
+  speed: 1
+  sinAmplitude: 1
+  sinFrequency: 0.2
 --- !u!114 &11429014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +152,7 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11446284
+--- !u!114 &11461364
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -168,24 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 102556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8a3c103efcbe04b94bfa608e8273e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b5df99fba141654c9ac99d50c6fc5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 0}
---- !u!114 &11458804
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d66a3ac04fbf348967277ff1bc4a05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  sinAmplitude: 1
-  sinFrequency: 0.2
+  gib: {fileID: 115988, guid: 82c9ad30bf821ac488bda8eb67b730f8, type: 2}
 --- !u!114 &11465926
 MonoBehaviour:
   m_ObjectHideFlags: 1

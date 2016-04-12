@@ -92,7 +92,5 @@ public class BarrelBurst : NetworkBehaviour {
             NetworkServer.Spawn(bulletObj); //spawn on all clients
         }
 
-
-
     }
 }

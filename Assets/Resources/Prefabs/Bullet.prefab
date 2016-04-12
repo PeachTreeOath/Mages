@@ -11,13 +11,12 @@ GameObject:
   - 212: {fileID: 21264156}
   - 50: {fileID: 5098198}
   - 114: {fileID: 11490820}
-  - 114: {fileID: 11423044}
   - 60: {fileID: 6005532}
   - 114: {fileID: 11466766}
   - 114: {fileID: 11480554}
   m_Layer: 10
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: DeletePastBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +59,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -73,18 +72,6 @@ PolygonCollider2D:
       - {x: 0.009701476, y: -0.08638356}
       - {x: 0.06400885, y: -0.019737499}
       - {x: 0.062320776, y: 0.032011103}
---- !u!114 &11423044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8a3c103efcbe04b94bfa608e8273e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTarget: {fileID: 0}
 --- !u!114 &11466766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +140,7 @@ MonoBehaviour:
   angularDrag: 0
   isPassable: 0
   type: 0
+  damage: 1
   owner: {fileID: 0}
 --- !u!212 &21264156
 SpriteRenderer:

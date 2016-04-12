@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &114236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 420030}
+  - 114: {fileID: 11425124}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &117196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450676}
+  - 114: {fileID: 11475822}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &122344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 484688}
+  - 114: {fileID: 11472988}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &125036
 GameObject:
   m_ObjectHideFlags: 0
@@ -8,7 +56,39 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487090}
-  - 114: {fileID: 11419598}
+  - 114: {fileID: 11493900}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &142264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 426182}
+  - 114: {fileID: 11477364}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &146952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 480314}
+  - 114: {fileID: 11413834}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -24,7 +104,23 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442774}
-  - 114: {fileID: 11420544}
+  - 114: {fileID: 11441288}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &152410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 485564}
+  - 114: {fileID: 11453750}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -40,7 +136,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428522}
-  - 114: {fileID: 11438072}
+  - 114: {fileID: 11410278}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -56,7 +152,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 425458}
-  - 114: {fileID: 11403082}
+  - 114: {fileID: 11483884}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -72,7 +168,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406616}
-  - 114: {fileID: 11416716}
+  - 114: {fileID: 11421960}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -91,8 +187,27 @@ GameObject:
   - 212: {fileID: 21202168}
   - 114: {fileID: 11465512}
   - 114: {fileID: 11431744}
+  - 58: {fileID: 5857158}
+  - 50: {fileID: 5033714}
+  - 114: {fileID: 11476858}
   m_Layer: 11
   m_Name: SnakeShot
+  m_TagString: DeletePastBoundary
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &164940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 490336}
+  - 114: {fileID: 11421508}
+  m_Layer: 11
+  m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +221,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466046}
-  - 114: {fileID: 11467254}
+  - 114: {fileID: 11477906}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -122,7 +237,23 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 443124}
-  - 114: {fileID: 11432056}
+  - 114: {fileID: 11475352}
+  m_Layer: 11
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &179536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 496968}
+  - 114: {fileID: 11453674}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -138,7 +269,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 423870}
-  - 114: {fileID: 11492528}
+  - 114: {fileID: 11465612}
   m_Layer: 11
   m_Name: Barrel
   m_TagString: Untagged
@@ -152,12 +283,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161770}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
+  m_LocalRotation: {x: 0, y: 0, z: 0.8314697, w: 0.5555702}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 5
+  m_RootOrder: 10
 --- !u!4 &418416
 Transform:
   m_ObjectHideFlags: 1
@@ -165,37 +296,69 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.425707, y: -6.1120644, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
-  - {fileID: 428522}
-  - {fileID: 442774}
-  - {fileID: 423870}
-  - {fileID: 425458}
-  - {fileID: 487090}
-  - {fileID: 406616}
-  - {fileID: 443124}
+  - {fileID: 484688}
+  - {fileID: 496968}
+  - {fileID: 450676}
+  - {fileID: 426182}
+  - {fileID: 480314}
+  - {fileID: 490336}
+  - {fileID: 420030}
+  - {fileID: 485564}
   - {fileID: 466046}
+  - {fileID: 443124}
+  - {fileID: 406616}
+  - {fileID: 487090}
+  - {fileID: 425458}
+  - {fileID: 423870}
+  - {fileID: 442774}
+  - {fileID: 428522}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &420030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114236}
+  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.3826833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 6
 --- !u!4 &423870
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190296}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.83146954, w: -0.55557036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 2
+  m_RootOrder: 13
 --- !u!4 &425458
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156716}
+  m_LocalRotation: {x: 0, y: 0, z: 0.98078525, w: -0.19509044}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 12
+--- !u!4 &426182
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -208,42 +371,90 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154524}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.1950901, w: -0.98078537}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 0
+  m_RootOrder: 15
 --- !u!4 &442774
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149716}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.55556995, w: -0.8314698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 1
+  m_RootOrder: 14
 --- !u!4 &443124
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178694}
-  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.3826833}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5555703, w: 0.8314696}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 6
+  m_RootOrder: 9
+--- !u!4 &450676
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117196}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 2
 --- !u!4 &466046
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173964}
+  m_LocalRotation: {x: 0, y: 0, z: 0.19509035, w: 0.9807853}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 8
+--- !u!4 &480314
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146952}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268346, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 4
+--- !u!4 &484688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122344}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 0
+--- !u!4 &485564
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152410}
   m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.3826833}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -256,21 +467,76 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 125036}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268346, w: 0.9238795}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9807853, w: 0.19509023}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418416}
-  m_RootOrder: 4
---- !u!114 &11403082
+  m_RootOrder: 11
+--- !u!4 &490336
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164940}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 5
+--- !u!4 &496968
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179536}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418416}
+  m_RootOrder: 1
+--- !u!50 &5033714
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163762}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &5857158
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163762}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.06834154
+--- !u!114 &11410278
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156716}
-  m_Enabled: 1
+  m_GameObject: {fileID: 154524}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
@@ -281,59 +547,68 @@ MonoBehaviour:
   angularDrag: 100
   shotDelay: 1
   type: 1
+  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
---- !u!114 &11416716
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11413834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146952}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11421508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164940}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11421960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161770}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
-  speed: 5
-  angularSpeed: -200
-  angularDrag: -100
-  shotDelay: 1
-  type: 1
-  isPassable: 0
-  useParentVelocity: 0
---- !u!114 &11419598
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
-  speed: 5
-  angularSpeed: -200
-  angularDrag: -100
-  shotDelay: 1
-  type: 1
-  isPassable: 0
-  useParentVelocity: 0
---- !u!114 &11420544
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
@@ -344,8 +619,35 @@ MonoBehaviour:
   angularDrag: 100
   shotDelay: 1
   type: 1
+  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11425124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114236}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11431744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,36 +668,15 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11432056
+--- !u!114 &11441288
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178694}
-  m_Enabled: 1
+  m_GameObject: {fileID: 149716}
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
-  speed: 5
-  angularSpeed: -200
-  angularDrag: -100
-  shotDelay: 1
-  type: 1
-  isPassable: 0
-  useParentVelocity: 0
---- !u!114 &11438072
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
@@ -406,8 +687,59 @@ MonoBehaviour:
   angularDrag: 100
   shotDelay: 1
   type: 1
+  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11453674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179536}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11453750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152410}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
 --- !u!114 &11465512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -440,36 +772,15 @@ MonoBehaviour:
     i15: 118
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &11467254
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 173964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  tetherPrefab: {fileID: 0}
-  radiusFromTether: 0
-  speed: 5
-  angularSpeed: -200
-  angularDrag: -100
-  shotDelay: 1
-  type: 1
-  isPassable: 0
-  useParentVelocity: 0
---- !u!114 &11492528
+--- !u!114 &11465612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb1b93ca611d1904080bb0506059f330, type: 3}
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
@@ -480,8 +791,197 @@ MonoBehaviour:
   angularDrag: 100
   shotDelay: 1
   type: 1
+  ammoCount: 1
   isPassable: 0
   useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11472988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122344}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -8.5, y: 0}
+  bottomRightShotBound: {x: 8.5, y: -4.5}
+--- !u!114 &11475352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178694}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11475822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117196}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11476858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec60d2417a7ce844a67bd5afc8e387b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  angularVelocity: 0
+  angularDrag: 0
+  isPassable: 0
+  type: 1
+  damage: 1
+  owner: {fileID: 0}
+--- !u!114 &11477364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142264}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11477906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173964}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11483884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156716}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
+--- !u!114 &11493900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125036}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c803da7336f344da3e6ad0d6adce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  tetherPrefab: {fileID: 0}
+  radiusFromTether: 0
+  speed: 5
+  angularSpeed: 200
+  angularDrag: 100
+  shotDelay: 1
+  type: 1
+  ammoCount: 1
+  isPassable: 0
+  useParentVelocity: 0
+  topLeftShotBound: {x: -9, y: 0}
+  bottomRightShotBound: {x: 9, y: -5}
 --- !u!212 &21202168
 SpriteRenderer:
   m_ObjectHideFlags: 1

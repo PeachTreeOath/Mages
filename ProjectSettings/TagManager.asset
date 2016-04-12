@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Player
   - Fire
+  - DeletePastBoundary
   layers:
   - Default
   - TransparentFX

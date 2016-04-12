@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySnake : MonoBehaviour
+public class EnemySnake : Enemy
 {
-
 	public Vector2 topLeftBound;
 	public Vector2 bottomRightBound;
 	public float moveSpeed;
@@ -41,7 +40,6 @@ public class EnemySnake : MonoBehaviour
 	private void ChooseNextLocation ()
 	{
 		Vector2 newLoc;
-		// yolo levels of risky
 		while (true) {
 			newLoc = (UnityEngine.Random.insideUnitCircle * moveDistance) + (Vector2)transform.position;
 			if (newLoc.x > topLeftBound.x && newLoc.x < bottomRightBound.x &&

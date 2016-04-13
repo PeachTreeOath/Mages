@@ -12,8 +12,6 @@ GameObject:
   - 50: {fileID: 5008890}
   - 114: {fileID: 11459158}
   - 60: {fileID: 6082020}
-  - 114: {fileID: 11403858}
-  - 114: {fileID: 11482560}
   m_Layer: 10
   m_Name: Bullet Big
   m_TagString: DeletePastBoundary
@@ -72,38 +70,6 @@ PolygonCollider2D:
       - {x: 0.004590883, y: -0.09487814}
       - {x: 0.06373615, y: -0.017988592}
       - {x: 0.06506899, y: 0.029308315}
---- !u!114 &11403858
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 121
-    i1: 131
-    i2: 127
-    i3: 15
-    i4: 132
-    i5: 97
-    i6: 228
-    i7: 4
-    i8: 200
-    i9: 126
-    i10: 11
-    i11: 200
-    i12: 38
-    i13: 201
-    i14: 40
-    i15: 252
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &11459158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,26 +88,6 @@ MonoBehaviour:
   type: 0
   damage: 1
   owner: {fileID: 0}
---- !u!114 &11482560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 142848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 2
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!212 &21218656
 SpriteRenderer:
   m_ObjectHideFlags: 1

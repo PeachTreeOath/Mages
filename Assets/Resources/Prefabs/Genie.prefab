@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18096625dd14ad4f89d975bc4032934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   phase: 0
   markers:
   - {fileID: 0}
@@ -117,6 +118,7 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 3
   pauseTime: 1
+  hpCanvas: {fileID: 0}
 --- !u!114 &11461042
 MonoBehaviour:
   m_ObjectHideFlags: 1

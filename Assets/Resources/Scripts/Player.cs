@@ -96,7 +96,7 @@ public class Player : NetLifecycleObj
         }
 		*/
 		//Debug.Log("Player state is " + playerState);
-		Debug.Log(Input.GetAxis ("Horizontal_p1_solo") + " " +Input.GetAxis ("Vertical_p1_solo") );
+
 		switch (playerState) {
 		case PlayerState.SPAWNING:
 		case PlayerState.NEUTRAL:

@@ -18,7 +18,8 @@ public class BossGenie : MonoBehaviour
 	private Image hpMeterImage;
 	private bool pauseStarted = false;
 	private float totalHp;
-    private int currentPhase = 0;
+    private int currentPhaseIndex = 0;
+    private BossPhase currentPhase;
     
 
 	// Use this for initialization
@@ -49,10 +50,19 @@ public class BossGenie : MonoBehaviour
         //change phases
         if (hp < .99f * totalHp)
         {
-            if (currentPhase < phases.Length - 1)
+            if (currentPhaseIndex < phases.Length - 1)
             {
-                currentPhase++;
+                
+                if (currentPhase != null)
+                {
+                    Destroy(currentPhase);
+                }
+                currentPhaseIndex++;
 
+                BossPhase nextPhase = phases[currentPhaseIndex];
+                currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+                currentPhase.transform.parent = this.transform;
+                
             }
         }
 

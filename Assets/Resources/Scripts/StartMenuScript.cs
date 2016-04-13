@@ -9,12 +9,16 @@ public class StartMenuScript : MonoBehaviour
 	GameObject p1, p2, p3, p4, p5, p6, p7, p8, startButton;
 	GlobalObject globalObj;
 	private bool[] playerArr;
+	private GameObject[] playerObjs;
 	private GameObject playerRes;
+	private bool[] dpadPressed;
+	// Used to make dpad act like button
 
 	void Start ()
 	{
 		playerArr = new bool[8];
-
+		playerObjs = new GameObject[8];
+		dpadPressed = new bool[4];
 		p1 = GameObject.Find ("P1");
 		p2 = GameObject.Find ("P2");
 		p3 = GameObject.Find ("P3");
@@ -23,99 +27,73 @@ public class StartMenuScript : MonoBehaviour
 		p6 = GameObject.Find ("P6");
 		p7 = GameObject.Find ("P7");
 		p8 = GameObject.Find ("P8");
-		startButton = GameObject.Find ("Start");
+		playerObjs [0] = p1;
+		playerObjs [1] = p2;
+		playerObjs [2] = p3;
+		playerObjs [3] = p4;
+		playerObjs [4] = p5;
+		playerObjs [5] = p6;
+		playerObjs [6] = p7;
+		playerObjs [7] = p8;
 
-		globalObj = GameObject.Find ("GlobalObject").GetComponent<GlobalObject> ();
+		startButton = GameObject.Find ("Start");
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetButtonDown ("Action_p1") || Input.GetButtonDown ("Action_p1_solo")) {
-			if (!playerArr [0]) {
-				AddPlayer (1);
-				playerArr [0] = true;
+		for (int i = 0; i < 8; i++) {
+			//TODO if (i < 4) {
+			if (i < 1) {
+				// Only players 1-4 are allowed to solo controllers
+				if (Input.GetButtonDown ("Action_p" + (i + 1) + "_solo")) {
+					TogglePlayer (i);
+				}
+				// Players 1-4 in coop setting use dpad down to action
+				else if (Input.GetAxisRaw ("Action_p" + (i + 1)) > 0) {
+					if (!dpadPressed [i]) {
+						TogglePlayer (i);
+						dpadPressed [i] = true;
+					}
+				} else if (Input.GetAxisRaw ("Action_p" + (i + 1)) == 0) {
+					dpadPressed [i] = false;
+				}
+			} else {
+				// Players 5-8 are forced coop setting and use Y to action
+				if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
+					TogglePlayer (i);
+				}
 			}
+
 		}
-			/*
-		if (Input.GetButtonDown ("Jump_p2")) {
-			if (!playerArr [1]) {
-				AddPlayer (2);
-				playerArr [1] = true;
-			}
-		}
-		if (Input.GetButtonDown ("Jump_p3")) {
-			if (!playerArr [2]) {
-				AddPlayer (3);
-				playerArr [2] = true;
-			}
-		}
-		if (Input.GetButtonDown ("Jump_p4")) {
-			if (!playerArr [3]) {
-				AddPlayer (4);
-				playerArr [3] = true;
-			}
-		}
-*/
+
+
 
 		if (numPlayers > 0 && Input.GetButtonDown ("Submit")) {
-			globalObj.playerList = playerArr;
+			if (GlobalObject.instance != null) {
+				GlobalObject.instance.playerList = playerArr;
+			}
 			SceneManager.LoadScene ("Loadout");
 		}
 	}
 
-	private void AddPlayer (int playerNum)
+	private void TogglePlayer (int playerNum)
 	{
-		startButton.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("Images/PressStart");
-
-		numPlayers += 1;
-
-		/*
-		switch (numPlayers) {
-		case 1:
-			globalObj.p1JoyMap = "_p" + playerNum;
-			break;
-		case 2:
-			globalObj.p2JoyMap = "_p" + playerNum;
-			break;
-		case 3:
-			globalObj.p3JoyMap = "_p" + playerNum;
-			break;
-		case 4:
-			globalObj.p4JoyMap = "_p" + playerNum;
-			break;
+		if (!playerArr [playerNum]) {
+			// Add new player
+			numPlayers++;
+			startButton.GetComponent<SpriteRenderer> ().enabled = true;
+			playerObjs [playerNum].GetComponent<SpriteRenderer> ().enabled = true;
+			playerArr [playerNum] = true;
+		} else {
+			// Remove existing player
+			numPlayers--;
+			if (numPlayers == 0) {
+				startButton.GetComponent<SpriteRenderer> ().enabled = false;
+			}
+			playerObjs [playerNum].GetComponent<SpriteRenderer> ().enabled = false;
+			playerArr [playerNum] = false;
 		}
-
-		switch (numPlayers) {
-		case 1:
-			q1.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("None");
-			SelectPlayer playerObj1 = ((GameObject)Instantiate (playerRes, q1.transform.position, Quaternion.identity)).GetComponent<SelectPlayer> ();
-			playerObj1.numPlayer = numPlayers - 1;
-			playerObj1.transform.localScale = new Vector2 (2, 2);
-			//q1.GetComponent<Animator> ().runtimeAnimatorController = Resources.Load <RuntimeAnimatorController> ("Images/Kiwi/KiwiDanceController");
-			break;
-		case 2:
-			q2.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("None");
-			SelectPlayer playerObj2 = ((GameObject)Instantiate (playerRes, q2.transform.position, Quaternion.identity)).GetComponent<SelectPlayer> ();
-			playerObj2.numPlayer = numPlayers - 1;
-			playerObj2.transform.localScale = new Vector2 (2, 2);
-			//q2.GetComponent<Animator> ().runtimeAnimatorController = Resources.Load <RuntimeAnimatorController> ("Images/Kiwi/KiwiDanceController");
-			break;
-		case 3:
-			q3.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("None");
-			SelectPlayer playerObj3 = ((GameObject)Instantiate (playerRes, q3.transform.position, Quaternion.identity)).GetComponent<SelectPlayer> ();
-			playerObj3.numPlayer = numPlayers - 1;
-			playerObj3.transform.localScale = new Vector2 (2, 2);
-			//q3.GetComponent<Animator> ().runtimeAnimatorController = Resources.Load <RuntimeAnimatorController> ("Images/Kiwi/KiwiDanceController");
-			break;
-		case 4:
-			q4.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("None");
-			SelectPlayer playerObj4 = ((GameObject)Instantiate (playerRes, q4.transform.position, Quaternion.identity)).GetComponent<SelectPlayer> ();
-			playerObj4.numPlayer = numPlayers - 1;
-			playerObj4.transform.localScale = new Vector2 (2, 2);
-			//q4.GetComponent<Animator> ().runtimeAnimatorController = Resources.Load <RuntimeAnimatorController> ("Images/Kiwi/KiwiDanceController");
-			break;
-		}
-		*/
 	}
+
 }

@@ -102,8 +102,7 @@ public class LoadoutManager : MonoBehaviour {
 		if (points >= 0) {
             Debug.Log("Ready pressed, loading game");
 			warningText.enabled = false;
-            //NetworkManager.singleton.ServerChangeScene(SceneState.getFirstScene());
-            GameNetMan.instance.LoadoutReady();
+			SceneManager.LoadScene ("Game");
 		} else {
 			warningText.enabled = true;
 		}

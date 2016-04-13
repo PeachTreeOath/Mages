@@ -10,6 +10,7 @@ public class BarrelWheel : MonoBehaviour
 	public float angularVelocity = 60f;
 	public int type;
 	public bool isPassable = false;
+    public float thetaOffset = 0f;
 
     private Rigidbody2D body;
 
@@ -34,7 +35,7 @@ public class BarrelWheel : MonoBehaviour
             bulletPosition.y = transform.position.y + radius * Mathf.Sin(theta);
 
 
-            Quaternion bulletRotation = Quaternion.Euler(0f, 0f, thetaInDegs + 180f) ;
+            Quaternion bulletRotation = Quaternion.Euler(0f, 0f, thetaInDegs + 180f + thetaOffset) ;
 
             Bullet bullet = ((GameObject)Instantiate(bulletPrefab, bulletPosition, bulletRotation)).GetComponent<Bullet>();
             bullet.SetType(type);

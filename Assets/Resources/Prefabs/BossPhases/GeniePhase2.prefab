@@ -87,11 +87,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 159298, guid: 597ba9a2f8effea46bf4c105c27592e3, type: 2}
-  radius: 1
+  radius: 9
   numberOfBullets: 12
   angularVelocity: 30
   type: 1
   isPassable: 1
+  thetaOffset: 90
 --- !u!114 &11445160
 MonoBehaviour:
   m_ObjectHideFlags: 1

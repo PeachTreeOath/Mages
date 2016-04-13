@@ -5,7 +5,8 @@ using System.Collections;
 //Other objects that wish to create or destroy a networked object should
 //call through this interface on the specific GameObject.  Do not instantiate
 //or Destroy networked objects directly!!
-public abstract class NetLifecycleObj : NetworkBehaviour {
+//public abstract class NetLifecycleObj : NetworkBehaviour {
+public abstract class NetLifecycleObj : MonoBehaviour {
 
     abstract public void endLife();
 

@@ -31,22 +31,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &106606
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 410992}
-  - 114: {fileID: 11478168}
-  m_Layer: 0
-  m_Name: BarrelBurst
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &111912
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,8 +39,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495604}
-  - 114: {fileID: 11461272}
-  - 114: {fileID: 11450318}
   m_Layer: 0
   m_Name: BossFightGenie
   m_TagString: Untagged
@@ -119,8 +101,6 @@ GameObject:
   - 4: {fileID: 483868}
   - 212: {fileID: 21248526}
   - 114: {fileID: 11450934}
-  - 114: {fileID: 11443290}
-  - 114: {fileID: 11475724}
   - 60: {fileID: 6013568}
   - 50: {fileID: 5020176}
   m_Layer: 9
@@ -175,18 +155,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495604}
   m_RootOrder: 1
---- !u!4 &410992
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106606}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 483868}
-  m_RootOrder: 0
 --- !u!4 &427058
 Transform:
   m_ObjectHideFlags: 1
@@ -210,7 +178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 483868}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &483510
 Transform:
   m_ObjectHideFlags: 1
@@ -233,7 +201,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 410992}
   - {fileID: 494212}
   - {fileID: 455272}
   m_Father: {fileID: 495604}
@@ -273,7 +240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 483868}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &495604
 Transform:
   m_ObjectHideFlags: 1
@@ -346,58 +313,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11443290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 199
-    i1: 102
-    i2: 71
-    i3: 23
-    i4: 112
-    i5: 235
-    i6: 100
-    i7: 228
-    i8: 58
-    i9: 239
-    i10: 225
-    i11: 216
-    i12: 0
-    i13: 17
-    i14: 81
-    i15: 87
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &11450318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11450934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,81 +336,9 @@ MonoBehaviour:
   speed: 3.5
   pauseTime: 1
   hpCanvas: {fileID: 0}
---- !u!114 &11461272
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 199
-    i1: 102
-    i2: 71
-    i3: 23
-    i4: 112
-    i5: 235
-    i6: 100
-    i7: 228
-    i8: 58
-    i9: 239
-    i10: 225
-    i11: 216
-    i12: 0
-    i13: 17
-    i14: 81
-    i15: 87
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
---- !u!114 &11475724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &11478168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 106606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b556252267da034f88d67aa9ac7cf84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
-  radius: 0.5
-  numberOfBullets: 24
-  angularSpeed: 0.1
-  angularDrag: 0
-  speed: 1.5
-  type: 1
-  isPassable: 0
-  shotDelay: 0.1
-  burstTime: 1
-  burstDelay: 3
-  perturbation: 0.1
+  phases:
+  - {fileID: 11428100, guid: 2f8b41220a50f384a96db78f5f2e8804, type: 2}
+  - {fileID: 11445160, guid: 1e10d290062b87549a8846eaf941b3aa, type: 2}
 --- !u!114 &11496588
 MonoBehaviour:
   m_ObjectHideFlags: 1

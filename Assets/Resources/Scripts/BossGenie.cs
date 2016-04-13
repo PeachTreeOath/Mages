@@ -8,14 +8,19 @@ public class BossGenie : MonoBehaviour
 	public int phase = 0;
 	public Transform[] markers;
 	public float speed = 2.0F;
-	private float journeyLength;
+    public float pauseTime = 1;
+    public GameObject hpCanvas;
+    public BossPhase[] phases;
+
+    private float journeyLength;
 	private int lastIndexReached = 0;
 	private float startTime;
-	public float pauseTime = 1;
-	public GameObject hpCanvas;
 	private Image hpMeterImage;
 	private bool pauseStarted = false;
 	private float totalHp;
+    private int currentPhaseIndex = 0;
+    private BossPhase currentPhase;
+    
 
 	// Use this for initialization
 	void Start ()
@@ -24,7 +29,11 @@ public class BossGenie : MonoBehaviour
 		totalHp = hp;
 		hpCanvas.SetActive (true);
 		hpMeterImage = hpCanvas.GetComponentInChildren<GameObjectFinder> ().GetComponent<Image> ();
-	}
+
+        BossPhase nextPhase = phases[currentPhaseIndex];
+        currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+        currentPhase.transform.parent = this.transform;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -41,6 +50,25 @@ public class BossGenie : MonoBehaviour
 			distCovered = (Time.time - startTime) * speed;
             
 		}
+
+        //change phases
+        if (hp < .99f * totalHp)
+        {
+            if (currentPhaseIndex < phases.Length - 1)
+            {
+                
+                if (currentPhase != null)
+                {
+                    Destroy(currentPhase.gameObject);
+                }
+                currentPhaseIndex++;
+
+                BossPhase nextPhase = phases[currentPhaseIndex];
+                currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+                currentPhase.transform.parent = this.transform;
+                
+            }
+        }
 
 		float fracJourney = distCovered / journeyLength;
 		Vector3 origPosition = transform.position;

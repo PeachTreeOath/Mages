@@ -739,7 +739,7 @@ MonoBehaviour:
   spawnDelay: 1
   enemySupply: 10
   scrollSpeed: 1
-  homeYPosition: -7.5
+  homeYPosition: -6.5
   moveSpeed: 1
   sinAmplitude: 1.5
   sinFrequency: 0.5
@@ -815,7 +815,7 @@ MonoBehaviour:
   spawnDelay: 1
   enemySupply: 10
   scrollSpeed: 1
-  homeYPosition: -7.5
+  homeYPosition: -6.5
   moveSpeed: 1
   sinAmplitude: 1.5
   sinFrequency: 0.5

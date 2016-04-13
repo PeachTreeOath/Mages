@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 public class Player : NetLifecycleObj {
 
-    [SyncVar]
+    //[SyncVar]
     public PlayerState playerState;
-    [SyncVar]
+    //[SyncVar]
     public DeathState deathState; //not applicable until player is in DYING state
 
     public bool initDone = false;
@@ -39,10 +39,10 @@ public class Player : NetLifecycleObj {
     //Client side code only
     public void spawnPlayer() {
         Debug.Log("in spawn player code");
-        if (!isLocalPlayer) {
+      /*  if (!isLocalPlayer) {
             Debug.LogError("Tried to call spawnPlayer from non-local client");
             return;
-        }
+        }*/
         playerState = PlayerState.SPAWNING;
         deathState = DeathState.STARTING;
         rend = GetComponent<SpriteRenderer>().GetComponent<Renderer>();
@@ -53,7 +53,7 @@ public class Player : NetLifecycleObj {
         StartCoroutine(Flash(SPAWNING_TIME, 0.05f));
     }
 
-    public override void OnStartLocalPlayer() {
+    public void OnStartLocalPlayer() {
         Debug.Log("OnStartLocalPlayer called");
         GetComponent<SpriteRenderer>().material.color = Color.cyan;
     }
@@ -82,16 +82,16 @@ public class Player : NetLifecycleObj {
         if (!initDone) {
             return;
         }
-
+		/*
         //Only client code from here
         if (!isLocalPlayer || !isClient) {
             return;
         }
-
+		*/
         //Debug.Log("Player state is " + playerState);
         switch (playerState) {
             case PlayerState.SPAWNING:
-            case PlayerState.NETURAL:
+            case PlayerState.NEUTRAL:
             case PlayerState.INVINCIBLE:
                 float currSpeed = speed;
 			if (Input.GetButton("Action_p1_solo")) {
@@ -115,12 +115,12 @@ public class Player : NetLifecycleObj {
         if (!initDone) {
             return;
         }
-
+		/*
         if (!isLocalPlayer) {
             return;
         }
-
-        if (isClient) {
+*/
+       // if (isClient) {
             if (transform.position.x < -8.5f) {
                 transform.position = new Vector2(-8.5f, transform.position.y);
             } else if (transform.position.x > 8.5f) {
@@ -132,7 +132,7 @@ public class Player : NetLifecycleObj {
             } else if (transform.position.y > 4.5f) {
                 transform.position = new Vector2(transform.position.x, 4.5f);
             }
-        }
+      //  }
     }
 
     public override void endLife() {
@@ -145,26 +145,26 @@ public class Player : NetLifecycleObj {
         CmdServerRespawn();
     }
 
-    [Command] //enter server mode
+  //  [Command] //enter server mode
     private void CmdServerRespawn() {
         serverRespawn();
     }
 
     //This is called on collision trigger by the head
     public void Die() {
-        if (isClient) {
+       // if (isClient) {
             //Can only die from the neutral state currently
-            if (playerState == PlayerState.NETURAL) {
+		if (playerState == PlayerState.NEUTRAL) {
                 Debug.Log("Carrying on with Killing player.");
                 playerState = PlayerState.DYING;
                 CmdDie(); //offload to server so everyone can see death animation
             } else {
                 Debug.Log("Don't need to die, we aren't in neutral state.");
             }
-        }
+       // }
     }
 
-    [Command] //run on server (called from client, obviously)
+   // [Command] //run on server (called from client, obviously)
     private void CmdDie() {
         //time transitions between states are handled in update
         if (deathState == DeathState.STARTING) {
@@ -184,9 +184,9 @@ public class Player : NetLifecycleObj {
 
     //This code is executed on the server only
     private void updateDeathState() {
-        if (!isServer) {
+      /*  if (!isServer) {
             Debug.LogError("Shits broke, this should only be called in a server context");
-        }
+        }*/
         //Debug.Log("Updating death state");
         //this needs work
         float timeElapsed = Time.time - deathStateTime;
@@ -205,9 +205,10 @@ public class Player : NetLifecycleObj {
         RpcRespawn();
     }
 
-    [ClientRpc]
+    //[ClientRpc]
     private void RpcRespawn() {
-        if (isLocalPlayer && deathState == DeathState.FINISHED) {
+        //if (isLocalPlayer && deathState == DeathState.FINISHED) {
+		if (deathState == DeathState.FINISHED) {
             deathState = DeathState.STARTING;
             initDone = false;
             spawnPlayer();
@@ -221,7 +222,7 @@ public class Player : NetLifecycleObj {
             yield return new WaitForSeconds(intervalTime);
         }
         rend.enabled = true;
-        playerState = PlayerState.NETURAL;
+        playerState = PlayerState.NEUTRAL;
     }
 
 }

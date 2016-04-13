@@ -8,14 +8,18 @@ public class BossGenie : MonoBehaviour
 	public int phase = 0;
 	public Transform[] markers;
 	public float speed = 2.0F;
-	private float journeyLength;
+    public float pauseTime = 1;
+    public GameObject hpCanvas;
+    public BossPhase[] phases;
+
+    private float journeyLength;
 	private int lastIndexReached = 0;
 	private float startTime;
-	public float pauseTime = 1;
-	public GameObject hpCanvas;
 	private Image hpMeterImage;
 	private bool pauseStarted = false;
 	private float totalHp;
+    private int currentPhase = 0;
+    
 
 	// Use this for initialization
 	void Start ()
@@ -41,6 +45,16 @@ public class BossGenie : MonoBehaviour
 			distCovered = (Time.time - startTime) * speed;
             
 		}
+
+        //change phases
+        if (hp < .99f * totalHp)
+        {
+            if (currentPhase < phases.Length - 1)
+            {
+                currentPhase++;
+
+            }
+        }
 
 		float fracJourney = distCovered / journeyLength;
 		Vector3 origPosition = transform.position;

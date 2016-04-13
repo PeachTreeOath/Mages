@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0e8d91f5516964e8e515adc71e5c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  bulletPrefab: {fileID: 159298, guid: 597ba9a2f8effea46bf4c105c27592e3, type: 2}
   radius: 1
   numberOfBullets: 12
   angularVelocity: 30

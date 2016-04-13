@@ -29,7 +29,11 @@ public class BossGenie : MonoBehaviour
 		totalHp = hp;
 		hpCanvas.SetActive (true);
 		hpMeterImage = hpCanvas.GetComponentInChildren<GameObjectFinder> ().GetComponent<Image> ();
-	}
+
+        BossPhase nextPhase = phases[currentPhaseIndex];
+        currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+        currentPhase.transform.parent = this.transform;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -55,7 +59,7 @@ public class BossGenie : MonoBehaviour
                 
                 if (currentPhase != null)
                 {
-                    Destroy(currentPhase);
+                    Destroy(currentPhase.gameObject);
                 }
                 currentPhaseIndex++;
 

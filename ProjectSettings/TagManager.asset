@@ -8,6 +8,7 @@ TagManager:
   - Player
   - Fire
   - DeletePastBoundary
+  - Spawner
   layers:
   - Default
   - TransparentFX

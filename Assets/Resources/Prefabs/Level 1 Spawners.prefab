@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11476916}
   m_Layer: 0
   m_Name: SpawnScarab7
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11453164}
   m_Layer: 0
   m_Name: SpawnCamel1
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - 114: {fileID: 11419526}
   m_Layer: 0
   m_Name: SpawnCamel3
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11452096}
   m_Layer: 0
   m_Name: SpawnScarab3
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   - 114: {fileID: 11451984}
   m_Layer: 0
   m_Name: SpawnScarab4
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ GameObject:
   - 114: {fileID: 11464234}
   m_Layer: 0
   m_Name: SpawnScarab5
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ GameObject:
   - 114: {fileID: 11469556}
   m_Layer: 0
   m_Name: SpawnScarab1
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ GameObject:
   - 114: {fileID: 11484472}
   m_Layer: 0
   m_Name: SpawnScarab6
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,7 +163,7 @@ GameObject:
   - 114: {fileID: 11462268}
   m_Layer: 0
   m_Name: SpawnScarab2
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - 114: {fileID: 11479508}
   m_Layer: 0
   m_Name: SpawnScarab8
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - 114: {fileID: 11423802}
   m_Layer: 0
   m_Name: SpawnCamel2
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - 114: {fileID: 11430236}
   m_Layer: 0
   m_Name: SpawnCamel4
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

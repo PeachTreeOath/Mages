@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
 
 		if (bullet != null && bullet.type == 0) {
 			hp -= bullet.damage;
-			Debug.Log (hp);
 			if (hp <= 0) {
 				GetComponent<GibManual> ().Explode ();
 			}

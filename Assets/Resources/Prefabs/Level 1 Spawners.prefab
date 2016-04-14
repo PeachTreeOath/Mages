@@ -45,7 +45,7 @@ GameObject:
   - 50: {fileID: 5071874}
   - 114: {fileID: 11419526}
   m_Layer: 0
-  m_Name: SpawnCamel3
+  m_Name: SpawnSnake3
   m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ GameObject:
   - 50: {fileID: 5015818}
   - 114: {fileID: 11423802}
   m_Layer: 0
-  m_Name: SpawnCamel2
+  m_Name: SpawnSnake2
   m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ GameObject:
   - 50: {fileID: 5049730}
   - 114: {fileID: 11430236}
   m_Layer: 0
-  m_Name: SpawnCamel4
+  m_Name: SpawnSnake4
   m_TagString: Spawner
   m_Icon: {fileID: -3545028842045912814, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d19ea39642ce44d82b7562b22d9803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
+  objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
   enemySupply: 2
   scrollSpeed: 1
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d19ea39642ce44d82b7562b22d9803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
+  objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
   enemySupply: 2
   scrollSpeed: 1
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d19ea39642ce44d82b7562b22d9803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
+  objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
   enemySupply: 2
   scrollSpeed: 1
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d19ea39642ce44d82b7562b22d9803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 115220, guid: 13ede555960ab0143882497b7a67209f, type: 2}
+  objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
   enemySupply: 2
   scrollSpeed: 1

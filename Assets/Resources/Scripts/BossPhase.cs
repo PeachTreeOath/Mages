@@ -2,14 +2,13 @@
 using System.Collections;
 
 public class BossPhase : MonoBehaviour {
+    public Transform[] checkpoints;
+    public MovementStrategy movementStrategy = MovementStrategy.STATIONARY;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public enum MovementStrategy
+    {
+        STATIONARY,
+        MOVE_TO_POINT_AND_STAY,
+        LERP_BETWEEN_POINTS
+    }
 }

@@ -35,7 +35,7 @@ public class Player : NetLifecycleObj
 	{
 		//generally this is called when the scene is first loaded
 		Debug.Log ("Player Start called");
-		spawnPlayer ();
+		SpawnPlayer ();
 
 		Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
 		currentWeapon = (Weapon)Instantiate (nextWeapon, transform.position, transform.rotation);
@@ -44,7 +44,7 @@ public class Player : NetLifecycleObj
 	}
 
 	//Client side code only
-	public void spawnPlayer ()
+	public void SpawnPlayer ()
 	{
 		Debug.Log ("in spawn player code");
 		/*  if (!isLocalPlayer) {
@@ -54,7 +54,7 @@ public class Player : NetLifecycleObj
 		playerState = PlayerState.SPAWNING;
 		deathState = DeathState.STARTING;
 		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
-		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation ();
+		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
 		gameObject.transform.SetParent (parent.transform, false);
 		initDone = true;
 		Debug.Log ("Player init done");
@@ -247,7 +247,7 @@ public class Player : NetLifecycleObj
 		if (deathState == DeathState.FINISHED) {
 			deathState = DeathState.STARTING;
 			initDone = false;
-			spawnPlayer ();
+			SpawnPlayer ();
 		}
 	}
 

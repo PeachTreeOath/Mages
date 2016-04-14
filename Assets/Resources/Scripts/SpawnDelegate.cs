@@ -21,10 +21,10 @@ public class SpawnDelegate : MonoBehaviour {
         return instance;
     }
 
-    public GameObject getPlayerSpawnLocation() {
+	public GameObject getPlayerSpawnLocation(int playerNum) {
         //Get first for now
         if(playerSpawns.Count > 0) {
-            return playerSpawns[0];
+			return playerSpawns[playerNum-1];
         }
         Debug.Log("No player spawn points, returning empty");
         return new GameObject(); //empty

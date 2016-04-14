@@ -111,11 +111,12 @@ public class Player : NetLifecycleObj
 			break;
 
 			/*
-			Debug.Log (Input.GetAxisRaw ("Action_p1"));
-			if (Input.GetAxisRaw ("Action_p1") > 0 ) {
+			//if (Input.GetAxisRaw ("Action_p1") > 0 ) {
+			if(Input.GetButton("Action_p5"))
+			{
 				currSpeed = speed * 0.33f;
 			}
-			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p1") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p1") * Time.deltaTime * currSpeed);
+			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p5") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p5") * Time.deltaTime * currSpeed);
 			break;
 			*/
 		case PlayerState.DYING:

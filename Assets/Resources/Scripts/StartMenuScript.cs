@@ -42,6 +42,7 @@ public class StartMenuScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		Debug.Log((Input.GetAxisRaw ("Action_p1")));
 		for (int i = 0; i < 8; i++) {
 			//TODO if (i < 4) {
 			if (i < 1) {
@@ -60,9 +61,9 @@ public class StartMenuScript : MonoBehaviour
 				}
 			} else {
 				// Players 5-8 are forced coop setting and use Y to action
-				if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
-					TogglePlayer (i);
-				}
+				//if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
+				//	TogglePlayer (i);
+				//}
 			}
 
 		}

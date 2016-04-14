@@ -8,23 +8,24 @@ public class Player : NetLifecycleObj
 {
 
 	//[SyncVar]
+	public int playerNum;
 	public PlayerState playerState;
 	//[SyncVar]
 	public DeathState deathState;
 	//not applicable until player is in DYING state
-
 	public bool initDone = false;
 	public float speed = 0;
 	public float timeToDie = 2.0f;
+	public float timeForWeaponSwitches = 10f;
+	public List<Weapon> weaponLoadout = new List<Weapon> ();
+
 	private float deathStateTime;
 	//used for several timings
 	private const float SPAWNING_TIME = 1.0f;
 	private const float UNCONSCIOUS_TIME = 2.0f;
 	private const float EXPLODE_TIME = 2.0f;
 	private Renderer rend;
-	public float timeForWeaponSwitches = 10f;
 	private float timeOfLastWeaponSwitch;
-	public List<Weapon> weaponLoadout = new List<Weapon> ();
 	private int currentWeaponIndex = 0;
 	private Weapon currentWeapon;
 
@@ -102,12 +103,21 @@ public class Player : NetLifecycleObj
 		case PlayerState.NEUTRAL:
 		case PlayerState.INVINCIBLE:
 			float currSpeed = speed;
+
 			if (Input.GetButton ("Action_p1_solo")) {
 				currSpeed = speed * 0.33f;
 			}
 			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p1_solo") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p1_solo") * Time.deltaTime * currSpeed);
 			break;
 
+			/*
+			Debug.Log (Input.GetAxisRaw ("Action_p1"));
+			if (Input.GetAxisRaw ("Action_p1") > 0 ) {
+				currSpeed = speed * 0.33f;
+			}
+			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p1") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p1") * Time.deltaTime * currSpeed);
+			break;
+			*/
 		case PlayerState.DYING:
 			updateDeathState ();
 			break;

@@ -104,6 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a56db2880199e45b0a1760a9a41051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints:
+  - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  movementStrategy: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -140,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87edf751ec8ade2468ae03e603868ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNum: 1
+  soloPlay: 1
   playerState: 0
   deathState: 0
   initDone: 0

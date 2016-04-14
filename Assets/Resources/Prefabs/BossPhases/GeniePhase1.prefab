@@ -68,6 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a56db2880199e45b0a1760a9a41051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoints:
+  - {fileID: 416866, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 407390, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 483510, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 484692, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 427058, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  movementStrategy: 2
 --- !u!114 &11467736
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -57,5 +57,7 @@ public class GameManager : MonoBehaviour
 				player.soloPlay = true;
 			}
 		}
+
+		//TODO Add support for rest of players
 	}
 }

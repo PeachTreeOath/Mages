@@ -9,6 +9,8 @@ public class Player : NetLifecycleObj
 
 	//[SyncVar]
 	public int playerNum;
+	public bool soloPlay;
+	// 1 person on controller instead of 2
 	public PlayerState playerState;
 	//[SyncVar]
 	public DeathState deathState;
@@ -103,22 +105,28 @@ public class Player : NetLifecycleObj
 		case PlayerState.NEUTRAL:
 		case PlayerState.INVINCIBLE:
 			float currSpeed = speed;
-
-			if (Input.GetButton ("Action_p1_solo")) {
-				currSpeed = speed * 0.33f;
+			// Only players 1-4 are allowed to solo controllers
+			if (soloPlay) {
+				if (Input.GetButton ("Action_p" + playerNum + "_solo")) {
+					currSpeed = speed * 0.33f;
+				}
+				transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p" + playerNum + "_solo") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p" + playerNum + "_solo") * Time.deltaTime * currSpeed);
+			} else {
+				if (playerNum < 4) {
+					// Players 1-4 in coop setting use dpad down to action
+					if (Input.GetAxisRaw ("Action_p" + playerNum) > 0) {
+						currSpeed = speed * 0.33f;
+					}
+				} else {
+					// Players 5-8 are forced coop setting and use Y to action
+					if (Input.GetButton ("Action_p" + playerNum)) {
+						currSpeed = speed * 0.33f;
+					}
+				}
+				transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p" + playerNum) * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p" + playerNum) * Time.deltaTime * currSpeed);
 			}
-			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p1_solo") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p1_solo") * Time.deltaTime * currSpeed);
 			break;
-
-			/*
-			//if (Input.GetAxisRaw ("Action_p1") > 0 ) {
-			if(Input.GetButton("Action_p5"))
-			{
-				currSpeed = speed * 0.33f;
-			}
-			transform.position = (Vector2)(transform.position) + new Vector2 (Input.GetAxis ("Horizontal_p5") * Time.deltaTime * currSpeed, Input.GetAxis ("Vertical_p5") * Time.deltaTime * currSpeed);
-			break;
-			*/
+	
 		case PlayerState.DYING:
 			updateDeathState ();
 			break;

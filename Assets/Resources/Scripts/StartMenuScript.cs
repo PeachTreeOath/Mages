@@ -44,8 +44,7 @@ public class StartMenuScript : MonoBehaviour
 	{
 		Debug.Log((Input.GetAxisRaw ("Action_p1")));
 		for (int i = 0; i < 8; i++) {
-			//TODO if (i < 4) {
-			if (i < 1) {
+			if (i < 4) {
 				// Only players 1-4 are allowed to solo controllers
 				if (Input.GetButtonDown ("Action_p" + (i + 1) + "_solo")) {
 					TogglePlayer (i);
@@ -61,9 +60,9 @@ public class StartMenuScript : MonoBehaviour
 				}
 			} else {
 				// Players 5-8 are forced coop setting and use Y to action
-				//if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
-				//	TogglePlayer (i);
-				//}
+				if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
+					TogglePlayer (i);
+				}
 			}
 
 		}

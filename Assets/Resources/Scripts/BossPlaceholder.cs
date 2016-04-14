@@ -43,6 +43,10 @@ public class BossPlaceholder : MonoBehaviour
 			foreach (GameObject obj in objs) {
 				SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
 				if (spawner != null) {
+					if (spawner.transform.position.y < 6) {
+						Destroy (spawner.gameObject);
+						continue;
+					}
 					spawner.ResumeMovement ();
 				} else {
 					BossPlaceholder boss = obj.GetComponent<BossPlaceholder> ();

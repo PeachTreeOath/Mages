@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 6c2fa13184a767e46a76bc0d3121aaae
-timeCreated: 1460440061
+guid: 8d37e2e59d0cab9439e1d86db297f254
+timeCreated: 1460681738
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: GenieLower_0
-    21300002: GenieLower_1
-    21300004: GenieLower_2
-    21300006: GenieLower_3
-    21300008: GenieLower_4
-    21300010: GenieLower_5
-    21300012: GenieLower_6
-    21300014: GenieLower_7
+    21300000: GenieSpin2_0
+    21300002: GenieSpin2_1
+    21300004: GenieSpin2_2
+    21300006: GenieSpin2_3
+    21300008: GenieSpin2_4
+    21300010: GenieSpin2_5
+    21300012: GenieSpin2_6
+    21300014: GenieSpin2_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,7 +58,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: GenieLower_0
+    - name: GenieSpin2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -69,7 +69,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_1
+    - name: GenieSpin2_1
       rect:
         serializedVersion: 2
         x: 0
@@ -80,7 +80,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_2
+    - name: GenieSpin2_2
       rect:
         serializedVersion: 2
         x: 0
@@ -91,7 +91,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_3
+    - name: GenieSpin2_3
       rect:
         serializedVersion: 2
         x: 0
@@ -102,7 +102,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_4
+    - name: GenieSpin2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -113,7 +113,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_5
+    - name: GenieSpin2_5
       rect:
         serializedVersion: 2
         x: 0
@@ -124,7 +124,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_6
+    - name: GenieSpin2_6
       rect:
         serializedVersion: 2
         x: 0
@@ -135,7 +135,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: GenieLower_7
+    - name: GenieSpin2_7
       rect:
         serializedVersion: 2
         x: 0

@@ -6,6 +6,9 @@ using System;
 
 public class LoadoutManager : MonoBehaviour {
 
+	public int rows;
+	public int cols;
+
 	private bool shot1 = true;
 	private bool shot2;
 	private bool shot3;
@@ -45,12 +48,12 @@ public class LoadoutManager : MonoBehaviour {
 	private int eshot9Val;
 
 	private int points = 0;
-	private Text pointsText;
+//	private Text pointsText;
 	private Text warningText;
 
 	// Use this for initialization
 	void Start () {
-		pointsText = GameObject.Find ("PointsText").GetComponent<Text> ();
+		//pointsText = GameObject.Find ("PointsText").GetComponent<Text> ();
 		warningText = GameObject.Find ("Warning").GetComponent<Text> ();
 	}
 	
@@ -84,7 +87,7 @@ public class LoadoutManager : MonoBehaviour {
 			break;
 		}
 
-		pointsText.text = Convert.ToString(points);
+		//pointsText.text = Convert.ToString(points);
 
 	}
 

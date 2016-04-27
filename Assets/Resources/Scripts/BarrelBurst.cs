@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BarrelBurst : MonoBehaviour {
+public class BarrelBurst : Barrel {
 
     public GameObject bulletPrefab;
     public float radius = 1f;

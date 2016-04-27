@@ -107,6 +107,7 @@ MonoBehaviour:
   checkpoints:
   - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
   movementStrategy: 1
+  fireStrategy: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

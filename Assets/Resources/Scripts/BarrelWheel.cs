@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BarrelWheel : MonoBehaviour
+public class BarrelWheel : Barrel
 {
 
 	public GameObject bulletPrefab;

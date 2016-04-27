@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Boss : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Boss : MonoBehaviour
     private BossPhase currentPhase;
     private bool doneMoving = false;
     private Vector3 startingPosition; //remembers the position of the boss when the phase changes
+    private bool isFiring = false;
+    private List<Barrel> disabledBarrels = new List<Barrel>();
     
 
 	// Use this for initialization
@@ -41,6 +44,61 @@ public class Boss : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
+        //Execute firing strategy
+        Barrel[] barrels;
+        switch (currentPhase.fireStrategy)
+        {
+            case (BossPhase.FireStrategy.ALWAYS_FIRE):
+                if (!isFiring)
+                {
+                    barrels = GetComponentsInChildren<Barrel>();
+                    foreach (Barrel barrel in barrels)
+                    {
+                        barrel.gameObject.SetActive(true);
+                    }
+                    isFiring = true;
+                }
+                break;
+            case (BossPhase.FireStrategy.NEVER_FIRE):
+                if (isFiring)
+                {
+                    barrels = GetComponentsInChildren<Barrel>();
+                    foreach (Barrel barrel in barrels)
+                    {
+                        disabledBarrels.Add(barrel);
+                        barrel.gameObject.SetActive(false);
+                    }
+                    isFiring = false;
+                }
+                break;
+            case (BossPhase.FireStrategy.FIRE_AT_DESTINATION):
+                if (isFiring && !doneMoving)
+                {
+                    //Not at location yet so disable weapons
+                    barrels = GetComponentsInChildren<Barrel>();
+                    foreach (Barrel barrel in barrels)
+                    {
+                        disabledBarrels.Add(barrel);
+                        barrel.gameObject.SetActive(false);
+                    }
+                    isFiring = false;
+                }
+                if (doneMoving && !isFiring)
+                {
+                    //now at location, commence firing
+                    foreach (Barrel barrel in disabledBarrels)
+                    {
+                        barrel.gameObject.SetActive(true);
+                    }
+                    disabledBarrels.Clear();
+                    isFiring = true;
+                }
+                break;
+            default:
+                break;
+
+        }
 
         Transform[] markers = currentPhase.checkpoints;
         float distCovered;
@@ -93,8 +151,10 @@ public class Boss : MonoBehaviour
 
 
 
+
+
         //change phases
-        if (hp < .99f * totalHp)
+        if (hp < .90f * totalHp)
         {
             if (currentPhaseIndex < phases.Length - 1)
             {
@@ -112,6 +172,7 @@ public class Boss : MonoBehaviour
                 //Remember the location and time of the boss during the phase change so we don't get lost on the next movement.
                 startingPosition = transform.position;
                 startTime = Time.time;
+                doneMoving = false;
             }
         }
 

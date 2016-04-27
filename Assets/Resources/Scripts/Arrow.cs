@@ -20,6 +20,8 @@ public class Arrow : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		weapons = new HashSet<string> ();
+
 		loadMgr = GameObject.Find ("LoadoutManager").GetComponent<LoadoutManager> ();
 		if (GlobalObject.instance != null) {
 			bool playerExists = GlobalObject.instance.GetComponent<GlobalObject> ().playerList [playerNum - 1];
@@ -113,12 +115,15 @@ public class Arrow : MonoBehaviour
 
 	private void ToggleWeapon ()
 	{
-		string wepName = loadMgr.GetWeapon (xPos, yPos).name;
+		LoadoutToggler weapon = loadMgr.GetWeapon (yPos, xPos);
+		string wepName = weapon.name;
 		if (weapons.Contains (wepName)) {
 			weapons.Remove (wepName);
 		} else {
 			weapons.Add (wepName);
 		}
 
+		SpriteRenderer tick = weapon.transform.Find ("tick" + playerNum).GetComponent<SpriteRenderer> ();
+		tick.enabled = !tick.enabled;
 	}
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,9 +11,14 @@ public class Arrow : MonoBehaviour
 	private int playerNum = 0;
 
 	private int value;
+	private Text valueText;
+	private SpriteRenderer checkSprite;
 	private bool soloPlay = true;
 	private int xPos;
 	private int yPos;
+	// When player hits down enough he'll go to his name to ready up
+	private bool inReadyPosition;
+	private Vector2 lastPos;
 	private bool isMoving;
 	private bool dpadPressed;
 	private LoadoutManager loadMgr;
@@ -21,6 +28,9 @@ public class Arrow : MonoBehaviour
 	void Start ()
 	{
 		weapons = new HashSet<string> ();
+		weapons.Add ("shotNormal");
+		valueText = GameObject.Find ("P" + playerNum).transform.Find ("value").GetComponent<Text> ();
+		checkSprite = GameObject.Find ("check" + playerNum).GetComponent<SpriteRenderer> ();
 
 		loadMgr = GameObject.Find ("LoadoutManager").GetComponent<LoadoutManager> ();
 		if (GlobalObject.instance != null) {
@@ -56,13 +66,13 @@ public class Arrow : MonoBehaviour
 			vMove = Input.GetAxis ("Vertical_p" + playerNum);
 		}
 
-		if (hMove > 0 && !isMoving) {
+		if (hMove > 0 && !isMoving && !inReadyPosition) {
 			if (xPos + 1 < loadMgr.cols) {
 				xPos++;
 				transform.position += new Vector3 (2, 0, 0);
 			}
 			isMoving = true;
-		} else if (hMove < 0 && !isMoving) {
+		} else if (hMove < 0 && !isMoving && !inReadyPosition) {
 			if (xPos - 1 >= 0) {
 				xPos--;
 				transform.position += new Vector3 (-2, 0, 0);
@@ -71,7 +81,10 @@ public class Arrow : MonoBehaviour
 		} 
 
 		if (vMove > 0 && !isMoving) {
-			if (yPos - 1 >= 0) {
+			if (inReadyPosition) {
+				transform.position = lastPos;
+				inReadyPosition = false;
+			} else if (yPos - 1 >= 0) { 
 				yPos--;
 				transform.position += new Vector3 (0, 2.5f, 0);
 			}
@@ -80,6 +93,11 @@ public class Arrow : MonoBehaviour
 			if (yPos + 1 < loadMgr.rows) {
 				yPos++;
 				transform.position += new Vector3 (0, -2.5f, 0);
+			} else if (!inReadyPosition) {
+				lastPos = transform.position;
+				float xValue = -8.4f + 1.65f * playerNum;
+				transform.position = new Vector3 (xValue, -4.75f, 0);
+				inReadyPosition = true;
 			}
 			isMoving = true;
 		} 
@@ -115,15 +133,35 @@ public class Arrow : MonoBehaviour
 
 	private void ToggleWeapon ()
 	{
+		if (inReadyPosition) {
+			if (value >= 0) {
+				checkSprite.enabled = !checkSprite.enabled;
+				valueText.enabled = !valueText.enabled;
+				loadMgr.ReadyUp (playerNum, checkSprite.enabled);
+			}
+			return;
+		}
+
 		LoadoutToggler weapon = loadMgr.GetWeapon (yPos, xPos);
 		string wepName = weapon.name;
 		if (weapons.Contains (wepName)) {
 			weapons.Remove (wepName);
+			value -= weapon.value;
 		} else {
 			weapons.Add (wepName);
+			value += weapon.value;
+		}
+		valueText.text = "" + value;
+		if (value < 0) {
+			valueText.color = Color.red;
+		} else {
+			valueText.color = Color.white;
 		}
 
 		SpriteRenderer tick = weapon.transform.Find ("tick" + playerNum).GetComponent<SpriteRenderer> ();
 		tick.enabled = !tick.enabled;
+		loadMgr.ReadyUp (playerNum, false);
+		checkSprite.enabled = false;
+		valueText.enabled = true;
 	}
 }

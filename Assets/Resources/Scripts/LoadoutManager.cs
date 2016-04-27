@@ -8,6 +8,7 @@ public class LoadoutManager : MonoBehaviour {
 
 	public int rows;
 	public int cols;
+	public LoadoutToggler[,] weaponMap;
 
 	private bool shot1 = true;
 	private bool shot2;
@@ -53,6 +54,14 @@ public class LoadoutManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		weaponMap = new LoadoutToggler[rows,cols];
+		weaponMap [0, 0] = GameObject.Find ("shotNormal").GetComponent<LoadoutToggler> ();
+		weaponMap [0, 1] = GameObject.Find ("shotTwin").GetComponent<LoadoutToggler> ();
+		weaponMap [0, 2] = GameObject.Find ("shotSpread").GetComponent<LoadoutToggler> ();
+		weaponMap [0, 3] = GameObject.Find ("shotBig").GetComponent<LoadoutToggler> ();
+		weaponMap [0, 4] = GameObject.Find ("eshotMine").GetComponent<LoadoutToggler> ();
+		weaponMap [0, 5] = GameObject.Find ("eshotBurst").GetComponent<LoadoutToggler> ();
+
 		//pointsText = GameObject.Find ("PointsText").GetComponent<Text> ();
 		warningText = GameObject.Find ("Warning").GetComponent<Text> ();
 	}
@@ -109,5 +118,10 @@ public class LoadoutManager : MonoBehaviour {
 		} else {
 			warningText.enabled = true;
 		}
+	}
+
+	public LoadoutToggler GetWeapon(int row, int col)
+	{
+		return weaponMap [row, col];
 	}
 }

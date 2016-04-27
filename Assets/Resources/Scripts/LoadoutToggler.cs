@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LoadoutToggler : MonoBehaviour {
 
+	public int value;
+
 	private LoadoutManager mgr;
 
 	// Use this for initialization

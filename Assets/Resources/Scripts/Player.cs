@@ -76,12 +76,6 @@ public class Player : NetLifecycleObj
 		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
 	}
 
-	public void OnStartLocalPlayer ()
-	{
-		Debug.Log ("OnStartLocalPlayer called");
-		GetComponent<SpriteRenderer> ().material.color = Color.cyan;
-	}
-
 	void Update ()
 	{
 		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {

@@ -42,7 +42,6 @@ public class StartMenuScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log((Input.GetAxisRaw ("Action_p1")));
 		for (int i = 0; i < 8; i++) {
 			if (i < 4) {
 				// Only players 1-4 are allowed to solo controllers

@@ -38,14 +38,24 @@ public class Player : NetLifecycleObj
 		SpawnPlayer ();
 
 		Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
-		currentWeapon = (Weapon)Instantiate (nextWeapon, transform.position, transform.rotation);
-		currentWeapon.transform.parent = this.transform;
+		ToggleBarrels (nextWeapon, true);
+		currentWeapon = nextWeapon;
 		timeOfLastWeaponSwitch = Time.time;
 	}
 
-	public void AddWeapon(Weapon weapon)
+	public void AddWeapon (Weapon weapon)
 	{
+		ToggleBarrels (weapon, false);
+		weapon.transform.SetParent (this.transform);
 		weaponLoadout.Add (weapon);
+	}
+
+	private void ToggleBarrels(Weapon weapon, bool enable)
+	{
+		Shoot[] barrels = weapon.GetComponentsInChildren<Shoot> ();
+		foreach (Shoot barrel in barrels) {
+			barrel.enabled = enable;
+		}
 	}
 
 	//Client side code only
@@ -77,20 +87,16 @@ public class Player : NetLifecycleObj
 		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
 			//Remove existing weapon
 			Debug.Log ("Removing existing weapon.");
-			//Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
+			ToggleBarrels (currentWeapon, false);
 
-			if (currentWeapon != null) {
-				GameObject go = currentWeapon.gameObject;
-				Destroy (go);
-			}
 			if (currentWeaponIndex == weaponLoadout.Count - 1) {
 				currentWeaponIndex = 0;
 			} else {
 				currentWeaponIndex++;
 			}
 			Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
-			currentWeapon = (Weapon)Instantiate (nextWeapon, transform.position, transform.rotation);
-			currentWeapon.transform.parent = this.transform;
+			ToggleBarrels (nextWeapon, true);
+			currentWeapon = nextWeapon;
 
 			timeOfLastWeaponSwitch = Time.time;
 		}

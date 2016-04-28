@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-		playerList [1] = true;
+	//	playerList [1] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();
@@ -131,13 +131,13 @@ public class GameManager : MonoBehaviour
 					newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "shotTwin":
-					newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					newWep = ((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "shotSpread":
-					newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					newWep = ((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "shotBig":
-					newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					newWep = ((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "eshotMine":
 					//newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();

@@ -148,13 +148,7 @@ MonoBehaviour:
   speed: 4
   timeToDie: 2
   timeForWeaponSwitches: 5
-  weaponLoadout:
-  - {fileID: 11446532, guid: d2d35011066cfcf4a8e7a0deaf899a7e, type: 2}
-  - {fileID: 11442506, guid: bab6aa037d3f56f48aa7ebe6ac066b46, type: 2}
-  - {fileID: 11439446, guid: d313840f301360540ae94e9eac2b7315, type: 2}
-  - {fileID: 11473008, guid: 7c1fc538fb12e8d4ab8e2216fe4b6700, type: 2}
-  - {fileID: 11452190, guid: 25456070d5f10234ca07a3e3029b2ea9, type: 2}
-  - {fileID: 11429658, guid: 7512dd8fe2ab0dc4c93e586c127e5860, type: 2}
+  weaponLoadout: []
 --- !u!212 &21229660
 SpriteRenderer:
   m_ObjectHideFlags: 1

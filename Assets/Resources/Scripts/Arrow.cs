@@ -58,7 +58,7 @@ public class Arrow : MonoBehaviour
 		float vMove = 0;
 
 		// Only players 1-4 are allowed to solo controllers
-		if (soloPlay) {
+		if (soloPlay && playerNum < 5) {
 			hMove = Input.GetAxis ("Horizontal_p" + playerNum + "_solo");
 			vMove = Input.GetAxis ("Vertical_p" + playerNum + "_solo");
 		} else {
@@ -106,12 +106,12 @@ public class Arrow : MonoBehaviour
 			isMoving = false;
 		}
 	
-		if (soloPlay) {
+		if (soloPlay && playerNum < 5) {
 			if (Input.GetButtonDown ("Action_p" + playerNum + "_solo")) {
 				ToggleWeapon ();
 			}
 		} else {
-			if (playerNum < 4) {
+			if (playerNum < 5) {
 				// Players 1-4 in coop setting use dpad down to action
 				if (Input.GetAxisRaw ("Action_p" + playerNum) > 0) {
 					if (!dpadPressed) {

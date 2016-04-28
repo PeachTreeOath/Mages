@@ -137,7 +137,7 @@ public class Arrow : MonoBehaviour
 			if (value >= 0) {
 				checkSprite.enabled = !checkSprite.enabled;
 				valueText.enabled = !valueText.enabled;
-				loadMgr.ReadyUp (playerNum, checkSprite.enabled);
+				loadMgr.ReadyUp (playerNum, checkSprite.enabled, weapons);
 			}
 			return;
 		}
@@ -160,7 +160,7 @@ public class Arrow : MonoBehaviour
 
 		SpriteRenderer tick = weapon.transform.Find ("tick" + playerNum).GetComponent<SpriteRenderer> ();
 		tick.enabled = !tick.enabled;
-		loadMgr.ReadyUp (playerNum, false);
+		loadMgr.ReadyUp (playerNum, false, weapons);
 		checkSprite.enabled = false;
 		valueText.enabled = true;
 	}

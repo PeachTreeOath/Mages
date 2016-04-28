@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LoadoutManager : MonoBehaviour
 {
@@ -17,11 +19,10 @@ public class LoadoutManager : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		GlobalObject global = GlobalObject.instance;
-		if (global == null) {
+		if (GlobalObject.instance == null) {
 			playerList [0] = true;
 		} else {
-			playerList = global.playerList;
+			playerList = GlobalObject.instance.playerList;
 		}
 		ShowPlayerUI ();
 
@@ -89,8 +90,11 @@ public class LoadoutManager : MonoBehaviour
 		return weaponMap [row, col];
 	}
 
-	public void ReadyUp (int player, bool ready)
+	public void ReadyUp (int player, bool ready, HashSet<string> weapons)
 	{
 		readyList [player - 1] = ready;
+		if (ready && GlobalObject.instance != null) {
+			GlobalObject.instance.weaponMap.Add (player - 1, weapons);
+		}
 	}
 }

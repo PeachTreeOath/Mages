@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class GlobalObject : MonoBehaviour {
+public class GlobalObject : MonoBehaviour
+{
 
 	public static GlobalObject instance;
 	public bool[] playerList = new bool[8];
+	public Dictionary<int,HashSet<string>> weaponMap = new Dictionary<int, HashSet<string>> ();
 
-	void Awake () {
+	void Awake ()
+	{
 		if (instance != null && instance != this) {
 			Destroy (gameObject);
 			return;
@@ -17,7 +21,8 @@ public class GlobalObject : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 }

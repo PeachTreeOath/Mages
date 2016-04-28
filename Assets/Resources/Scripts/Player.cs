@@ -43,7 +43,7 @@ public class Player : NetLifecycleObj
 		timeOfLastWeaponSwitch = Time.time;
 	}
 
-	public void AddWeapons(Weapon weapon)
+	public void AddWeapon(Weapon weapon)
 	{
 		weaponLoadout.Add (weapon);
 	}

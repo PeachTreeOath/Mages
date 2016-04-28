@@ -142,7 +142,7 @@ public class Arrow : MonoBehaviour
 			return;
 		}
 
-		LoadoutToggler weapon = loadMgr.GetWeapon (yPos, xPos);
+		LoadoutWeapon weapon = loadMgr.GetWeapon (yPos, xPos);
 		string wepName = weapon.name;
 		if (weapons.Contains (wepName)) {
 			weapons.Remove (wepName);

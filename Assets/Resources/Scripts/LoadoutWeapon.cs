@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LoadoutToggler : MonoBehaviour {
+public class LoadoutWeapon : MonoBehaviour {
 
 	public int value;
-
-//	private LoadoutManager mgr;
+	public string wepName;
 
 	// Use this for initialization
 	void Start () {
-		//mgr = GameObject.Find ("LoadoutManager").GetComponent<LoadoutManager>();
+		wepName = gameObject.name;	
 	}
 	
 	// Update is called once per frame

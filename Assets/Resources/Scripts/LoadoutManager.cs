@@ -8,10 +8,8 @@ public class LoadoutManager : MonoBehaviour
 
 	public int rows;
 	public int cols;
-	public LoadoutToggler[,] weaponMap;
+	public LoadoutWeapon[,] weaponMap;
 
-	private int points = 0;
-	//	private Text pointsText;
 	private Text warningText;
 	public bool[] playerList = new bool[8];
 	private bool[] readyList = new bool[8];
@@ -27,15 +25,14 @@ public class LoadoutManager : MonoBehaviour
 		}
 		ShowPlayerUI ();
 
-		weaponMap = new LoadoutToggler[rows, cols];
-		weaponMap [0, 0] = GameObject.Find ("shotNormal").GetComponent<LoadoutToggler> ();
-		weaponMap [0, 1] = GameObject.Find ("shotTwin").GetComponent<LoadoutToggler> ();
-		weaponMap [0, 2] = GameObject.Find ("shotSpread").GetComponent<LoadoutToggler> ();
-		weaponMap [0, 3] = GameObject.Find ("shotBig").GetComponent<LoadoutToggler> ();
-		weaponMap [0, 4] = GameObject.Find ("eshotMine").GetComponent<LoadoutToggler> ();
-		weaponMap [0, 5] = GameObject.Find ("eshotBurst").GetComponent<LoadoutToggler> ();
+		weaponMap = new LoadoutWeapon[rows, cols];
+		weaponMap [0, 0] = GameObject.Find ("shotNormal").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 1] = GameObject.Find ("shotTwin").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 2] = GameObject.Find ("shotSpread").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 3] = GameObject.Find ("shotBig").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 4] = GameObject.Find ("eshotMine").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 5] = GameObject.Find ("eshotBurst").GetComponent<LoadoutWeapon> ();
 
-		//pointsText = GameObject.Find ("PointsText").GetComponent<Text> ();
 		warningText = GameObject.Find ("Warning").GetComponent<Text> ();
 	}
 	
@@ -87,7 +84,7 @@ public class LoadoutManager : MonoBehaviour
 		SceneManager.LoadScene ("Game");
 	}
 
-	public LoadoutToggler GetWeapon (int row, int col)
+	public LoadoutWeapon GetWeapon (int row, int col)
 	{
 		return weaponMap [row, col];
 	}

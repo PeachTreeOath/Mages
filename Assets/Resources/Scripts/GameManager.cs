@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
 
 		CreatePlayers ();
 	}
-		
+
 	// Update is called once per frame
 	void Update ()
 	{
-	
+
 	}
 
 	// NOTE: This doesn't protect against players 5-8 solo playing, because you're a fool if you decide to only play with half a controller solo
@@ -57,7 +57,31 @@ public class GameManager : MonoBehaviour
 				player.soloPlay = true;
 			}
 		}
+		if (playerList [2]) {
+			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
+			Player player = obj.GetComponent<Player> ();
+			player.playerNum = 3;
 
-		//TODO Add support for rest of players
+			if (playerList [6]) {
+				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
+				Player player2 = obj.GetComponent<Player> ();
+				player2.playerNum = 7;
+			} else {
+				player.soloPlay = true;
+			}
+		}
+		if (playerList [3]) {
+			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
+			Player player = obj.GetComponent<Player> ();
+			player.playerNum = 4;
+
+			if (playerList [7]) {
+				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
+				Player player2 = obj.GetComponent<Player> ();
+				player2.playerNum = 8;
+			} else {
+				player.soloPlay = true;
+			}
+		}
 	}
 }

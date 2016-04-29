@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
+	private List<Player> playerObjList = new List<Player>();
 	private Dictionary<int,HashSet<string>> weaponMap;
 
 	private GameObject normalShot;
@@ -17,6 +18,17 @@ public class GameManager : MonoBehaviour
 	private GameObject circleNeg;
 	private GameObject firestickNeg;
 	private GameObject spreadNeg;
+
+	private Sprite normalShotIcon;
+	private Sprite twinShotIcon;
+	private Sprite spreadShotIcon;
+	private Sprite bigShotIcon;
+	private Sprite circleNegIcon;
+	private Sprite firestickNegIcon;
+	private Sprite spreadNegIcon;
+
+	public float timeForWeaponSwitches = 10f;
+	private float timeOfLastWeaponSwitch;
 
 	// Use this for initialization
 	void Start ()
@@ -28,16 +40,21 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-	//	playerList [1] = true;
+		//	playerList [1] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();
+
+		timeOfLastWeaponSwitch = Time.time;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
-
+		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
+			SwitchWeapons ();
+			timeOfLastWeaponSwitch = Time.time;
+		}
 	}
 
 	// NOTE: This doesn't protect against players 5-8 solo playing, because you're a fool if you decide to only play with half a controller solo
@@ -111,9 +128,34 @@ public class GameManager : MonoBehaviour
 		twinShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponDoubleLaser");
 		spreadShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponSpread");
 		bigShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponBig");
-		circleNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponSingle");
+		circleNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponCircle");
 		firestickNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegFirestick");
 		spreadNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegSpread");
+
+		normalShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotNormal");
+		twinShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotTwin");
+		spreadShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotSpread");
+		bigShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotBig");
+		//circleNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponSingle");
+		//firestickNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegFirestick");
+		//spreadNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegSpread");
+
+	}
+
+	private Sprite GetWeaponSprite (string name)
+	{
+		switch (name) {
+		case "WeaponSingle(Clone)":
+			return normalShotIcon;
+		case "WeaponDoubleLaser(Clone)":
+			return twinShotIcon;
+		case "WeaponSpread(Clone)":
+			return spreadShotIcon;
+		case "WeaponBig(Clone)":
+			return bigShotIcon;
+		}
+
+		return null;
 	}
 
 	private void AttachWeapons (Player player)
@@ -150,6 +192,14 @@ public class GameManager : MonoBehaviour
 					player.AddWeapon (newWep);
 				}
 			}
+		}
+		playerObjList.Add (player);
+	}
+
+	private void SwitchWeapons ()
+	{
+		foreach (Player player in playerObjList) {
+			player.SwitchWeapon ();
 		}
 	}
 }

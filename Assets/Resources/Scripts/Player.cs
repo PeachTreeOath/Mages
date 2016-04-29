@@ -18,7 +18,6 @@ public class Player : NetLifecycleObj
 	public bool initDone = false;
 	public float speed = 0;
 	public float timeToDie = 2.0f;
-	public float timeForWeaponSwitches = 10f;
 	public List<Weapon> weaponLoadout = new List<Weapon> ();
 
 	private float deathStateTime;
@@ -27,8 +26,6 @@ public class Player : NetLifecycleObj
 	private const float UNCONSCIOUS_TIME = 2.0f;
 	private const float EXPLODE_TIME = 2.0f;
 	private Renderer rend;
-	private float timeOfLastWeaponSwitch;
-	private int currentWeaponIndex = 0;
 	private Weapon currentWeapon;
 
 	void Start ()
@@ -37,73 +34,17 @@ public class Player : NetLifecycleObj
 		Debug.Log ("Player Start called");
 		SpawnPlayer ();
 
-		Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
+		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+		Weapon nextWeapon = weaponLoadout [rand];
 		ToggleBarrels (nextWeapon, true);
 		currentWeapon = nextWeapon;
-		timeOfLastWeaponSwitch = Time.time;
-	}
-
-	public void AddWeapon (Weapon weapon)
-	{
-		ToggleBarrels (weapon, false);
-		weapon.transform.SetParent (this.transform);
-		weaponLoadout.Add (weapon);
-	}
-
-	private void ToggleBarrels(Weapon weapon, bool enable)
-	{
-		Shoot[] barrels = weapon.GetComponentsInChildren<Shoot> ();
-		foreach (Shoot barrel in barrels) {
-			barrel.enabled = enable;
-		}
-	}
-
-	//Client side code only
-	public void SpawnPlayer ()
-	{
-		Debug.Log ("in spawn player code");
-		/*  if (!isLocalPlayer) {
-            Debug.LogError("Tried to call spawnPlayer from non-local client");
-            return;
-        }*/
-		playerState = PlayerState.SPAWNING;
-		deathState = DeathState.STARTING;
-		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
-		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
-		gameObject.transform.SetParent (parent.transform, false);
-		initDone = true;
-		Debug.Log ("Player init done");
-		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
 	}
 
 	void Update ()
 	{
-		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
-			//Remove existing weapon
-			Debug.Log ("Removing existing weapon.");
-			ToggleBarrels (currentWeapon, false);
-
-			if (currentWeaponIndex == weaponLoadout.Count - 1) {
-				currentWeaponIndex = 0;
-			} else {
-				currentWeaponIndex++;
-			}
-			Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
-			ToggleBarrels (nextWeapon, true);
-			currentWeapon = nextWeapon;
-
-			timeOfLastWeaponSwitch = Time.time;
-		}
 		if (!initDone) {
 			return;
 		}
-		/*
-        //Only client code from here
-        if (!isLocalPlayer || !isClient) {
-            return;
-        }
-		*/
-		//Debug.Log("Player state is " + playerState);
 
 		switch (playerState) {
 		case PlayerState.SPAWNING:
@@ -142,18 +83,12 @@ public class Player : NetLifecycleObj
 		}
 	}
 
-
 	void LateUpdate ()
 	{
 		if (!initDone) {
 			return;
 		}
-		/*
-        if (!isLocalPlayer) {
-            return;
-        }
-*/
-		// if (isClient) {
+
 		if (transform.position.x < -8.5f) {
 			transform.position = new Vector2 (-8.5f, transform.position.y);
 		} else if (transform.position.x > 8.5f) {
@@ -165,7 +100,43 @@ public class Player : NetLifecycleObj
 		} else if (transform.position.y > 4.5f) {
 			transform.position = new Vector2 (transform.position.x, 4.5f);
 		}
-		//  }
+	}
+
+	public void AddWeapon (Weapon weapon)
+	{
+		ToggleBarrels (weapon, false);
+		weapon.transform.SetParent (this.transform);
+		weaponLoadout.Add (weapon);
+	}
+
+	private void ToggleBarrels (Weapon weapon, bool enable)
+	{
+		Shoot[] barrels = weapon.GetComponentsInChildren<Shoot> ();
+		foreach (Shoot barrel in barrels) {
+			barrel.enabled = enable;
+		}
+	}
+
+	public void SpawnPlayer ()
+	{
+		playerState = PlayerState.SPAWNING;
+		deathState = DeathState.STARTING;
+		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
+		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
+		gameObject.transform.SetParent (parent.transform, false);
+		initDone = true;
+		Debug.Log ("Player init done");
+		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
+	}
+
+	public void SwitchWeapon ()
+	{
+		ToggleBarrels (currentWeapon, false);
+
+		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+		Weapon nextWeapon = weaponLoadout [rand];
+		ToggleBarrels (nextWeapon, true);
+		currentWeapon = nextWeapon;
 	}
 
 	public override void endLife ()

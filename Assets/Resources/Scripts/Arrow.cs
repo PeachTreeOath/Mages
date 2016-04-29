@@ -134,11 +134,11 @@ public class Arrow : MonoBehaviour
 	private void ToggleWeapon ()
 	{
 		if (inReadyPosition) {
-			if (value >= 0) {
+			//TODO REMOVE COMMENTS if (value >= 0) {
 				checkSprite.enabled = !checkSprite.enabled;
 				valueText.enabled = !valueText.enabled;
 				loadMgr.ReadyUp (playerNum, checkSprite.enabled, weapons);
-			}
+			//}
 			return;
 		}
 

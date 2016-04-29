@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &135606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 424516}
+  - 212: {fileID: 21234376}
+  m_Layer: 12
+  m_Name: WeaponIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &158606
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,6 +54,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &424516
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 484116}
+  m_RootOrder: 1
 --- !u!4 &428360
 Transform:
   m_ObjectHideFlags: 1
@@ -61,6 +89,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428360}
+  - {fileID: 424516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!58 &5844592
@@ -147,14 +176,7 @@ MonoBehaviour:
   initDone: 0
   speed: 4
   timeToDie: 2
-  timeForWeaponSwitches: 5
-  weaponLoadout:
-  - {fileID: 11446532, guid: d2d35011066cfcf4a8e7a0deaf899a7e, type: 2}
-  - {fileID: 11442506, guid: bab6aa037d3f56f48aa7ebe6ac066b46, type: 2}
-  - {fileID: 11439446, guid: d313840f301360540ae94e9eac2b7315, type: 2}
-  - {fileID: 11473008, guid: 7c1fc538fb12e8d4ab8e2216fe4b6700, type: 2}
-  - {fileID: 11452190, guid: 25456070d5f10234ca07a3e3029b2ea9, type: 2}
-  - {fileID: 11429658, guid: 7512dd8fe2ab0dc4c93e586c127e5860, type: 2}
+  weaponLoadout: []
 --- !u!212 &21229660
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -182,6 +204,36 @@ SpriteRenderer:
   m_SortingLayerID: -354108773
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eb20377dec594504480e975c9ebdfb16, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!212 &21234376
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135606}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: cb2db9b2b2ba5f049b6171fa86ca822f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

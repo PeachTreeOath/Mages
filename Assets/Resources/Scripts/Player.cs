@@ -7,18 +7,15 @@ using System.Collections.Generic;
 public class Player : NetLifecycleObj
 {
 
-	//[SyncVar]
 	public int playerNum;
 	public bool soloPlay;
 	// 1 person on controller instead of 2
 	public PlayerState playerState;
-	//[SyncVar]
 	public DeathState deathState;
 	//not applicable until player is in DYING state
 	public bool initDone = false;
 	public float speed = 0;
 	public float timeToDie = 2.0f;
-	public float timeForWeaponSwitches = 10f;
 	public List<Weapon> weaponLoadout = new List<Weapon> ();
 
 	private float deathStateTime;
@@ -26,79 +23,31 @@ public class Player : NetLifecycleObj
 	private const float SPAWNING_TIME = 1.0f;
 	private const float UNCONSCIOUS_TIME = 2.0f;
 	private const float EXPLODE_TIME = 2.0f;
+	private const float WEAPON_SWITCH_DELAY = 2.0f;
+	private const float WEAPON_SWITCH_TIME = 1.0f;
 	private Renderer rend;
-	private float timeOfLastWeaponSwitch;
-	private int currentWeaponIndex = 0;
 	private Weapon currentWeapon;
+	private Weapon nextWeapon;
+	private GameManager gameMgr;
+	private SpriteRenderer nextWeaponIcon;
 
 	void Start ()
 	{
-		//generally this is called when the scene is first loaded
-		Debug.Log ("Player Start called");
+		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager>();
+		nextWeaponIcon = transform.Find ("WeaponIcon").GetComponent<SpriteRenderer>();
 		SpawnPlayer ();
 
-		Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
-		currentWeapon = (Weapon)Instantiate (nextWeapon, transform.position, transform.rotation);
-		currentWeapon.transform.parent = this.transform;
-		timeOfLastWeaponSwitch = Time.time;
-	}
-
-	//Client side code only
-	public void SpawnPlayer ()
-	{
-		Debug.Log ("in spawn player code");
-		/*  if (!isLocalPlayer) {
-            Debug.LogError("Tried to call spawnPlayer from non-local client");
-            return;
-        }*/
-		playerState = PlayerState.SPAWNING;
-		deathState = DeathState.STARTING;
-		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
-		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
-		gameObject.transform.SetParent (parent.transform, false);
-		initDone = true;
-		Debug.Log ("Player init done");
-		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
-	}
-
-	public void OnStartLocalPlayer ()
-	{
-		Debug.Log ("OnStartLocalPlayer called");
-		GetComponent<SpriteRenderer> ().material.color = Color.cyan;
+		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+		nextWeapon = weaponLoadout [rand];
+		ToggleBarrels (nextWeapon, true);
+		currentWeapon = nextWeapon;
 	}
 
 	void Update ()
 	{
-		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
-			//Remove existing weapon
-			Debug.Log ("Removing existing weapon.");
-			//Weapon currentWeapon = weaponLoadout[currentWeaponIndex];
-
-			if (currentWeapon != null) {
-				GameObject go = currentWeapon.gameObject;
-				Destroy (go);
-			}
-			if (currentWeaponIndex == weaponLoadout.Count - 1) {
-				currentWeaponIndex = 0;
-			} else {
-				currentWeaponIndex++;
-			}
-			Weapon nextWeapon = weaponLoadout [currentWeaponIndex];
-			currentWeapon = (Weapon)Instantiate (nextWeapon, transform.position, transform.rotation);
-			currentWeapon.transform.parent = this.transform;
-
-			timeOfLastWeaponSwitch = Time.time;
-		}
 		if (!initDone) {
 			return;
 		}
-		/*
-        //Only client code from here
-        if (!isLocalPlayer || !isClient) {
-            return;
-        }
-		*/
-		//Debug.Log("Player state is " + playerState);
 
 		switch (playerState) {
 		case PlayerState.SPAWNING:
@@ -137,18 +86,12 @@ public class Player : NetLifecycleObj
 		}
 	}
 
-
 	void LateUpdate ()
 	{
 		if (!initDone) {
 			return;
 		}
-		/*
-        if (!isLocalPlayer) {
-            return;
-        }
-*/
-		// if (isClient) {
+
 		if (transform.position.x < -8.5f) {
 			transform.position = new Vector2 (-8.5f, transform.position.y);
 		} else if (transform.position.x > 8.5f) {
@@ -160,7 +103,69 @@ public class Player : NetLifecycleObj
 		} else if (transform.position.y > 4.5f) {
 			transform.position = new Vector2 (transform.position.x, 4.5f);
 		}
-		//  }
+	}
+
+	public void AddWeapon (Weapon weapon)
+	{
+		ToggleBarrels (weapon, false);
+		weapon.transform.SetParent (this.transform);
+		weaponLoadout.Add (weapon);
+	}
+
+	private void ToggleBarrels (Weapon weapon, bool enable)
+	{
+		Shoot[] barrels = weapon.GetComponentsInChildren<Shoot> ();
+		foreach (Shoot barrel in barrels) {
+			barrel.enabled = enable;
+		}
+	}
+
+	public void SpawnPlayer ()
+	{
+		playerState = PlayerState.SPAWNING;
+		deathState = DeathState.STARTING;
+		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
+		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
+		gameObject.transform.SetParent (parent.transform, false);
+		initDone = true;
+		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
+	}
+
+	// Only previews next weapon icon
+	public void SwitchWeapon ()
+	{
+		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+		nextWeapon = weaponLoadout [rand];
+		Sprite nextSpr = gameMgr.GetWeaponSprite (nextWeapon.name);
+		nextWeaponIcon.sprite = nextSpr;
+		nextWeaponIcon.enabled = true;
+		Invoke ("StartWeaponFlash", WEAPON_SWITCH_DELAY);
+	}
+
+	private void StartWeaponFlash()
+	{
+		StartCoroutine (FlashIcon (WEAPON_SWITCH_TIME, 0.05f));
+	}
+
+	IEnumerator FlashIcon (float time, float intervalTime)
+	{
+		float doneTime = Time.time + time;
+		while (Time.time < doneTime) {
+			nextWeaponIcon.enabled = !nextWeaponIcon.enabled;
+			yield return new WaitForSeconds (intervalTime);
+		}
+		nextWeaponIcon.enabled = false;
+		CompleteSwitchWeapon ();
+	}
+
+	// Actually swaps weapons
+	private void CompleteSwitchWeapon()
+	{
+		ToggleBarrels (currentWeapon, false);
+
+
+		ToggleBarrels (nextWeapon, true);
+		currentWeapon = nextWeapon;
 	}
 
 	public override void endLife ()
@@ -175,7 +180,6 @@ public class Player : NetLifecycleObj
 		CmdServerRespawn ();
 	}
 
-	//  [Command] //enter server mode
 	private void CmdServerRespawn ()
 	{
 		serverRespawn ();
@@ -184,7 +188,6 @@ public class Player : NetLifecycleObj
 	//This is called on collision trigger by the head
 	public void Die ()
 	{
-		// if (isClient) {
 		//Can only die from the neutral state currently
 		if (playerState == PlayerState.NEUTRAL) {
 			Debug.Log ("Carrying on with Killing player.");
@@ -193,10 +196,8 @@ public class Player : NetLifecycleObj
 		} else {
 			Debug.Log ("Don't need to die, we aren't in neutral state.");
 		}
-		// }
 	}
 
-	// [Command] //run on server (called from client, obviously)
 	private void CmdDie ()
 	{
 		//time transitions between states are handled in update
@@ -218,10 +219,6 @@ public class Player : NetLifecycleObj
 	//This code is executed on the server only
 	private void updateDeathState ()
 	{
-		/*  if (!isServer) {
-            Debug.LogError("Shits broke, this should only be called in a server context");
-        }*/
-		//Debug.Log("Updating death state");
 		//this needs work
 		float timeElapsed = Time.time - deathStateTime;
 		if (timeElapsed < timeToDie) {
@@ -243,7 +240,6 @@ public class Player : NetLifecycleObj
 	//[ClientRpc]
 	private void RpcRespawn ()
 	{
-		//if (isLocalPlayer && deathState == DeathState.FINISHED) {
 		if (deathState == DeathState.FINISHED) {
 			deathState = DeathState.STARTING;
 			initDone = false;

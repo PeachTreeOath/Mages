@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 417312}
   - 114: {fileID: 11452904}
   m_Layer: 12
-  m_Name: WeaponNegCircle2
+  m_Name: WeaponNegCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   angularVelocity: 60
   type: 2
   isPassable: 0
+  thetaOffset: 0
 --- !u!114 &11452904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +168,7 @@ MonoBehaviour:
   angularVelocity: 60
   type: 2
   isPassable: 0
+  thetaOffset: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -58,7 +58,7 @@ public class Arrow : MonoBehaviour
 		float vMove = 0;
 
 		// Only players 1-4 are allowed to solo controllers
-		if (soloPlay) {
+		if (soloPlay && playerNum < 5) {
 			hMove = Input.GetAxis ("Horizontal_p" + playerNum + "_solo");
 			vMove = Input.GetAxis ("Vertical_p" + playerNum + "_solo");
 		} else {
@@ -106,12 +106,12 @@ public class Arrow : MonoBehaviour
 			isMoving = false;
 		}
 	
-		if (soloPlay) {
+		if (soloPlay && playerNum < 5) {
 			if (Input.GetButtonDown ("Action_p" + playerNum + "_solo")) {
 				ToggleWeapon ();
 			}
 		} else {
-			if (playerNum < 4) {
+			if (playerNum < 5) {
 				// Players 1-4 in coop setting use dpad down to action
 				if (Input.GetAxisRaw ("Action_p" + playerNum) > 0) {
 					if (!dpadPressed) {
@@ -134,15 +134,15 @@ public class Arrow : MonoBehaviour
 	private void ToggleWeapon ()
 	{
 		if (inReadyPosition) {
-			if (value >= 0) {
+			//TODO REMOVE COMMENTS if (value >= 0) {
 				checkSprite.enabled = !checkSprite.enabled;
 				valueText.enabled = !valueText.enabled;
-				loadMgr.ReadyUp (playerNum, checkSprite.enabled);
-			}
+				loadMgr.ReadyUp (playerNum, checkSprite.enabled, weapons);
+			//}
 			return;
 		}
 
-		LoadoutToggler weapon = loadMgr.GetWeapon (yPos, xPos);
+		LoadoutWeapon weapon = loadMgr.GetWeapon (yPos, xPos);
 		string wepName = weapon.name;
 		if (weapons.Contains (wepName)) {
 			weapons.Remove (wepName);
@@ -160,7 +160,7 @@ public class Arrow : MonoBehaviour
 
 		SpriteRenderer tick = weapon.transform.Find ("tick" + playerNum).GetComponent<SpriteRenderer> ();
 		tick.enabled = !tick.enabled;
-		loadMgr.ReadyUp (playerNum, false);
+		loadMgr.ReadyUp (playerNum, false, weapons);
 		checkSprite.enabled = false;
 		valueText.enabled = true;
 	}

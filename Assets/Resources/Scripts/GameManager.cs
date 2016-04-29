@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-		//	playerList [1] = true;
+			playerList [1] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();
@@ -132,17 +132,17 @@ public class GameManager : MonoBehaviour
 		firestickNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegFirestick");
 		spreadNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegSpread");
 
-		normalShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotNormal");
-		twinShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotTwin");
-		spreadShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotSpread");
-		bigShotIcon = Resources.Load<Sprite> ("Prefabs/Textures/shotBig");
+		normalShotIcon = Resources.Load<Sprite> ("Textures/shotNormal");
+		twinShotIcon = Resources.Load<Sprite> ("Textures/shotTwin");
+		spreadShotIcon = Resources.Load<Sprite> ("Textures/shotSpread");
+		bigShotIcon = Resources.Load<Sprite> ("Textures/shotBig");
 		//circleNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponSingle");
 		//firestickNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegFirestick");
 		//spreadNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegSpread");
 
 	}
 
-	private Sprite GetWeaponSprite (string name)
+	public Sprite GetWeaponSprite (string name)
 	{
 		switch (name) {
 		case "WeaponSingle(Clone)":
@@ -162,8 +162,10 @@ public class GameManager : MonoBehaviour
 	{
 		// Debugging, just attach something
 		if (weaponMap == null) {
-			Weapon newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
-			player.AddWeapon (newWep);
+			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 		} else {
 			// When adding a new weapon, map the name of the shot in the Loadout screen to the prefabs that are loaded here
 			foreach (string wepName in weaponMap[player.playerNum - 1]) {

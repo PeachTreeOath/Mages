@@ -7,12 +7,10 @@ using System.Collections.Generic;
 public class Player : NetLifecycleObj
 {
 
-	//[SyncVar]
 	public int playerNum;
 	public bool soloPlay;
 	// 1 person on controller instead of 2
 	public PlayerState playerState;
-	//[SyncVar]
 	public DeathState deathState;
 	//not applicable until player is in DYING state
 	public bool initDone = false;
@@ -25,17 +23,22 @@ public class Player : NetLifecycleObj
 	private const float SPAWNING_TIME = 1.0f;
 	private const float UNCONSCIOUS_TIME = 2.0f;
 	private const float EXPLODE_TIME = 2.0f;
+	private const float WEAPON_SWITCH_DELAY = 2.0f;
+	private const float WEAPON_SWITCH_TIME = 1.0f;
 	private Renderer rend;
 	private Weapon currentWeapon;
+	private Weapon nextWeapon;
+	private GameManager gameMgr;
+	private SpriteRenderer nextWeaponIcon;
 
 	void Start ()
 	{
-		//generally this is called when the scene is first loaded
-		Debug.Log ("Player Start called");
+		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager>();
+		nextWeaponIcon = transform.Find ("WeaponIcon").GetComponent<SpriteRenderer>();
 		SpawnPlayer ();
 
 		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
-		Weapon nextWeapon = weaponLoadout [rand];
+		nextWeapon = weaponLoadout [rand];
 		ToggleBarrels (nextWeapon, true);
 		currentWeapon = nextWeapon;
 	}
@@ -125,16 +128,42 @@ public class Player : NetLifecycleObj
 		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
 		gameObject.transform.SetParent (parent.transform, false);
 		initDone = true;
-		Debug.Log ("Player init done");
 		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
 	}
 
+	// Only previews next weapon icon
 	public void SwitchWeapon ()
+	{
+		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+		nextWeapon = weaponLoadout [rand];
+		Sprite nextSpr = gameMgr.GetWeaponSprite (nextWeapon.name);
+		nextWeaponIcon.sprite = nextSpr;
+		nextWeaponIcon.enabled = true;
+		Invoke ("StartWeaponFlash", WEAPON_SWITCH_DELAY);
+	}
+
+	private void StartWeaponFlash()
+	{
+		StartCoroutine (FlashIcon (WEAPON_SWITCH_TIME, 0.05f));
+	}
+
+	IEnumerator FlashIcon (float time, float intervalTime)
+	{
+		float doneTime = Time.time + time;
+		while (Time.time < doneTime) {
+			nextWeaponIcon.enabled = !nextWeaponIcon.enabled;
+			yield return new WaitForSeconds (intervalTime);
+		}
+		nextWeaponIcon.enabled = false;
+		CompleteSwitchWeapon ();
+	}
+
+	// Actually swaps weapons
+	private void CompleteSwitchWeapon()
 	{
 		ToggleBarrels (currentWeapon, false);
 
-		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
-		Weapon nextWeapon = weaponLoadout [rand];
+
 		ToggleBarrels (nextWeapon, true);
 		currentWeapon = nextWeapon;
 	}
@@ -151,7 +180,6 @@ public class Player : NetLifecycleObj
 		CmdServerRespawn ();
 	}
 
-	//  [Command] //enter server mode
 	private void CmdServerRespawn ()
 	{
 		serverRespawn ();
@@ -160,7 +188,6 @@ public class Player : NetLifecycleObj
 	//This is called on collision trigger by the head
 	public void Die ()
 	{
-		// if (isClient) {
 		//Can only die from the neutral state currently
 		if (playerState == PlayerState.NEUTRAL) {
 			Debug.Log ("Carrying on with Killing player.");
@@ -169,10 +196,8 @@ public class Player : NetLifecycleObj
 		} else {
 			Debug.Log ("Don't need to die, we aren't in neutral state.");
 		}
-		// }
 	}
 
-	// [Command] //run on server (called from client, obviously)
 	private void CmdDie ()
 	{
 		//time transitions between states are handled in update
@@ -194,10 +219,6 @@ public class Player : NetLifecycleObj
 	//This code is executed on the server only
 	private void updateDeathState ()
 	{
-		/*  if (!isServer) {
-            Debug.LogError("Shits broke, this should only be called in a server context");
-        }*/
-		//Debug.Log("Updating death state");
 		//this needs work
 		float timeElapsed = Time.time - deathStateTime;
 		if (timeElapsed < timeToDie) {
@@ -219,7 +240,6 @@ public class Player : NetLifecycleObj
 	//[ClientRpc]
 	private void RpcRespawn ()
 	{
-		//if (isLocalPlayer && deathState == DeathState.FINISHED) {
 		if (deathState == DeathState.FINISHED) {
 			deathState = DeathState.STARTING;
 			initDone = false;

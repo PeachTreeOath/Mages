@@ -55,7 +55,8 @@ public class Boss : MonoBehaviour
                     barrels = GetComponentsInChildren<Barrel>();
                     foreach (Barrel barrel in barrels)
                     {
-                        barrel.gameObject.SetActive(true);
+                        //barrel.gameObject.SetActive(true);
+                        barrel.FireOn();
                     }
                     isFiring = true;
                 }
@@ -66,8 +67,9 @@ public class Boss : MonoBehaviour
                     barrels = GetComponentsInChildren<Barrel>();
                     foreach (Barrel barrel in barrels)
                     {
-                        disabledBarrels.Add(barrel);
-                        barrel.gameObject.SetActive(false);
+                        //disabledBarrels.Add(barrel);
+                        //barrel.gameObject.SetActive(false);
+                        barrel.FireOff();
                     }
                     isFiring = false;
                 }
@@ -79,19 +81,22 @@ public class Boss : MonoBehaviour
                     barrels = GetComponentsInChildren<Barrel>();
                     foreach (Barrel barrel in barrels)
                     {
-                        disabledBarrels.Add(barrel);
-                        barrel.gameObject.SetActive(false);
+                        //disabledBarrels.Add(barrel);
+                        barrel.FireOff();
+                        //barrel.gameObject.SetActive(false);
                     }
                     isFiring = false;
                 }
                 if (doneMoving && !isFiring)
                 {
                     //now at location, commence firing
-                    foreach (Barrel barrel in disabledBarrels)
+                    barrels = GetComponentsInChildren<Barrel>();
+                    foreach (Barrel barrel in barrels)
                     {
-                        barrel.gameObject.SetActive(true);
+                        barrel.FireOn();
+                        //barrel.gameObject.SetActive(true);
                     }
-                    disabledBarrels.Clear();
+                    //disabledBarrels.Clear();
                     isFiring = true;
                 }
                 break;

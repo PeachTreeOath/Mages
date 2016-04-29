@@ -6,7 +6,7 @@ public class ShootSnake : Shoot
 	public Vector2 topLeftShotBound;
 	public Vector2 bottomRightShotBound;
 
-	protected override void CmdFire ()
+	protected override void FireShot ()
 	{
 		BulletSnake bullet = ((GameObject)Instantiate (bulletPrefab, transform.position, transform.rotation)).GetComponent<BulletSnake> ();
 		bullet.SetSpeed (speed, angularSpeed, angularDrag);
@@ -28,7 +28,7 @@ public class ShootSnake : Shoot
 
 	public void RegularFire()
 	{
-		base.CmdFire ();
+		base.FireShot ();
 	}
 
 	private Vector2 ChooseNextShotLocation ()

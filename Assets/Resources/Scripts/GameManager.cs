@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-			playerList [1] = true;
+			//playerList [1] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();

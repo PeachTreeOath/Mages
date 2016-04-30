@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
 	private Image hpMeterImage;
 	private bool pauseStarted = false;
 	private float totalHp;
-    private int currentPhaseIndex = 0;
+    protected int currentPhaseIndex = 0;
     private BossPhase currentPhase;
     private bool doneMoving = false;
     private Vector3 startingPosition; //remembers the position of the boss when the phase changes
@@ -27,7 +27,7 @@ public class Boss : MonoBehaviour
     
 
 	// Use this for initialization
-	void Start ()
+	protected virtual void Start ()
 	{
 		startTime = Time.time;
 		totalHp = hp;
@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
     }
 	
 	// Update is called once per frame
-	void Update ()
+	protected virtual void Update ()
 	{
 
         //Execute firing strategy
@@ -180,8 +180,6 @@ public class Boss : MonoBehaviour
                 doneMoving = false;
             }
         }
-
-
 	}
 
 	void OnTriggerEnter2D (Collider2D col)

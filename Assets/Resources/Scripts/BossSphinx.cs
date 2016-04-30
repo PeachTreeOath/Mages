@@ -86,6 +86,7 @@ public class BossSphinx : Boss
 				while (fakeAnswers.Contains (fakeAnswer)) {
 					fakeAnswer = answer + UnityEngine.Random.Range (-5, 5);
 				}
+				fakeAnswers.Add (fakeAnswer);
 				answerSlots [i].text = fakeAnswer + "";
 			}
 

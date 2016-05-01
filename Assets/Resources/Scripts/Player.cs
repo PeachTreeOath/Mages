@@ -94,12 +94,7 @@ public class Player : NetLifecycleObj
 			}
 			break;
 		case PlayerState.REVIVING:
-			reviveTimeElapsed += Time.deltaTime; // Didn't multiply by time scaling cuz this looks good as is
-			travelTimeElapsed += Time.deltaTime;
-			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, travelTimeElapsed);
-			if (reviveTimeElapsed >= currTimeToRevive) {
-				SpawnPlayer ();
-			}
+			// Handled in lateupdate since the reviver player might be moving
 			break;
 		case PlayerState.DYING:
 			updateDeathState ();
@@ -114,6 +109,15 @@ public class Player : NetLifecycleObj
 	{
 		if (!initDone) {
 			return;
+		}
+
+		if (playerState == PlayerState.REVIVING) {
+			reviveTimeElapsed += Time.deltaTime; // Didn't multiply by time scaling cuz this looks good as is
+			travelTimeElapsed += Time.deltaTime;
+			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, travelTimeElapsed);
+			if (reviveTimeElapsed >= currTimeToRevive) {
+				SpawnPlayer ();
+			}
 		}
 
 		if (transform.position.x < -8.5f) {

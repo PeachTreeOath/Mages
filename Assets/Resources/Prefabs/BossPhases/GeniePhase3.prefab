@@ -1,118 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &153370
+--- !u!1 &110492
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 429568}
-  - 114: {fileID: 11445160}
+  - 4: {fileID: 429464}
+  - 114: {fileID: 11491906}
   m_Layer: 0
-  m_Name: GeniePhase2
+  m_Name: BarrelRain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &175514
+--- !u!1 &117714
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 489818}
-  - 114: {fileID: 11416256}
-  - 50: {fileID: 5060144}
+  - 4: {fileID: 476050}
+  - 114: {fileID: 11429682}
   m_Layer: 0
-  m_Name: BarrelWheel
+  m_Name: GeniePhase3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &429568
+--- !u!4 &429464
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 489818}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &489818
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175514}
+  m_GameObject: {fileID: 110492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 429568}
+  m_Father: {fileID: 476050}
   m_RootOrder: 0
---- !u!50 &5060144
-Rigidbody2D:
-  serializedVersion: 2
+--- !u!4 &476050
+Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175514}
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &11416256
+  m_GameObject: {fileID: 117714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 429464}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11429682
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee0e8d91f5516964e8e515adc71e5c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 159298, guid: 597ba9a2f8effea46bf4c105c27592e3, type: 2}
-  speed: 1
-  type: 1
-  isPassable: 1
-  shotDelay: 0
-  burstTime: 3
-  burstDelay: 2
-  perturbation: 0
-  radius: 9
-  numberOfBullets: 12
-  angularVelocity: 30
-  thetaOffset: 90
---- !u!114 &11445160
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153370}
+  m_GameObject: {fileID: 117714}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9a56db2880199e45b0a1760a9a41051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoints:
+  - {fileID: 416866, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 407390, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 483510, guid: c766471770eb64e43aefe1d800115157, type: 2}
   - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
-  movementStrategy: 1
-  fireStrategy: 1
+  - {fileID: 484692, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  - {fileID: 427058, guid: c766471770eb64e43aefe1d800115157, type: 2}
+  movementStrategy: 2
+  fireStrategy: 0
+--- !u!114 &11491906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d770006d173cc845aecbcccd23f003d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  speed: 1
+  type: 0
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 1
+  burstDelay: 3
+  perturbation: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -122,5 +105,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 153370}
+  m_RootGameObject: {fileID: 117714}
   m_IsPrefabParent: 1

@@ -92,31 +92,105 @@ public class BossSphinx : Boss
 			answerBlocks [i].GetComponent<AnswerBlock> ().ToggleEnable (false);
 		}
 
+		int answerSlot = UnityEngine.Random.Range (0, 4);
+		Text answerText = answerSlots [answerSlot];
+		answerBlocks [answerSlot].GetComponent<AnswerBlock> ().ToggleEnable (true);
+
 		switch (currentPhaseIndex) {
 		case 0:
-			int num1 = UnityEngine.Random.Range (0, 100);
-			int num2 = UnityEngine.Random.Range (0, 100);
+			{
+				int num1 = UnityEngine.Random.Range (0, 100);
+				int num2 = UnityEngine.Random.Range (0, 100);
 
-			int answerSlot = UnityEngine.Random.Range (0, 4);
-			Text answerText = answerSlots [answerSlot];
-			answerBlocks [answerSlot].GetComponent<AnswerBlock> ().ToggleEnable (true);
-			int answer = num1 + num2;
-			fakeAnswers.Add (answer);
-			question.text = num1 + " + " + num2;
-			answerText.text = answer + "";
+				int answer = num1 + num2;
+				fakeAnswers.Add (answer);
+				question.text = num1 + " + " + num2;
+				answerText.text = answer + "";
 
-			for (int i = 0; i < 4; i++) {
-				if (i == answerSlot) {
-					continue;
+				for (int i = 0; i < 4; i++) {
+					if (i == answerSlot) {
+						continue;
+					}
+					int fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					while (fakeAnswers.Contains (fakeAnswer)) {
+						fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					}
+					fakeAnswers.Add (fakeAnswer);
+					answerSlots [i].text = fakeAnswer + "";
 				}
-				int fakeAnswer = answer + UnityEngine.Random.Range (-5, 5);
-				while (fakeAnswers.Contains (fakeAnswer)) {
-					fakeAnswer = answer + UnityEngine.Random.Range (-5, 5);
-				}
-				fakeAnswers.Add (fakeAnswer);
-				answerSlots [i].text = fakeAnswer + "";
 			}
+			break;
+		case 1:
+			{
+				int num1 = UnityEngine.Random.Range (2, 10);
+				int num2 = UnityEngine.Random.Range (2, 10);
+				int num3 = UnityEngine.Random.Range (1, 10);
 
+				int answer = num1 * num2 + num3;
+				fakeAnswers.Add (answer);
+				question.text = num1 + " x " + num2 + " + " + num3;
+				answerText.text = answer + "";
+
+				for (int i = 0; i < 4; i++) {
+					if (i == answerSlot) {
+						continue;
+					}
+					int fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					while (fakeAnswers.Contains (fakeAnswer)) {
+						fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					}
+					fakeAnswers.Add (fakeAnswer);
+					answerSlots [i].text = fakeAnswer + "";
+				}
+			}
+			break;
+		case 2:
+			{
+				int num1 = UnityEngine.Random.Range (2, 10);
+				int num2 = UnityEngine.Random.Range (2, 10);
+				int num3 = UnityEngine.Random.Range (1, 10);
+
+				int answer = num1 * num2 - num3;
+				fakeAnswers.Add (answer);
+				question.text = num1 + " x " + num2 + " - " + num3;
+				answerText.text = answer + "";
+
+				for (int i = 0; i < 4; i++) {
+					if (i == answerSlot) {
+						continue;
+					}
+					int fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					while (fakeAnswers.Contains (fakeAnswer)) {
+						fakeAnswer = answer + UnityEngine.Random.Range (-10, 11);
+					}
+					fakeAnswers.Add (fakeAnswer);
+					answerSlots [i].text = fakeAnswer + "";
+				}
+			}
+			break;
+		case 3:
+			{
+				int num1 = UnityEngine.Random.Range (2, 10);
+				int num2 = UnityEngine.Random.Range (2, 10);
+				int num3 = UnityEngine.Random.Range (2, 10);
+
+				int answer = num1 * num2 * num3;
+				fakeAnswers.Add (answer);
+				question.text = num1 + " x " + num2 + " x " + num3;
+				answerText.text = answer + "";
+
+				for (int i = 0; i < 4; i++) {
+					if (i == answerSlot) {
+						continue;
+					}
+					int fakeAnswer = answer + 10 * UnityEngine.Random.Range (-4, 5);
+					while (fakeAnswers.Contains (fakeAnswer)) {
+						fakeAnswer = answer + 10 * UnityEngine.Random.Range (-4, 5);
+					}
+					fakeAnswers.Add (fakeAnswer);
+					answerSlots [i].text = fakeAnswer + "";
+				}
+			}
 			break;
 		}
 
@@ -147,7 +221,7 @@ public class BossSphinx : Boss
 				deaths++;
 			}
 		}
-		currentShotDelay = Mathf.Clamp(currentShotDelay - deaths * wrongAnswerPenalty, 0.05f, 1f);
+		currentShotDelay = Mathf.Clamp (currentShotDelay - deaths * wrongAnswerPenalty, 0.05f, 1f);
 
 		Invoke ("AskQuestion", questionDelay);
 	}

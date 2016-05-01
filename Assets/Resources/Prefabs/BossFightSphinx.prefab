@@ -386,9 +386,12 @@ MonoBehaviour:
   hpCanvas: {fileID: 0}
   phases:
   - {fileID: 11417832, guid: f847d405e625a3e48b20d908246b440a, type: 2}
+  - {fileID: 11417832, guid: f847d405e625a3e48b20d908246b440a, type: 2}
+  - {fileID: 11417832, guid: f847d405e625a3e48b20d908246b440a, type: 2}
+  - {fileID: 11417832, guid: f847d405e625a3e48b20d908246b440a, type: 2}
   countdownSecs: 5
   wrongAnswerPenalty: 0.05
-  currentShotDelay: 1
+  currentShotDelay: 0.35
   questionDelay: 2
 --- !u!212 &21205708
 SpriteRenderer:

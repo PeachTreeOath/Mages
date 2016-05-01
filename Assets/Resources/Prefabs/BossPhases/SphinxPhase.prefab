@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 429994}
   - 114: {fileID: 11417832}
   m_Layer: 0
-  m_Name: SphinxPhase1
+  m_Name: SphinxPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

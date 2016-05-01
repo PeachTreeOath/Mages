@@ -156,14 +156,16 @@ public class Player : NetLifecycleObj
 		if (reviveSlot != null) {
 			reviveSlot.RemovePlayer ();
 			reviveSlot = null;
+		} else {
+			GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
+			gameObject.transform.SetParent (parent.transform, false);
+			gameObject.transform.position = parent.transform.position;
 		}
-
 		playerRevivingMe = null;
 		playerState = PlayerState.SPAWNING;
 		deathState = DeathState.STARTING;
 		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
-		GameObject parent = SpawnDelegate.getInstance ().getPlayerSpawnLocation (playerNum);
-		gameObject.transform.SetParent (parent.transform, false);
+
 		initDone = true;
 		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
 	}

@@ -14,4 +14,9 @@ public class ReviveSlot : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void RemovePlayer()
+	{
+		player = null;
+	}
 }

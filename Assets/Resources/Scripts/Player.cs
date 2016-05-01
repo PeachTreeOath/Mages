@@ -8,19 +8,23 @@ public class Player : NetLifecycleObj
 {
 
 	public int playerNum;
-	public bool soloPlay;
 	// 1 person on controller instead of 2
+	public bool soloPlay;
 	public PlayerState playerState;
-	public DeathState deathState;
 	//not applicable until player is in DYING state
+	public DeathState deathState;
 	public bool initDone = false;
 	public float speed = 0;
 	public float timeToDie = 2.0f;
 	public List<Weapon> weaponLoadout = new List<Weapon> ();
 	public float reviveDistance = 1f;
+	public float timeToRevive = 5f;
+	public float addlTimeToRevive = 3f;
 
+	// Revive time changes as player hops from carpet to carpet
+	private float currTimeToRevive;
+	private float reviveTimeElapsed;
 	private float deathStateTime;
-	private float reviveStateTime;
 
 	//used for several timings
 	private const float SPAWNING_TIME = 1.0f;
@@ -36,11 +40,13 @@ public class Player : NetLifecycleObj
 	private GameObject playerRevivingMe;
 	private ReviveSlot reviveSlot;
 	private Vector2 reviveActivatePosition;
+	private Head head;
 
 	void Start ()
 	{
 		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		nextWeaponIcon = transform.Find ("WeaponIcon").GetComponent<SpriteRenderer> ();
+		head = GetComponentInChildren<Head> ();
 		SpawnPlayer ();
 
 		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
@@ -58,7 +64,6 @@ public class Player : NetLifecycleObj
 		switch (playerState) {
 		case PlayerState.SPAWNING:
 		case PlayerState.NEUTRAL:
-		case PlayerState.INVINCIBLE:
 			float currSpeed = speed;
 			// Only players 1-4 are allowed to solo controllers
 			if (soloPlay) {
@@ -82,8 +87,11 @@ public class Player : NetLifecycleObj
 			}
 			break;
 		case PlayerState.REVIVING:
-			float reviveDelta = (Time.time - reviveStateTime) * 1f;
-			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, reviveDelta);
+			reviveTimeElapsed += Time.deltaTime; // Didn't multiply by time scaling cuz this looks good as is
+			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, reviveTimeElapsed);
+			if (reviveTimeElapsed >= currTimeToRevive) {
+				SpawnPlayer ();
+			}
 			break;
 		case PlayerState.DYING:
 			updateDeathState ();
@@ -130,6 +138,14 @@ public class Player : NetLifecycleObj
 
 	public void SpawnPlayer ()
 	{
+		currTimeToRevive = 0;
+		reviveTimeElapsed = 0;
+		if (reviveSlot != null) {
+			reviveSlot.RemovePlayer ();
+			reviveSlot = null;
+		}
+
+		playerRevivingMe = null;
 		playerState = PlayerState.SPAWNING;
 		deathState = DeathState.STARTING;
 		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
@@ -142,12 +158,14 @@ public class Player : NetLifecycleObj
 	// Only previews next weapon icon
 	public void SwitchWeapon ()
 	{
-		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
-		nextWeapon = weaponLoadout [rand];
-		Sprite nextSpr = gameMgr.GetWeaponSprite (nextWeapon.name);
-		nextWeaponIcon.sprite = nextSpr;
-		nextWeaponIcon.enabled = true;
-		Invoke ("StartWeaponFlash", WEAPON_SWITCH_DELAY);
+		if (playerState == PlayerState.NEUTRAL || playerState == PlayerState.SPAWNING) {
+			int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
+			nextWeapon = weaponLoadout [rand];
+			Sprite nextSpr = gameMgr.GetWeaponSprite (nextWeapon.name);
+			nextWeaponIcon.sprite = nextSpr;
+			nextWeaponIcon.enabled = true;
+			Invoke ("StartWeaponFlash", WEAPON_SWITCH_DELAY);
+		}
 	}
 
 	private void StartWeaponFlash ()
@@ -183,18 +201,12 @@ public class Player : NetLifecycleObj
 	public override void createLife ()
 	{
 		Debug.Log ("Player received request to respawn");
-		CmdServerRespawn ();
-	}
-
-	private void CmdServerRespawn ()
-	{
 		Respawn ();
 	}
 
 	//This is called on collision trigger by the head
 	public void Die ()
 	{
-		//Can only die from the neutral state currently
 		if (playerState == PlayerState.NEUTRAL) {
 			Debug.Log ("Carrying on with Killing player.");
 			playerState = PlayerState.DYING;
@@ -212,7 +224,8 @@ public class Player : NetLifecycleObj
 			// Go unconscious for a few secs then explode
 			deathStateTime = Time.time;
 			deathState = DeathState.UNCONSCIOUS;
-			GetComponentInChildren<Head> ().enabled = false;
+			head.GetComponent<CircleCollider2D>().enabled = false;
+
 			Shoot[] shooters = GetComponentsInChildren<Shoot> ();
 			foreach (Shoot shooter in shooters) {
 				shooter.enabled = false;
@@ -247,7 +260,12 @@ public class Player : NetLifecycleObj
 		if (actionPressed) {
 			GameObject closestPlayer = FindClosestPlayer ();
 			if (closestPlayer != null) {
-				reviveStateTime = Time.time;
+				if (currTimeToRevive == 0) {
+					currTimeToRevive = timeToRevive;
+				} else {
+					currTimeToRevive += addlTimeToRevive;
+				}
+
 				playerState = PlayerState.REVIVING;
 				playerRevivingMe = closestPlayer;
 				reviveSlot = playerRevivingMe.GetComponent<Player> ().GetFreeReviveSlot (gameObject);
@@ -276,15 +294,17 @@ public class Player : NetLifecycleObj
 			if (obj.GetInstanceID () == gameObject.GetInstanceID ()) {
 				continue;
 			}
-			float dist = Vector2.Distance (transform.position, obj.transform.position);
-			if (dist < reviveDistance) {
-				if (closestObj == null || dist < minDist) {
-					closestObj = obj;
-					minDist = dist;
+			PlayerState state = obj.GetComponent<Player> ().playerState;
+			if (state == PlayerState.NEUTRAL || state == PlayerState.SPAWNING) {
+				float dist = Vector2.Distance (transform.position, obj.transform.position);
+				if (dist < reviveDistance) {
+					if (closestObj == null || dist < minDist) {
+						closestObj = obj;
+						minDist = dist;
+					}
 				}
 			}
 		}
-
 		return closestObj;
 	}
 
@@ -306,7 +326,7 @@ public class Player : NetLifecycleObj
 
 	private void Respawn ()
 	{
-		if (deathState == DeathState.FINISHED) {
+		if (deathState == DeathState.FINISHED || playerState == PlayerState.REVIVING) {
 			deathState = DeathState.STARTING;
 			initDone = false;
 			SpawnPlayer ();
@@ -322,6 +342,7 @@ public class Player : NetLifecycleObj
 		}
 		rend.enabled = true;
 		playerState = PlayerState.NEUTRAL;
+		head.GetComponent<CircleCollider2D> ().enabled = true;
 	}
 
 }

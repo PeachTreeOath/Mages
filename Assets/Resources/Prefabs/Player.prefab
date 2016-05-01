@@ -329,7 +329,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -469,6 +469,8 @@ MonoBehaviour:
   timeToDie: 2
   weaponLoadout: []
   reviveDistance: 2
+  timeToRevive: 5
+  addlTimeToRevive: 3
 --- !u!114 &11486760
 MonoBehaviour:
   m_ObjectHideFlags: 1

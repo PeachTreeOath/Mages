@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c3300278443c546983493c4a767a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  easyModeOn: 1
   playerPrefab: {fileID: 158606, guid: e0e87bf4080ca5b468b51db658ac44c6, type: 2}
   playerObjList: []
   timeForWeaponSwitches: 10

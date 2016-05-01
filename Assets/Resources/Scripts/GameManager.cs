@@ -40,7 +40,8 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-		playerList [1] = true;
+		//playerList [1] = true;
+		//playerList [3] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();
@@ -64,12 +65,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 1;
+			Material mat = Resources.Load<Material> ("Materials/blueMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [4]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 5;
+				Material mat2 = Resources.Load<Material> ("Materials/brownMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -79,12 +84,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 2;
+			Material mat = Resources.Load<Material> ("Materials/greenMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [5]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 6;
+				Material mat2 = Resources.Load<Material> ("Materials/pinkMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -94,12 +103,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 3;
+			Material mat = Resources.Load<Material> ("Materials/purpleMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [6]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 7;
+				Material mat2 = Resources.Load<Material> ("Materials/greyMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -109,6 +122,8 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 4;
+			Material mat = Resources.Load<Material> ("Materials/darkBlueMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [7]) {

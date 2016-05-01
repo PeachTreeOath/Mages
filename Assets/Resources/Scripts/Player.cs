@@ -24,6 +24,7 @@ public class Player : NetLifecycleObj
 	// Revive time changes as player hops from carpet to carpet
 	private float currTimeToRevive;
 	private float reviveTimeElapsed;
+	private float travelTimeElapsed;
 	private float deathStateTime;
 
 	//used for several timings
@@ -41,12 +42,18 @@ public class Player : NetLifecycleObj
 	private ReviveSlot reviveSlot;
 	private Vector2 reviveActivatePosition;
 	private Head head;
+	private ReviveSlot[] reviveSlots;
 
 	void Start ()
 	{
 		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		nextWeaponIcon = transform.Find ("WeaponIcon").GetComponent<SpriteRenderer> ();
-		head = GetComponentInChildren<Head> ();
+		Transform slots = transform.Find ("ReviveSlots");
+		reviveSlots = slots.gameObject.GetComponentsInChildren<ReviveSlot> ();
+		if (head == null) {
+			head = GetComponentInChildren<Head> ();
+		}
+
 		SpawnPlayer ();
 
 		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
@@ -88,7 +95,8 @@ public class Player : NetLifecycleObj
 			break;
 		case PlayerState.REVIVING:
 			reviveTimeElapsed += Time.deltaTime; // Didn't multiply by time scaling cuz this looks good as is
-			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, reviveTimeElapsed);
+			travelTimeElapsed += Time.deltaTime;
+			transform.position = Vector2.Lerp (reviveActivatePosition, reviveSlot.transform.position, travelTimeElapsed);
 			if (reviveTimeElapsed >= currTimeToRevive) {
 				SpawnPlayer ();
 			}
@@ -140,6 +148,7 @@ public class Player : NetLifecycleObj
 	{
 		currTimeToRevive = 0;
 		reviveTimeElapsed = 0;
+		travelTimeElapsed = 0;
 		if (reviveSlot != null) {
 			reviveSlot.RemovePlayer ();
 			reviveSlot = null;
@@ -177,7 +186,9 @@ public class Player : NetLifecycleObj
 	{
 		float doneTime = Time.time + time;
 		while (Time.time < doneTime) {
-			nextWeaponIcon.enabled = !nextWeaponIcon.enabled;
+			if (playerState == PlayerState.NEUTRAL || playerState == PlayerState.SPAWNING) {
+				nextWeaponIcon.enabled = !nextWeaponIcon.enabled;
+			}
 			yield return new WaitForSeconds (intervalTime);
 		}
 		nextWeaponIcon.enabled = false;
@@ -187,9 +198,11 @@ public class Player : NetLifecycleObj
 	// Actually swaps weapons
 	private void CompleteSwitchWeapon ()
 	{
-		ToggleBarrels (currentWeapon, false);
-		ToggleBarrels (nextWeapon, true);
-		currentWeapon = nextWeapon;
+		if (playerState == PlayerState.NEUTRAL || playerState == PlayerState.SPAWNING) {
+			ToggleBarrels (currentWeapon, false);
+			ToggleBarrels (nextWeapon, true);
+			currentWeapon = nextWeapon;
+		}
 	}
 
 	public override void endLife ()
@@ -216,6 +229,14 @@ public class Player : NetLifecycleObj
 		}
 	}
 
+	//Death from non-bullets aka parent death
+	public void ForceDie ()
+	{
+		playerState = PlayerState.DYING;
+		deathState = DeathState.STARTING;
+		CmdDie ();
+	}
+
 	private void CmdDie ()
 	{
 		//time transitions between states are handled in update
@@ -224,7 +245,12 @@ public class Player : NetLifecycleObj
 			// Go unconscious for a few secs then explode
 			deathStateTime = Time.time;
 			deathState = DeathState.UNCONSCIOUS;
-			head.GetComponent<CircleCollider2D>().enabled = false;
+			head.GetComponent<CircleCollider2D> ().enabled = false;
+			nextWeaponIcon.enabled = false;
+
+			foreach (ReviveSlot slot in reviveSlots) {
+				slot.KillPlayer ();
+			}
 
 			Shoot[] shooters = GetComponentsInChildren<Shoot> ();
 			foreach (Shoot shooter in shooters) {
@@ -268,9 +294,13 @@ public class Player : NetLifecycleObj
 
 				playerState = PlayerState.REVIVING;
 				playerRevivingMe = closestPlayer;
+				if (reviveSlot != null) {
+					reviveSlot.RemovePlayer ();
+				}
 				reviveSlot = playerRevivingMe.GetComponent<Player> ().GetFreeReviveSlot (gameObject);
 				reviveActivatePosition = transform.position;
 				rend.enabled = false;
+				travelTimeElapsed = 0;
 				return;
 			}
 		}
@@ -311,8 +341,6 @@ public class Player : NetLifecycleObj
 	// Give a random revive slot to a player trying to revive
 	public ReviveSlot GetFreeReviveSlot (GameObject callingPlayer)
 	{
-		Transform slots = transform.Find ("ReviveSlots");
-		ReviveSlot[] reviveSlots = slots.gameObject.GetComponentsInChildren<ReviveSlot> ();
 		int slot = UnityEngine.Random.Range (0, reviveSlots.Length);
 		GameObject player = reviveSlots [slot].player;
 		while (player != null) {
@@ -345,4 +373,12 @@ public class Player : NetLifecycleObj
 		head.GetComponent<CircleCollider2D> ().enabled = true;
 	}
 
+	public void SetColor (Material mat)
+	{
+		GetComponent<SpriteRenderer> ().material = mat;
+		if (head == null) {
+			head = GetComponentInChildren<Head> ();
+		}
+		head.GetComponent<SpriteRenderer> ().material = mat;
+	}
 }

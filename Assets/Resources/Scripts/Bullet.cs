@@ -12,6 +12,9 @@ public class Bullet : MonoBehaviour
 	public int type;
 	public int damage = 1;
 	public Player owner;
+	//So you don't get hit with your own bullets asap
+	public float ffGracePeriod = 1f;
+	public float fireTime;
 
 	protected Rigidbody2D body;
 
@@ -80,6 +83,7 @@ public class Bullet : MonoBehaviour
 		body.velocity = transform.up * speed;
 		body.angularVelocity = angularVelocity;
 		body.angularDrag = angularDrag;
+		fireTime = Time.time;
 	}
 
 	public void OnTriggerEnter2D (Collider2D col)
@@ -87,9 +91,13 @@ public class Bullet : MonoBehaviour
 		if (!isPassable) {
 			if (type == 2) {
 				Head playerHead = col.gameObject.GetComponent<Head> ();
-				if (playerHead != null && owner.Equals (col.gameObject.GetComponentInParent<Player> ())) {
+				if (playerHead != null)
+				if (owner.Equals (col.gameObject.GetComponentInParent<Player> ())) {
 					//This is a collision between a player and its own negative bullets.
 					//We do not want to destroy the bullet in this case.
+					if (Time.time > fireTime + ffGracePeriod) {
+						Destroy (gameObject);
+					}
 				} else {
 					//Collided with another player, go ahead and destroy the bullet in this case."
 					Destroy (gameObject);

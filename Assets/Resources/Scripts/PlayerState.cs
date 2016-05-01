@@ -2,5 +2,5 @@
 using System.Collections;
 
 public enum PlayerState {
-    DYING, NEUTRAL, SPAWNING, INVINCIBLE
+    DYING, NEUTRAL, SPAWNING, REVIVING
 }

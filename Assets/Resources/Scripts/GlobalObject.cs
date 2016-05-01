@@ -8,6 +8,7 @@ public class GlobalObject : MonoBehaviour
 	public static GlobalObject instance;
 	public bool[] playerList = new bool[8];
 	public Dictionary<int,HashSet<string>> weaponMap = new Dictionary<int, HashSet<string>> ();
+	public bool easyModeOn;
 
 	void Awake ()
 	{

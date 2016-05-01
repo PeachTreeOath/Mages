@@ -24,10 +24,22 @@ public class Head : MonoBehaviour {
                 //Enemy bullets.
                 Die();
             }
-            else if (bullet.type == 2 && !GetComponentInParent<Player>().Equals(bullet.owner))
+			else if (bullet.type == 2)
             {
-                //Only die to other player's negative bullets
-                Die();
+				if(GetComponentInParent<Player>().Equals(bullet.owner))
+				{
+					// Die to own bullets after grace period ends
+					if (Time.time > bullet.fireTime + bullet.ffGracePeriod) {
+						Die();
+					}
+				}
+				else
+				{
+					// Die to other player's negative bullets
+					Die();
+				}
+
+                
             }
 
         }

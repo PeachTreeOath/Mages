@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-
+	public bool easyModeOn = true;
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
@@ -36,11 +36,13 @@ public class GameManager : MonoBehaviour
 		if (GlobalObject.instance != null) {
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
+			easyModeOn = GlobalObject.instance.easyModeOn;
 		}
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
 		//playerList [1] = true;
+		//playerList [3] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();
@@ -64,12 +66,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 1;
+			Material mat = Resources.Load<Material> ("Materials/blueMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [4]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 5;
+				Material mat2 = Resources.Load<Material> ("Materials/brownMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -79,12 +85,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 2;
+			Material mat = Resources.Load<Material> ("Materials/greenMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [5]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 6;
+				Material mat2 = Resources.Load<Material> ("Materials/pinkMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -94,12 +104,16 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 3;
+			Material mat = Resources.Load<Material> ("Materials/purpleMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [6]) {
 				GameObject obj2 = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 				Player player2 = obj.GetComponent<Player> ();
 				player2.playerNum = 7;
+				Material mat2 = Resources.Load<Material> ("Materials/greyMat");
+				player2.SetColor (mat2);
 				AttachWeapons (player2);
 			} else {
 				player.soloPlay = true;
@@ -109,6 +123,8 @@ public class GameManager : MonoBehaviour
 			GameObject obj = (GameObject)Instantiate (playerPrefab, Vector2.zero, Quaternion.identity);
 			Player player = obj.GetComponent<Player> ();
 			player.playerNum = 4;
+			Material mat = Resources.Load<Material> ("Materials/darkBlueMat");
+			player.SetColor (mat);
 			AttachWeapons (player);
 
 			if (playerList [7]) {
@@ -165,6 +181,7 @@ public class GameManager : MonoBehaviour
 			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (spreadNeg, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			//player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 		} else {
 			// When adding a new weapon, map the name of the shot in the Loadout screen to the prefabs that are loaded here
@@ -202,6 +219,26 @@ public class GameManager : MonoBehaviour
 	{
 		foreach (Player player in playerObjList) {
 			player.SwitchWeapon ();
+		}
+	}
+
+	public void CheckAllDeaths()
+	{
+		bool anyoneAlive = false;
+		foreach (Player player in playerObjList) {
+			if (player.deathState != DeathState.FINISHED) {
+				anyoneAlive = true;
+				break;
+			}
+		}
+		if (!anyoneAlive) {
+			if (easyModeOn) {
+				foreach (Player player in playerObjList) {
+					player.Respawn ();
+				}
+			} else {
+				//TODO show menu to allow restart of level
+			}
 		}
 	}
 }

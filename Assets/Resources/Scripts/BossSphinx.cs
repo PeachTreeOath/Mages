@@ -8,6 +8,7 @@ public class BossSphinx : Boss
 
 	public int countdownSecs = 5;
 	public float wrongAnswerPenalty = .05f;
+	public float currentShotDelay = 1f;
 	public float questionDelay = 2f;
 
 	private Image panel;
@@ -80,6 +81,10 @@ public class BossSphinx : Boss
 
 	private void AskQuestion ()
 	{
+		Barrel[] barrels = GetComponentsInChildren<Barrel> ();
+		foreach (Barrel barrel in barrels) {
+			barrel.shotDelay = currentShotDelay;
+		}
 		ShowUIObjects (true);
 		correctPlayers.Clear ();
 		fakeAnswers.Clear ();
@@ -135,15 +140,14 @@ public class BossSphinx : Boss
 		ShowUIObjects (false);
 
 		List<Player> playerList = gameMgr.playerObjList;
+		int deaths = 0;
 		foreach (Player player in playerList) {
 			if (!correctPlayers.Contains (player.playerNum)) {
 				player.Die ();
-				Barrel[] barrels = GetComponentsInChildren<Barrel> ();
-				foreach (Barrel barrel in barrels) {
-					barrel.shotDelay -= wrongAnswerPenalty;
-				}
+				deaths++;
 			}
 		}
+		currentShotDelay = Mathf.Clamp(currentShotDelay - deaths * wrongAnswerPenalty, 0.05f, 1f);
 
 		Invoke ("AskQuestion", questionDelay);
 	}

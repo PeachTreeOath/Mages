@@ -29,6 +29,7 @@ GameObject:
   - 212: {fileID: 21294492}
   - 61: {fileID: 6125928}
   - 114: {fileID: 11449420}
+  - 50: {fileID: 5045824}
   m_Layer: 11
   m_Name: answerBlock1
   m_TagString: Untagged
@@ -62,6 +63,7 @@ GameObject:
   - 212: {fileID: 21267056}
   - 61: {fileID: 6182184}
   - 114: {fileID: 11417998}
+  - 50: {fileID: 5057334}
   m_Layer: 11
   m_Name: answerBlock2
   m_TagString: Untagged
@@ -80,6 +82,7 @@ GameObject:
   - 212: {fileID: 21248256}
   - 61: {fileID: 6194732}
   - 114: {fileID: 11417182}
+  - 50: {fileID: 5061498}
   m_Layer: 11
   m_Name: answerBlock4
   m_TagString: Untagged
@@ -98,6 +101,7 @@ GameObject:
   - 212: {fileID: 21295072}
   - 61: {fileID: 6130866}
   - 114: {fileID: 11415356}
+  - 50: {fileID: 5083362}
   m_Layer: 11
   m_Name: answerBlock3
   m_TagString: Untagged
@@ -182,6 +186,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 452180}
   m_RootOrder: 2
+--- !u!50 &5045824
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138682}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5057334
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143678}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5061498
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178862}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5083362
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191134}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6125928
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -316,6 +388,7 @@ MonoBehaviour:
   - {fileID: 11417832, guid: f847d405e625a3e48b20d908246b440a, type: 2}
   countdownSecs: 5
   wrongAnswerPenalty: 0.05
+  currentShotDelay: 1
   questionDelay: 2
 --- !u!212 &21205708
 SpriteRenderer:

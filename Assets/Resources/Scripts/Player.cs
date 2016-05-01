@@ -164,8 +164,11 @@ public class Player : NetLifecycleObj
 		playerRevivingMe = null;
 		playerState = PlayerState.SPAWNING;
 		deathState = DeathState.STARTING;
-		rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
-
+		if (rend == null) {
+			rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
+		}
+		rend.enabled = true;
+		head.GetComponent<SpriteRenderer> ().enabled = true;
 		initDone = true;
 		StartCoroutine (Flash (SPAWNING_TIME, 0.05f));
 	}
@@ -267,9 +270,12 @@ public class Player : NetLifecycleObj
 		}
 	}
 
-	//This code is executed on the server only
 	private void updateDeathState ()
 	{
+		if (deathState == DeathState.FINISHED) {
+			return;
+		}
+
 		bool actionPressed = false;
 		if (soloPlay) {
 			if (Input.GetButton ("Action_p" + playerNum + "_solo")) {
@@ -317,7 +323,9 @@ public class Player : NetLifecycleObj
 		} else {
 			GetComponent<GibManual> ().Explode ();
 			deathState = DeathState.FINISHED;
-			Respawn ();
+			rend.enabled = false;
+			head.GetComponent<SpriteRenderer> ().enabled = false;
+			gameMgr.CheckAllDeaths ();
 		}
 	}
 
@@ -358,7 +366,7 @@ public class Player : NetLifecycleObj
 		return reviveSlots [slot];
 	}
 
-	private void Respawn ()
+	public void Respawn ()
 	{
 		if (deathState == DeathState.FINISHED || playerState == PlayerState.REVIVING) {
 			deathState = DeathState.STARTING;

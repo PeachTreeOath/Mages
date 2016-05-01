@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-
+	public bool easyModeOn = true;
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 		if (GlobalObject.instance != null) {
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
+			easyModeOn = GlobalObject.instance.easyModeOn;
 		}
 
 		//TODO: THIS IS ONLY FOR TESTING
@@ -180,6 +181,7 @@ public class GameManager : MonoBehaviour
 			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (spreadNeg, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			//player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 		} else {
 			// When adding a new weapon, map the name of the shot in the Loadout screen to the prefabs that are loaded here
@@ -217,6 +219,26 @@ public class GameManager : MonoBehaviour
 	{
 		foreach (Player player in playerObjList) {
 			player.SwitchWeapon ();
+		}
+	}
+
+	public void CheckAllDeaths()
+	{
+		bool anyoneAlive = false;
+		foreach (Player player in playerObjList) {
+			if (player.deathState != DeathState.FINISHED) {
+				anyoneAlive = true;
+				break;
+			}
+		}
+		if (!anyoneAlive) {
+			if (easyModeOn) {
+				foreach (Player player in playerObjList) {
+					player.Respawn ();
+				}
+			} else {
+				//TODO show menu to allow restart of level
+			}
 		}
 	}
 }

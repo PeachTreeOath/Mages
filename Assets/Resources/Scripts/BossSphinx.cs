@@ -17,16 +17,26 @@ public class BossSphinx : Boss
 	private Text answer2;
 	private Text answer3;
 	private Text answer4;
+	private AnswerBlock answerBlock1;
+	private AnswerBlock answerBlock2;
+	private AnswerBlock answerBlock3;
+	private AnswerBlock answerBlock4;
 	private Text[] answerSlots;
+	private AnswerBlock[] answerBlocks;
 	private int currCountdown;
 	private HashSet<int> fakeAnswers;
+	private HashSet<int> correctPlayers;
+	private GameManager gameMgr;
 
 	protected override void Start ()
 	{
 		base.Start ();
 
 		answerSlots = new Text[4];
+		answerBlocks = new AnswerBlock[4];
 		fakeAnswers = new HashSet<int> ();
+		correctPlayers = new HashSet<int> ();
+		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		Transform canvas = GameObject.Find ("HPBars").transform.Find ("SphinxCanvas");
 		panel = canvas.Find ("Panel").GetComponent<Image> ();
 		question = panel.GetComponentInChildren<Text> ();
@@ -35,10 +45,18 @@ public class BossSphinx : Boss
 		answer2 = canvas.Find ("Answer2").GetComponent<Text> ();
 		answer3 = canvas.Find ("Answer3").GetComponent<Text> ();
 		answer4 = canvas.Find ("Answer4").GetComponent<Text> ();
+		answerBlock1 = transform.Find ("answerBlock1").GetComponent<AnswerBlock> ();
+		answerBlock2 = transform.Find ("answerBlock2").GetComponent<AnswerBlock> ();
+		answerBlock3 = transform.Find ("answerBlock3").GetComponent<AnswerBlock> ();
+		answerBlock4 = transform.Find ("answerBlock4").GetComponent<AnswerBlock> ();
 		answerSlots [0] = answer1;
 		answerSlots [1] = answer2;
 		answerSlots [2] = answer3;
 		answerSlots [3] = answer4;
+		answerBlocks [0] = answerBlock1;
+		answerBlocks [1] = answerBlock2;
+		answerBlocks [2] = answerBlock3;
+		answerBlocks [3] = answerBlock4;
 
 		AskQuestion ();
 	}
@@ -63,7 +81,11 @@ public class BossSphinx : Boss
 	private void AskQuestion ()
 	{
 		ShowUIObjects (true);
+		correctPlayers.Clear ();
 		fakeAnswers.Clear ();
+		for (int i = 0; i < 4; i++) {
+			answerBlocks [i].GetComponent<AnswerBlock> ().ToggleEnable (false);
+		}
 
 		switch (currentPhaseIndex) {
 		case 0:
@@ -72,7 +94,7 @@ public class BossSphinx : Boss
 
 			int answerSlot = UnityEngine.Random.Range (0, 4);
 			Text answerText = answerSlots [answerSlot];
-
+			answerBlocks [answerSlot].GetComponent<AnswerBlock> ().ToggleEnable (true);
 			int answer = num1 + num2;
 			fakeAnswers.Add (answer);
 			question.text = num1 + " + " + num2;
@@ -112,6 +134,26 @@ public class BossSphinx : Boss
 	{
 		ShowUIObjects (false);
 
+		List<Player> playerList = gameMgr.playerObjList;
+		foreach (Player player in playerList) {
+			if (!correctPlayers.Contains (player.playerNum)) {
+				player.Die ();
+				Barrel[] barrels = GetComponentsInChildren<Barrel> ();
+				foreach (Barrel barrel in barrels) {
+					barrel.shotDelay -= wrongAnswerPenalty;
+				}
+			}
+		}
+
 		Invoke ("AskQuestion", questionDelay);
+	}
+
+	public void TogglePlayerCorrect (int playerNum, bool toggle)
+	{
+		if (toggle) {
+			correctPlayers.Add (playerNum);
+		} else {
+			correctPlayers.Remove (playerNum);
+		}
 	}
 }

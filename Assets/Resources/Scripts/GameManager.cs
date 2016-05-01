@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
-	private List<Player> playerObjList = new List<Player>();
+	public List<Player> playerObjList = new List<Player> ();
 	private Dictionary<int,HashSet<string>> weaponMap;
 
 	private GameObject normalShot;
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
-			//playerList [1] = true;
+		//playerList [1] = true;
 
 		LoadWeaponResources ();
 		CreatePlayers ();

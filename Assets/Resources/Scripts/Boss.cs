@@ -26,12 +26,22 @@ public class Boss : MonoBehaviour
     private List<Barrel> disabledBarrels = new List<Barrel>();
     private float nextPhaseChangePercent;
     
-
 	// Use this for initialization
 	protected virtual void Start ()
 	{
 		startTime = Time.time;
 		totalHp = hp;
+		switch (name) {
+		case "Genie":
+			hpCanvas = GameObject.Find ("HPBars").transform.Find ("GenieCanvas").gameObject;
+			break;
+		case "Sphinx":
+			hpCanvas = GameObject.Find ("HPBars").transform.Find ("SphinxCanvas").gameObject;
+			break;
+		case "Aladdin":
+			hpCanvas = GameObject.Find ("HPBars").transform.Find ("AladdinCanvas").gameObject;
+			break;
+		}
 		hpCanvas.SetActive (true);
 		hpMeterImage = hpCanvas.GetComponentInChildren<GameObjectFinder> ().GetComponent<Image> ();
 
@@ -46,8 +56,7 @@ public class Boss : MonoBehaviour
 	// Update is called once per frame
 	protected virtual void Update ()
 	{
-
-        //Execute firing strategy
+		        //Execute firing strategy
         Barrel[] barrels;
         switch (currentPhase.fireStrategy)
         {
@@ -192,10 +201,17 @@ public class Boss : MonoBehaviour
 		if (bullet != null) {
 			hp -= bullet.damage;
 			if (hp <= 0) {
-				hpCanvas.SetActive (false);
+				Die ();
 			} else {
 				hpMeterImage.fillAmount = hp / totalHp;
 			}
 		}
+	}
+
+	private void Die()
+	{
+		hpCanvas.SetActive (false);
+		GetComponent<GibManual> ().Explode ();
+		transform.parent.GetComponent<BossScroller> ().BossDeactivate ();
 	}
 }

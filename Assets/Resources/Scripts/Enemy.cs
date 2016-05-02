@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 			hp -= bullet.damage;
 			if (hp <= 0) {
 				GetComponent<GibManual> ().Explode ();
+				Destroy (gameObject);
 			}
 		}
 	}

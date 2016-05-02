@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-	public bool easyModeOn = true;
+	public bool easyModeOn = false;
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
@@ -29,14 +30,24 @@ public class GameManager : MonoBehaviour
 
 	public float timeForWeaponSwitches = 10f;
 	private float timeOfLastWeaponSwitch;
+	private SpriteRenderer retryPanel;
+	private int section;
+	private MeshRenderer bg;
+
+	public int[] checkPointYValues;
 
 	// Use this for initialization
 	void Start ()
 	{
+		retryPanel = GameObject.Find ("RetryPanel").GetComponent<SpriteRenderer> ();
+		bg = GameObject.Find ("BG").GetComponent<MeshRenderer> ();
+
 		if (GlobalObject.instance != null) {
-			playerList = GlobalObject.instance.playerList;
-			weaponMap = GlobalObject.instance.weaponMap;
+			//TODO
+			//playerList = GlobalObject.instance.playerList;
+			//weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
+			section = GlobalObject.instance.section;
 		}
 
 		//TODO: THIS IS ONLY FOR TESTING
@@ -44,8 +55,10 @@ public class GameManager : MonoBehaviour
 		//playerList [1] = true;
 		//playerList [3] = true;
 
+		SwitchSection (true);
 		LoadWeaponResources ();
 		CreatePlayers ();
+		LoadCheckpoint ();
 
 		timeOfLastWeaponSwitch = Time.time;
 	}
@@ -53,6 +66,35 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (retryPanel.enabled) {
+			for (int i = 0; i < 8; i++) {
+				if (i < 4) {
+					// Only players 1-4 are allowed to solo controllers
+					if (Input.GetButton ("Action_p" + (i + 1) + "_solo")) {
+						RestartStage ();
+					}
+					// Players 1-4 in coop setting use dpad down to action
+					else if (Input.GetAxisRaw ("Action_p" + (i + 1)) > 0) {
+						RestartStage ();
+					}
+				} else {
+					// Players 5-8 are forced coop setting and use Y to action
+					if (Input.GetButton ("Action_p" + (i + 1))) {
+						RestartStage ();
+					}
+				}
+			}
+
+			if (Input.GetButtonDown ("Submit")) {
+				if (GlobalObject.instance != null) {
+					GlobalObject.instance.section = 0;
+				}
+				SceneManager.LoadScene ("StartMenu");
+			}
+
+			return;
+		}
+
 		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
 			SwitchWeapons ();
 			timeOfLastWeaponSwitch = Time.time;
@@ -222,7 +264,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void CheckAllDeaths()
+	public void CheckAllDeaths ()
 	{
 		bool anyoneAlive = false;
 		foreach (Player player in playerObjList) {
@@ -237,8 +279,80 @@ public class GameManager : MonoBehaviour
 					player.Respawn ();
 				}
 			} else {
-				//TODO show menu to allow restart of level
+				// Show retry modal
+				retryPanel.enabled = true;
+
+				// Pause all spawners
+				GameObject[] objs = GameObject.FindGameObjectsWithTag ("Spawner");
+				foreach (GameObject obj in objs) {
+					SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
+					if (spawner != null) {
+						spawner.StopMovement ();
+					} else {
+						BossScroller boss = obj.GetComponent<BossScroller> ();
+						if (boss != null) {
+							boss.StopMovement ();
+						}
+					}
+				}
 			}
 		}
+	}
+
+	public void GotoSection (int newSection)
+	{
+		section = newSection;
+		if (GlobalObject.instance != null) {
+			GlobalObject.instance.section = section;
+		}
+		SwitchSection (false);
+	}
+
+	private void RestartStage ()
+	{
+		SceneManager.LoadScene ("Game");
+	}
+
+	private void LoadCheckpoint ()
+	{
+		// Shift spawners down then delete anything under a certain point
+		GameObject[] spawners = GameObject.FindGameObjectsWithTag ("Spawner");
+		foreach (GameObject spawner in spawners) {
+			Vector2 pos = spawner.transform.position;
+			pos = new Vector2 (pos.x, pos.y - checkPointYValues [section]);
+			if (pos.y < 0) {
+				Destroy (spawner);
+			} else {
+				spawner.transform.position = pos;
+			}
+		}
+
+	}
+
+	private void SwitchSection (bool fromLoad)
+	{
+		int newSection = section;
+		// If died on a boss and loading, start off in previous section so you can watch transition
+		if (fromLoad && (section == 1 || section == 3 || section == 5)) {
+			newSection--;
+		}
+		AudioManager.instance.PlayMusic (newSection);
+
+		switch (newSection) {
+		case 0:	
+			break;
+		case 1:
+			break;
+		case 2:
+			bg.material.mainTexture = Resources.Load<Texture> ("Textures/BGDesert");
+			break;
+		case 3:
+			break;
+		case 4:
+			bg.material.mainTexture = Resources.Load<Texture> ("Textures/BGCity");
+			break;
+		case 5:
+			break;
+		}	
 	}
 }

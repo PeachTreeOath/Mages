@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -40,8 +41,11 @@ public class GameManager : MonoBehaviour
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
+			LoadSection (GlobalObject.instance.section);
+		} else {
+			LoadSection (0);
 		}
-			
+
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
 		//playerList [1] = true;
@@ -56,6 +60,35 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (retryPanel.enabled) {
+			for (int i = 0; i < 8; i++) {
+				if (i < 4) {
+					// Only players 1-4 are allowed to solo controllers
+					if (Input.GetButton ("Action_p" + (i + 1) + "_solo")) {
+						RestartStage ();
+					}
+					// Players 1-4 in coop setting use dpad down to action
+					else if (Input.GetAxisRaw ("Action_p" + (i + 1)) > 0) {
+						RestartStage ();
+					}
+				} else {
+					// Players 5-8 are forced coop setting and use Y to action
+					if (Input.GetButton ("Action_p" + (i + 1))) {
+						RestartStage ();
+					}
+				}
+			}
+
+			if (Input.GetButtonDown ("Submit")) {
+				if (GlobalObject.instance != null) {
+					GlobalObject.instance.section = 0;
+				}
+				SceneManager.LoadScene ("StartMenu");
+			}
+
+			return;
+		}
+
 		if (Time.time > timeOfLastWeaponSwitch + timeForWeaponSwitches) {
 			SwitchWeapons ();
 			timeOfLastWeaponSwitch = Time.time;
@@ -225,7 +258,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void CheckAllDeaths()
+	public void CheckAllDeaths ()
 	{
 		bool anyoneAlive = false;
 		foreach (Player player in playerObjList) {
@@ -240,9 +273,18 @@ public class GameManager : MonoBehaviour
 					player.Respawn ();
 				}
 			} else {
-				//TODO show menu to allow restart of level
 				retryPanel.enabled = true;
 			}
 		}
+	}
+
+	private void RestartStage ()
+	{
+		SceneManager.LoadScene ("StartMenu");
+	}
+
+	private void LoadSection(int section)
+	{
+				
 	}
 }

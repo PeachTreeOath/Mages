@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BossPlaceholder : MonoBehaviour
+public class BossScroller : MonoBehaviour
 {
-
 	public float scrollSpeed = 1f;
 	public float stopLine = 2.5f;
 
@@ -23,52 +22,39 @@ public class BossPlaceholder : MonoBehaviour
 		// Pause all spawners
 		if (!paused && transform.position.y < stopLine) {
 			paused = true;
+			transform.position = new Vector2 (0, stopLine);
 			GameObject[] objs = GameObject.FindGameObjectsWithTag ("Spawner");
 			foreach (GameObject obj in objs) {
 				SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
 				if (spawner != null) {
 					spawner.StopMovement ();
 				} else {
-					BossPlaceholder boss = obj.GetComponent<BossPlaceholder> ();
+					BossScroller boss = obj.GetComponent<BossScroller> ();
 					if (boss != null) {
 						boss.StopMovement ();
 					}
 				}
 			}
 			DestroyAllEnemies ();
+			BossActivate ();
 		}
 
+		//TODO: Remove this
 		if (paused && Input.GetKeyDown (KeyCode.G)) {
-			GameObject[] objs = GameObject.FindGameObjectsWithTag ("Spawner");
-			foreach (GameObject obj in objs) {
-				SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
-				if (spawner != null) {
-					if (spawner.transform.position.y < 6) {
-						Destroy (spawner.gameObject);
-						continue;
-					}
-					spawner.ResumeMovement ();
-				} else {
-					BossPlaceholder boss = obj.GetComponent<BossPlaceholder> ();
-					if (boss != null) {
-						boss.ResumeMovement ();
-					}
-				}
-			}
-
-			Destroy (this);
+			BossDeactivate ();
 		}
 	}
 
-	public void DestroyAllEnemies()
+	public void DestroyAllEnemies ()
 	{
 		GameObject[] objs = FindObjectsOfType<GameObject> ();
 		int layer1 = LayerMask.NameToLayer ("Enemies");
 		int layer2 = LayerMask.NameToLayer ("EnemyBullets");
-		foreach(GameObject obj in objs)
-		{
+		foreach (GameObject obj in objs) {
 			if (obj.layer == layer1 || obj.layer == layer2) {
-				Destroy (obj);
+				if (obj.name != "Genie" && obj.name != "Sphinx" && obj.name != "Aladdin") {
+					Destroy (obj);
+				}
 			}
 		}
 	}
@@ -81,5 +67,34 @@ public class BossPlaceholder : MonoBehaviour
 	public void ResumeMovement ()
 	{
 		rbody.velocity = new Vector2 (0, -1) * scrollSpeed; //This is really down
+	}
+
+	private void BossActivate ()
+	{
+		GetComponentInChildren<Boss> ().enabled = true;
+		GetComponentInChildren<Collider2D> ().enabled = true;
+	}
+
+	// Called from Boss script when hp < 0
+	public void BossDeactivate ()
+	{
+		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Spawner");
+		foreach (GameObject obj in objs) {
+			SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
+			if (spawner != null) {
+				if (spawner.transform.position.y < 6) {
+					Destroy (spawner.gameObject);
+					continue;
+				}
+				spawner.ResumeMovement ();
+			} else {
+				BossScroller boss = obj.GetComponent<BossScroller> ();
+				if (boss != null) {
+					boss.ResumeMovement ();
+				}
+			}
+		}
+
+		Destroy (transform.parent.gameObject);
 	}
 }

@@ -54,8 +54,7 @@ public class Boss : MonoBehaviour
 	// Update is called once per frame
 	protected virtual void Update ()
 	{
-
-        //Execute firing strategy
+		        //Execute firing strategy
         Barrel[] barrels;
         switch (currentPhase.fireStrategy)
         {

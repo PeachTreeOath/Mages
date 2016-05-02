@@ -8,10 +8,12 @@ public class BossScroller : MonoBehaviour
 
 	private Rigidbody2D rbody;
 	private bool paused;
+	private GameManager gameMgr;
 
 	// Use this for initialization
 	void Start ()
 	{
+		gameMgr = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		rbody = GetComponent<Rigidbody2D> ();
 		ResumeMovement ();
 	}
@@ -73,6 +75,7 @@ public class BossScroller : MonoBehaviour
 	{
 		GetComponentInChildren<Boss> ().enabled = true;
 		GetComponentInChildren<Collider2D> ().enabled = true;
+		gameMgr.GotoNextSection ();
 	}
 
 	// Called from Boss script when hp < 0
@@ -94,7 +97,8 @@ public class BossScroller : MonoBehaviour
 				}
 			}
 		}
+		gameMgr.GotoNextSection ();
 
-		Destroy (transform.parent.gameObject);
+		Destroy (gameObject);
 	}
 }

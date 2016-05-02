@@ -46,10 +46,10 @@ public class BossSphinx : Boss
 		answer2 = canvas.Find ("Answer2").GetComponent<Text> ();
 		answer3 = canvas.Find ("Answer3").GetComponent<Text> ();
 		answer4 = canvas.Find ("Answer4").GetComponent<Text> ();
-		answerBlock1 = transform.Find ("answerBlock1").GetComponent<AnswerBlock> ();
-		answerBlock2 = transform.Find ("answerBlock2").GetComponent<AnswerBlock> ();
-		answerBlock3 = transform.Find ("answerBlock3").GetComponent<AnswerBlock> ();
-		answerBlock4 = transform.Find ("answerBlock4").GetComponent<AnswerBlock> ();
+		answerBlock1 = transform.FindChild ("answerBlock1").GetComponent<AnswerBlock> ();
+		answerBlock2 = transform.FindChild ("answerBlock2").GetComponent<AnswerBlock> ();
+		answerBlock3 = transform.FindChild ("answerBlock3").GetComponent<AnswerBlock> ();
+		answerBlock4 = transform.FindChild ("answerBlock4").GetComponent<AnswerBlock> ();
 		answerSlots [0] = answer1;
 		answerSlots [1] = answer2;
 		answerSlots [2] = answer3;
@@ -77,6 +77,10 @@ public class BossSphinx : Boss
 		answer2.enabled = show;
 		answer3.enabled = show;
 		answer4.enabled = show;
+		answerBlock1.GetComponent<SpriteRenderer>().enabled = show;
+		answerBlock2.GetComponent<SpriteRenderer>().enabled = show;
+		answerBlock3.GetComponent<SpriteRenderer>().enabled = show;
+		answerBlock4.GetComponent<SpriteRenderer>().enabled = show;
 	}
 
 	private void AskQuestion ()
@@ -217,7 +221,7 @@ public class BossSphinx : Boss
 		int deaths = 0;
 		foreach (Player player in playerList) {
 			if (!correctPlayers.Contains (player.playerNum)) {
-				player.Die ();
+				player.GetComponentInChildren<Head>().Die ();
 				deaths++;
 			}
 		}

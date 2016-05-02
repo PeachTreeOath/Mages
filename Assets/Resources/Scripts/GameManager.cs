@@ -31,19 +31,20 @@ public class GameManager : MonoBehaviour
 	public float timeForWeaponSwitches = 10f;
 	private float timeOfLastWeaponSwitch;
 	private SpriteRenderer retryPanel;
+	private int section;
+	private MeshRenderer bg;
 
 	// Use this for initialization
 	void Start ()
 	{
 		retryPanel = GameObject.Find ("RetryPanel").GetComponent<SpriteRenderer> ();
+		bg = GameObject.Find ("BG").GetComponent<MeshRenderer> ();
 
 		if (GlobalObject.instance != null) {
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
-			LoadSection (GlobalObject.instance.section);
-		} else {
-			LoadSection (0);
+			section = GlobalObject.instance.section;
 		}
 
 		//TODO: THIS IS ONLY FOR TESTING
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
 		//playerList [1] = true;
 		//playerList [3] = true;
 
+		LoadSection (section);
 		LoadWeaponResources ();
 		CreatePlayers ();
 
@@ -278,13 +280,38 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public void GotoNextSection ()
+	{
+		section++;
+		if (GlobalObject.instance != null) {
+			GlobalObject.instance.section = section;
+		}
+		LoadSection (section);
+	}
+
 	private void RestartStage ()
 	{
 		SceneManager.LoadScene ("StartMenu");
 	}
 
-	private void LoadSection(int section)
+	private void LoadSection (int section)
 	{
-				
+		AudioManager.instance.PlayMusic (section);
+		switch (section) {
+		case 0:	
+			break;
+		case 1:
+			break;
+		case 2:
+			bg.material.mainTexture = Resources.Load<Texture> ("Textures/BGDesert");
+			break;
+		case 3:
+			break;
+		case 4:
+			bg.material.mainTexture = Resources.Load<Texture> ("Textures/BGCity");
+			break;
+		case 5:
+			break;
+		}	
 	}
 }

@@ -20,6 +20,7 @@ public class Head : MonoBehaviour
 	{
 		Bullet bullet = col.gameObject.GetComponent<Bullet> ();
 		Enemy enemy = col.gameObject.GetComponent<Enemy> ();
+		Boss boss = col.gameObject.GetComponent<Boss> ();
 
 		if (bullet != null) {
 			if (bullet.type == 1) {
@@ -37,7 +38,7 @@ public class Head : MonoBehaviour
 				}     
 			}
 		}
-		if (enemy != null) {
+		if (enemy != null || boss != null) {
 			//We ran into an enemy.
 			Die ();
 		}

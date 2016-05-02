@@ -158,6 +158,7 @@ GameObject:
   - 212: {fileID: 21229660}
   - 58: {fileID: 5844592}
   - 114: {fileID: 11431180}
+  - 114: {fileID: 11480872}
   m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
@@ -471,6 +472,18 @@ MonoBehaviour:
   reviveDistance: 2
   timeToRevive: 5
   addlTimeToRevive: 3
+--- !u!114 &11480872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5df99fba141654c9ac99d50c6fc5c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gib: {fileID: 187654, guid: 99931692d82947a4b8032a41af62e7dd, type: 2}
 --- !u!114 &11486760
 MonoBehaviour:
   m_ObjectHideFlags: 1

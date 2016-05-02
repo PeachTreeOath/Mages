@@ -59,14 +59,11 @@ public class StartMenuScript : MonoBehaviour
 				}
 			} else {
 				// Players 5-8 are forced coop setting and use Y to action
-				if (Input.GetButtonDown ("Action_p" + (i + 1)) ){
+				if (Input.GetButtonDown ("Action_p" + (i + 1))) {
 					TogglePlayer (i);
 				}
 			}
-
 		}
-
-
 
 		if (numPlayers > 0 && Input.GetButtonDown ("Submit")) {
 			if (GlobalObject.instance != null) {

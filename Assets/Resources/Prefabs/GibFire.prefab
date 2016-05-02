@@ -1,52 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &115988
+--- !u!1 &187654
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 484808}
-  - 198: {fileID: 19837786}
-  - 199: {fileID: 19901168}
-  - 114: {fileID: 11490320}
+  - 4: {fileID: 430022}
+  - 198: {fileID: 19874104}
+  - 199: {fileID: 19947224}
+  - 114: {fileID: 11480772}
   m_Layer: 0
-  m_Name: Gib
+  m_Name: GibFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &484808
+--- !u!4 &430022
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115988}
+  m_GameObject: {fileID: 187654}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.566491, y: 1.6275693, z: 12.255859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11490320
+--- !u!114 &11480772
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115988}
+  m_GameObject: {fileID: 187654}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32ae9a2852e6f36468b3f286de795467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &19837786
+--- !u!198 &19874104
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115988}
+  m_GameObject: {fileID: 187654}
   serializedVersion: 2
   lengthInSec: 0.25
   startDelay:
@@ -1540,17 +1540,17 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19901168
+--- !u!199 &19947224
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 115988}
+  m_GameObject: {fileID: 187654}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 866782acacb72de4d9be91a659261487, type: 2}
+  - {fileID: 2100000, guid: 24eaff236ad57574a874a2be29842844, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1590,5 +1590,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 115988}
+  m_RootGameObject: {fileID: 187654}
   m_IsPrefabParent: 1

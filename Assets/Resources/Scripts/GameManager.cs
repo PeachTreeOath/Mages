@@ -29,16 +29,19 @@ public class GameManager : MonoBehaviour
 
 	public float timeForWeaponSwitches = 10f;
 	private float timeOfLastWeaponSwitch;
+	private SpriteRenderer retryPanel;
 
 	// Use this for initialization
 	void Start ()
 	{
+		retryPanel = GameObject.Find ("RetryPanel").GetComponent<SpriteRenderer> ();
+
 		if (GlobalObject.instance != null) {
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
 		}
-
+			
 		//TODO: THIS IS ONLY FOR TESTING
 		playerList [0] = true;
 		//playerList [1] = true;
@@ -238,6 +241,7 @@ public class GameManager : MonoBehaviour
 				}
 			} else {
 				//TODO show menu to allow restart of level
+				retryPanel.enabled = true;
 			}
 		}
 	}

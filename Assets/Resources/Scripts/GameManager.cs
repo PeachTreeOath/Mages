@@ -34,11 +34,14 @@ public class GameManager : MonoBehaviour
 	private int section;
 	private MeshRenderer bg;
 
+	public int[] checkPointYValues;
+
 	// Use this for initialization
 	void Start ()
 	{
 		retryPanel = GameObject.Find ("RetryPanel").GetComponent<SpriteRenderer> ();
 		bg = GameObject.Find ("BG").GetComponent<MeshRenderer> ();
+		checkPointYValues = new int[6];
 
 		if (GlobalObject.instance != null) {
 			playerList = GlobalObject.instance.playerList;
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
 		//playerList [1] = true;
 		//playerList [3] = true;
 
-		LoadSection (section);
+		SwitchSection (section);
 		LoadWeaponResources ();
 		CreatePlayers ();
 
@@ -286,7 +289,7 @@ public class GameManager : MonoBehaviour
 		if (GlobalObject.instance != null) {
 			GlobalObject.instance.section = section;
 		}
-		LoadSection (section);
+		SwitchSection (section);
 	}
 
 	private void RestartStage ()
@@ -294,7 +297,27 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene ("StartMenu");
 	}
 
-	private void LoadSection (int section)
+	private void LoadCheckpoint()
+	{
+		switch (section) {
+		case 0:	
+			break;
+		case 1:
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			break;
+		case 4:
+			
+			break;
+		case 5:
+			break;
+		}
+	}
+
+	private void SwitchSection (int section)
 	{
 		AudioManager.instance.PlayMusic (section);
 		switch (section) {

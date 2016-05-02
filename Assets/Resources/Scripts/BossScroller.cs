@@ -59,6 +59,14 @@ public class BossScroller : MonoBehaviour
 				}
 			}
 		}
+
+		// Destroy spawners too just in case
+		GameObject[] spawners = GameObject.FindGameObjectsWithTag ("Spawner");
+		foreach (GameObject spawner in spawners) {
+			if (spawner.transform.position.y < 5.25f && spawner.GetInstanceID () != gameObject.GetInstanceID ()) {
+				Destroy (spawner);
+			}
+		}
 	}
 
 	public void StopMovement ()

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-	public bool easyModeOn = true;
+	public bool easyModeOn = false;
 	public GameObject playerPrefab;
 
 	private bool[] playerList = new bool[8];
@@ -41,11 +41,11 @@ public class GameManager : MonoBehaviour
 	{
 		retryPanel = GameObject.Find ("RetryPanel").GetComponent<SpriteRenderer> ();
 		bg = GameObject.Find ("BG").GetComponent<MeshRenderer> ();
-		checkPointYValues = new int[6];
 
 		if (GlobalObject.instance != null) {
-			playerList = GlobalObject.instance.playerList;
-			weaponMap = GlobalObject.instance.weaponMap;
+			//TODO
+			//playerList = GlobalObject.instance.playerList;
+			//weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
 			section = GlobalObject.instance.section;
 		}
@@ -55,9 +55,10 @@ public class GameManager : MonoBehaviour
 		//playerList [1] = true;
 		//playerList [3] = true;
 
-		SwitchSection (section);
+		SwitchSection (true);
 		LoadWeaponResources ();
 		CreatePlayers ();
+		LoadCheckpoint ();
 
 		timeOfLastWeaponSwitch = Time.time;
 	}
@@ -278,49 +279,66 @@ public class GameManager : MonoBehaviour
 					player.Respawn ();
 				}
 			} else {
+				// Show retry modal
 				retryPanel.enabled = true;
+
+				// Pause all spawners
+				GameObject[] objs = GameObject.FindGameObjectsWithTag ("Spawner");
+				foreach (GameObject obj in objs) {
+					SpawnObjects spawner = obj.GetComponent<SpawnObjects> ();
+					if (spawner != null) {
+						spawner.StopMovement ();
+					} else {
+						BossScroller boss = obj.GetComponent<BossScroller> ();
+						if (boss != null) {
+							boss.StopMovement ();
+						}
+					}
+				}
 			}
 		}
 	}
 
-	public void GotoNextSection ()
+	public void GotoSection (int newSection)
 	{
-		section++;
+		section = newSection;
 		if (GlobalObject.instance != null) {
 			GlobalObject.instance.section = section;
 		}
-		SwitchSection (section);
+		SwitchSection (false);
 	}
 
 	private void RestartStage ()
 	{
-		SceneManager.LoadScene ("StartMenu");
+		SceneManager.LoadScene ("Game");
 	}
 
-	private void LoadCheckpoint()
+	private void LoadCheckpoint ()
 	{
-		switch (section) {
-		case 0:	
-			break;
-		case 1:
-			break;
-		case 2:
-			
-			break;
-		case 3:
-			break;
-		case 4:
-			
-			break;
-		case 5:
-			break;
+		// Shift spawners down then delete anything under a certain point
+		GameObject[] spawners = GameObject.FindGameObjectsWithTag ("Spawner");
+		foreach (GameObject spawner in spawners) {
+			Vector2 pos = spawner.transform.position;
+			pos = new Vector2 (pos.x, pos.y - checkPointYValues [section]);
+			if (pos.y < 0) {
+				Destroy (spawner);
+			} else {
+				spawner.transform.position = pos;
+			}
 		}
+
 	}
 
-	private void SwitchSection (int section)
+	private void SwitchSection (bool fromLoad)
 	{
-		AudioManager.instance.PlayMusic (section);
-		switch (section) {
+		int newSection = section;
+		// If died on a boss and loading, start off in previous section so you can watch transition
+		if (fromLoad && (section == 1 || section == 3 || section == 5)) {
+			newSection--;
+		}
+		AudioManager.instance.PlayMusic (newSection);
+
+		switch (newSection) {
 		case 0:	
 			break;
 		case 1:

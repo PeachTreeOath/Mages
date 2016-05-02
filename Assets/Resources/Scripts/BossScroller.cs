@@ -83,7 +83,17 @@ public class BossScroller : MonoBehaviour
 	{
 		GetComponentInChildren<Boss> ().enabled = true;
 		GetComponentInChildren<Collider2D> ().enabled = true;
-		gameMgr.GotoNextSection ();
+		switch (name) {
+		case "BossFightGenie":
+			gameMgr.GotoSection (1);
+			break;
+		case "BossFightSphinx":
+			gameMgr.GotoSection (3);
+			break;
+		case "BossFightAladdin":
+			gameMgr.GotoSection (5);
+			break;
+		}
 	}
 
 	// Called from Boss script when hp < 0
@@ -105,7 +115,17 @@ public class BossScroller : MonoBehaviour
 				}
 			}
 		}
-		gameMgr.GotoNextSection ();
+		switch (name) {
+		case "BossFightGenie":
+			gameMgr.GotoSection (2);
+			break;
+		case "BossFightSphinx":
+			gameMgr.GotoSection (4);
+			break;
+		case "BossFightAladdin":
+			gameMgr.GotoSection (6);
+			break;
+		}
 
 		Destroy (gameObject);
 	}

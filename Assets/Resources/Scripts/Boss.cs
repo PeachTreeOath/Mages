@@ -24,6 +24,7 @@ public class Boss : MonoBehaviour
     private Vector3 startingPosition; //remembers the position of the boss when the phase changes
     private bool isFiring = false;
     private List<Barrel> disabledBarrels = new List<Barrel>();
+    private float nextPhaseChangePercent;
     
 
 	// Use this for initialization
@@ -37,6 +38,7 @@ public class Boss : MonoBehaviour
         BossPhase nextPhase = phases[currentPhaseIndex];
         currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
         currentPhase.transform.parent = this.transform;
+        nextPhaseChangePercent = 1f - ((currentPhaseIndex + 1f) / (float)phases.Length);
 
         startingPosition = transform.position;
     }
@@ -159,7 +161,7 @@ public class Boss : MonoBehaviour
 
 
         //change phases
-        if (hp < .90f * totalHp)
+        if (hp < nextPhaseChangePercent * totalHp)
         {
             if (currentPhaseIndex < phases.Length - 1)
             {
@@ -178,6 +180,7 @@ public class Boss : MonoBehaviour
                 startingPosition = transform.position;
                 startTime = Time.time;
                 doneMoving = false;
+                nextPhaseChangePercent = 1 - ((currentPhaseIndex + 1f) / (float)phases.Length);
             }
         }
 	}

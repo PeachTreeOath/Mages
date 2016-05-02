@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &110492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 429464}
-  - 114: {fileID: 11491906}
-  m_Layer: 0
-  m_Name: BarrelRain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &117714
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,18 +16,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &429464
-Transform:
-  m_ObjectHideFlags: 1
+--- !u!1 &137320
+GameObject:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 476050}
-  m_RootOrder: 0
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 477554}
+  - 114: {fileID: 11405580}
+  m_Layer: 0
+  m_Name: BarrelRain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &476050
 Transform:
   m_ObjectHideFlags: 1
@@ -54,9 +42,41 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 429464}
+  - {fileID: 477554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &477554
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137320}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 476050}
+  m_RootOrder: 0
+--- !u!114 &11405580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d770006d173cc845aecbcccd23f003d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 3
+  type: 1
+  isPassable: 0
+  shotDelay: 0.01
+  burstTime: 10
+  burstDelay: 3
+  perturbation: 0.1
+  rainWidth: 20
 --- !u!114 &11429682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,27 +95,8 @@ MonoBehaviour:
   - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
   - {fileID: 484692, guid: c766471770eb64e43aefe1d800115157, type: 2}
   - {fileID: 427058, guid: c766471770eb64e43aefe1d800115157, type: 2}
-  movementStrategy: 2
+  movementStrategy: 1
   fireStrategy: 0
---- !u!114 &11491906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d770006d173cc845aecbcccd23f003d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  speed: 1
-  type: 0
-  isPassable: 0
-  shotDelay: 0.3
-  burstTime: 1
-  burstDelay: 3
-  perturbation: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

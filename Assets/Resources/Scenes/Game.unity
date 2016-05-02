@@ -801,6 +801,24 @@ Prefab:
       value: 
       objectReference: {fileID: 11429682, guid: be330afe6f7dace4fa471d2cdffa185c,
         type: 2}
+    - target: {fileID: 21230878, guid: c766471770eb64e43aefe1d800115157, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d37e2e59d0cab9439e1d86db297f254,
+        type: 3}
+    - target: {fileID: 11450934, guid: c766471770eb64e43aefe1d800115157, type: 2}
+      propertyPath: hpCanvas
+      value: 
+      objectReference: {fileID: 333036478}
+    - target: {fileID: 11450934, guid: c766471770eb64e43aefe1d800115157, type: 2}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450934, guid: c766471770eb64e43aefe1d800115157, type: 2}
+      propertyPath: phases.Array.data[0]
+      value: 
+      objectReference: {fileID: 11429682, guid: be330afe6f7dace4fa471d2cdffa185c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c766471770eb64e43aefe1d800115157, type: 2}
   m_IsPrefabParent: 0

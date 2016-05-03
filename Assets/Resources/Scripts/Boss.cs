@@ -189,6 +189,7 @@ public class Boss : MonoBehaviour
                 startingPosition = transform.position;
                 startTime = Time.time;
                 doneMoving = false;
+                isFiring = false;
                 nextPhaseChangePercent = 1 - ((currentPhaseIndex + 1f) / (float)phases.Length);
             }
         }

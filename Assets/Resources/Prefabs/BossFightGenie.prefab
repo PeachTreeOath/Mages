@@ -424,14 +424,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18096625dd14ad4f89d975bc4032934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1000
+  hp: 100
   phase: 0
   speed: 3.5
   pauseTime: 1
   hpCanvas: {fileID: 0}
   phases:
-  - {fileID: 11428100, guid: 2f8b41220a50f384a96db78f5f2e8804, type: 2}
+  - {fileID: 11429682, guid: be330afe6f7dace4fa471d2cdffa185c, type: 2}
   - {fileID: 11445160, guid: 1e10d290062b87549a8846eaf941b3aa, type: 2}
+  - {fileID: 11429682, guid: be330afe6f7dace4fa471d2cdffa185c, type: 2}
 --- !u!114 &11462266
 MonoBehaviour:
   m_ObjectHideFlags: 1

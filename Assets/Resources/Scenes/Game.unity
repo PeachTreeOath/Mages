@@ -905,7 +905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   section: 0
   playerList: 0100000000000000
-  easyModeOn: 0
+  easyModeOn: 1
 --- !u!4 &682921430
 Transform:
   m_ObjectHideFlags: 0

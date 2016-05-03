@@ -16,17 +16,19 @@ public class GameManager : MonoBehaviour
 	private GameObject twinShot;
 	private GameObject spreadShot;
 	private GameObject bigShot;
-	private GameObject circleNeg;
-	private GameObject firestickNeg;
-	private GameObject spreadNeg;
+	private GameObject mineNegShot;
+	private GameObject burstNegShot;
+	private GameObject firestickNegShot;
+	private GameObject wheelNegShot;
 
 	private Sprite normalShotIcon;
 	private Sprite twinShotIcon;
 	private Sprite spreadShotIcon;
 	private Sprite bigShotIcon;
-	private Sprite circleNegIcon;
+	private Sprite mineNegIcon;
+	private Sprite burstNegIcon;
 	private Sprite firestickNegIcon;
-	private Sprite spreadNegIcon;
+	private Sprite wheelNegIcon;
 
 	public float timeForWeaponSwitches = 10f;
 	private float timeOfLastWeaponSwitch;
@@ -186,17 +188,19 @@ public class GameManager : MonoBehaviour
 		twinShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponDoubleLaser");
 		spreadShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponSpread");
 		bigShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponBig");
-		circleNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponCircle");
-		firestickNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegFirestick");
-		spreadNeg = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegSpread");
+		mineNegShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegMine");
+		burstNegShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegCircle");
+		firestickNegShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegFirestick");
+		wheelNegShot = Resources.Load<GameObject> ("Prefabs/Weapons/WeaponNegSpread");
 
 		normalShotIcon = Resources.Load<Sprite> ("Textures/shotNormal");
 		twinShotIcon = Resources.Load<Sprite> ("Textures/shotTwin");
 		spreadShotIcon = Resources.Load<Sprite> ("Textures/shotSpread");
 		bigShotIcon = Resources.Load<Sprite> ("Textures/shotBig");
-		//circleNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponSingle");
-		//firestickNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegFirestick");
-		//spreadNegIcon = Resources.Load<Sprite> ("Prefabs/Textures/WeaponNegSpread");
+		mineNegIcon = Resources.Load<Sprite> ("Textures/eshotMine");
+		burstNegIcon = Resources.Load<Sprite> ("Textures/eshotBurst");
+		firestickNegIcon = Resources.Load<Sprite> ("Textures/eshotFirestick");
+		wheelNegIcon = Resources.Load<Sprite> ("Textures/eshotWheel");
 
 	}
 
@@ -211,6 +215,14 @@ public class GameManager : MonoBehaviour
 			return spreadShotIcon;
 		case "WeaponBig(Clone)":
 			return bigShotIcon;
+		case "WeaponNegMine(Clone)":
+			return mineNegIcon;
+		case "WeaponNegCircle(Clone)":
+			return burstNegIcon;
+		case "WeaponNegFirestick(Clone)":
+			return firestickNegIcon;
+		case "WeaponNegSpread(Clone)":
+			return wheelNegIcon;
 		}
 
 		return null;
@@ -220,11 +232,14 @@ public class GameManager : MonoBehaviour
 	{
 		// Debugging, just attach something
 		if (weaponMap == null) {
-			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (spreadNeg, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			//player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (mineNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+		//	player.AddWeapon (((GameObject)Instantiate (burstNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (firestickNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			//player.AddWeapon (((GameObject)Instantiate (wheelNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 		} else {
 			// When adding a new weapon, map the name of the shot in the Loadout screen to the prefabs that are loaded here
 			foreach (string wepName in weaponMap[player.playerNum - 1]) {
@@ -243,12 +258,19 @@ public class GameManager : MonoBehaviour
 					newWep = ((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "eshotMine":
-					//newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					newWep = ((GameObject)Instantiate (mineNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				case "eshotBurst":
-					//newWep = ((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					newWep = ((GameObject)Instantiate (burstNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					break;
+				case "eshotFirestick":
+					newWep = ((GameObject)Instantiate (firestickNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
+					break;
+				case "eshotWheel":
+					newWep = ((GameObject)Instantiate (wheelNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ();
 					break;
 				}
+			
 				if (newWep != null) {
 					player.AddWeapon (newWep);
 				}

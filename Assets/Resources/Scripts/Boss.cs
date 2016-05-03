@@ -47,7 +47,9 @@ public class Boss : MonoBehaviour
 
         BossPhase nextPhase = phases[currentPhaseIndex];
         currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+
         currentPhase.transform.parent = this.transform;
+        
         nextPhaseChangePercent = 1f - ((currentPhaseIndex + 1f) / (float)phases.Length);
 
         startingPosition = transform.position;
@@ -63,7 +65,7 @@ public class Boss : MonoBehaviour
             case (BossPhase.FireStrategy.ALWAYS_FIRE):
                 if (!isFiring)
                 {
-                    barrels = GetComponentsInChildren<Barrel>();
+                    barrels = currentPhase.getBarrels();
                     foreach (Barrel barrel in barrels)
                     {
                         //barrel.gameObject.SetActive(true);
@@ -75,7 +77,7 @@ public class Boss : MonoBehaviour
             case (BossPhase.FireStrategy.NEVER_FIRE):
                 if (isFiring)
                 {
-                    barrels = GetComponentsInChildren<Barrel>();
+                    barrels = currentPhase.getBarrels();
                     foreach (Barrel barrel in barrels)
                     {
                         //disabledBarrels.Add(barrel);
@@ -89,7 +91,7 @@ public class Boss : MonoBehaviour
                 if (isFiring && !doneMoving)
                 {
                     //Not at location yet so disable weapons
-                    barrels = GetComponentsInChildren<Barrel>();
+                    barrels = currentPhase.getBarrels();
                     foreach (Barrel barrel in barrels)
                     {
                         //disabledBarrels.Add(barrel);
@@ -101,7 +103,7 @@ public class Boss : MonoBehaviour
                 if (doneMoving && !isFiring)
                 {
                     //now at location, commence firing
-                    barrels = GetComponentsInChildren<Barrel>();
+                    barrels = currentPhase.getBarrels();
                     foreach (Barrel barrel in barrels)
                     {
                         barrel.FireOn();
@@ -183,7 +185,9 @@ public class Boss : MonoBehaviour
 
                 BossPhase nextPhase = phases[currentPhaseIndex];
                 currentPhase = (BossPhase)Instantiate(nextPhase, transform.position, transform.rotation);
+
                 currentPhase.transform.parent = this.transform;
+                
 
                 //Remember the location and time of the boss during the phase change so we don't get lost on the next movement.
                 startingPosition = transform.position;

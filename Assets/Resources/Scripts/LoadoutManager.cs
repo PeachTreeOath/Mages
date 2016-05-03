@@ -31,8 +31,11 @@ public class LoadoutManager : MonoBehaviour
 		weaponMap [0, 1] = GameObject.Find ("shotTwin").GetComponent<LoadoutWeapon> ();
 		weaponMap [0, 2] = GameObject.Find ("shotSpread").GetComponent<LoadoutWeapon> ();
 		weaponMap [0, 3] = GameObject.Find ("shotBig").GetComponent<LoadoutWeapon> ();
+		weaponMap [1, 0] = GameObject.Find ("shotAegis").GetComponent<LoadoutWeapon> ();
 		weaponMap [0, 4] = GameObject.Find ("eshotMine").GetComponent<LoadoutWeapon> ();
 		weaponMap [0, 5] = GameObject.Find ("eshotBurst").GetComponent<LoadoutWeapon> ();
+		weaponMap [0, 6] = GameObject.Find ("eshotFirestick").GetComponent<LoadoutWeapon> ();
+		weaponMap [1, 6] = GameObject.Find ("eshotWheel").GetComponent<LoadoutWeapon> ();
 
 		warningText = GameObject.Find ("Warning").GetComponent<Text> ();
 	}

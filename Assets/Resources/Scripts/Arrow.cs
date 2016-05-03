@@ -9,6 +9,8 @@ public class Arrow : MonoBehaviour
 
 	[SerializeField]
 	private int playerNum = 0;
+	[SerializeField]
+	private float yDiff = 0;
 
 	private int value;
 	private Text valueText;
@@ -86,13 +88,13 @@ public class Arrow : MonoBehaviour
 				inReadyPosition = false;
 			} else if (yPos - 1 >= 0) { 
 				yPos--;
-				transform.position += new Vector3 (0, 2.5f, 0);
+				transform.position += new Vector3 (0, yDiff, 0);
 			}
 			isMoving = true;
 		} else if (vMove < 0 && !isMoving) {
 			if (yPos + 1 < loadMgr.rows) {
 				yPos++;
-				transform.position += new Vector3 (0, -2.5f, 0);
+				transform.position += new Vector3 (0, -yDiff, 0);
 			} else if (!inReadyPosition) {
 				lastPos = transform.position;
 				float xValue = -8.4f + 1.65f * playerNum;

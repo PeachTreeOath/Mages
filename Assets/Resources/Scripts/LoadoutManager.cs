@@ -7,7 +7,6 @@ using System.Collections.Generic;
 
 public class LoadoutManager : MonoBehaviour
 {
-
 	public int rows;
 	public int cols;
 	public LoadoutWeapon[,] weaponMap;

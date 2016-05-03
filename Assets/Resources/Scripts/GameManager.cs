@@ -232,14 +232,16 @@ public class GameManager : MonoBehaviour
 	{
 		// Debugging, just attach something
 		if (weaponMap == null) {
-			//player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			/*
 			player.AddWeapon (((GameObject)Instantiate (mineNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-		//	player.AddWeapon (((GameObject)Instantiate (burstNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (firestickNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			//player.AddWeapon (((GameObject)Instantiate (wheelNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (burstNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (firestickNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (wheelNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			*/
 		} else {
 			// When adding a new weapon, map the name of the shot in the Loadout screen to the prefabs that are loaded here
 			foreach (string wepName in weaponMap[player.playerNum - 1]) {

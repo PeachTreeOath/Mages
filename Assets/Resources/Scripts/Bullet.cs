@@ -15,7 +15,8 @@ public class Bullet : MonoBehaviour
 	//So you don't get hit with your own bullets asap
 	public float ffGracePeriod = 1f;
 	public float fireTime;
-
+	//bulletLifetime of -1 means infinite
+	public float bulletLifetime = -1;
 	protected Rigidbody2D body;
 
 	// Use this for initialization
@@ -27,6 +28,12 @@ public class Bullet : MonoBehaviour
 	// Update is called once per frame
 	public virtual void Update ()
 	{
+		if (bulletLifetime != -1) {
+			bulletLifetime -= Time.deltaTime;
+			if (bulletLifetime <= 0) {
+				Destroy (gameObject);
+			}
+		}
 		if (body.velocity.magnitude > 0.001f) { //accounting for floating point impression.
 			transform.up = body.velocity;
 		}

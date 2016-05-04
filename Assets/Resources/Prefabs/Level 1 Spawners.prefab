@@ -623,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
-  enemySupply: 2
+  enemySupply: 1
   scrollSpeed: 1
   homeYPosition: 5.16
   isFacingRight: 0
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 192698, guid: 4c700a5398ac59d49b5c71f5ec043706, type: 2}
   spawnDelay: 2
-  enemySupply: 2
+  enemySupply: 1
   scrollSpeed: 1
   homeYPosition: 5.16
   isFacingRight: 1

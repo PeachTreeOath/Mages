@@ -94,6 +94,7 @@ MonoBehaviour:
   burstTime: 3
   burstDelay: 2
   perturbation: 0
+  bulletLifetime: -1
   radius: 9
   numberOfBullets: 12
   angularVelocity: 30
@@ -113,6 +114,7 @@ MonoBehaviour:
   - {fileID: 491886, guid: c766471770eb64e43aefe1d800115157, type: 2}
   movementStrategy: 1
   fireStrategy: 1
+  globalBarrelPrefabs: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

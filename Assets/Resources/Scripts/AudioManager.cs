@@ -29,12 +29,12 @@ public class AudioManager : MonoBehaviour
 	void Start ()
 	{	
 		audioSrc = GetComponent<AudioSource> ();
-		theme1 = Resources.Load<AudioClip> ("Sounds/theme");
-		theme2 = Resources.Load<AudioClip> ("Sounds/bosstheme");
-		theme3 = Resources.Load<AudioClip> ("Sounds/theme");
-		theme4 = Resources.Load<AudioClip> ("Sounds/theme");
-		theme5 = Resources.Load<AudioClip> ("Sounds/theme");
-		theme6 = Resources.Load<AudioClip> ("Sounds/theme");
+		theme1 = Resources.Load<AudioClip> ("Sounds/Cave_of_Wonders");
+		theme2 = Resources.Load<AudioClip> ("Sounds/Genie_Nightmare");
+		theme3 = Resources.Load<AudioClip> ("Sounds/Desert_Heat");
+		theme4 = Resources.Load<AudioClip> ("Sounds/Riddle_of_the_Sphinx");
+		theme5 = Resources.Load<AudioClip> ("Sounds/Bizarre_Bazaar");
+		theme6 = Resources.Load<AudioClip> ("Sounds/Dark_Aladdin");
 	}
 
 	public void PlayMusic (int theme)

@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
 		case "WeaponBig(Clone)":
 			return bigShotIcon;
 		case "WeaponAegis(Clone)":
-			return bigShotIcon;
+			return aegisShotIcon;
 		case "WeaponNegMine(Clone)":
 			return mineNegIcon;
 		case "WeaponNegSpread(Clone)":

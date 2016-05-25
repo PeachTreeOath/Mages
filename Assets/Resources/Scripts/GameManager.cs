@@ -48,14 +48,14 @@ public class GameManager : MonoBehaviour
 
 		if (GlobalObject.instance != null) {
 			//TODO
-			//playerList = GlobalObject.instance.playerList;
-			//weaponMap = GlobalObject.instance.weaponMap;
+			playerList = GlobalObject.instance.playerList;
+			weaponMap = GlobalObject.instance.weaponMap;
 			easyModeOn = GlobalObject.instance.easyModeOn;
 			section = GlobalObject.instance.section;
 		}
 
 		//TODO: THIS IS ONLY FOR TESTING
-		playerList [0] = true;
+		//playerList [0] = true;
 		//playerList [1] = true;
 		//playerList [3] = true;
 

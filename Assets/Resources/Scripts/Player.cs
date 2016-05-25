@@ -73,7 +73,7 @@ public class Player : NetLifecycleObj
 		case PlayerState.NEUTRAL:
 			float currSpeed = speed;
 			// Only players 1-4 are allowed to solo controllers
-			if (soloPlay) {
+			if (soloPlay && playerNum < 4) {
 				if (Input.GetButton ("Action_p" + playerNum + "_solo")) {
 					currSpeed = speed * 0.33f;
 				}

@@ -275,11 +275,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 1
+  type: 2
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 10000
+  burstDelay: 0
+  perturbation: 0.1
+  bulletLifetime: -1
   radius: 4
   numberOfBullets: 2
   angularVelocity: 60
-  type: 2
-  isPassable: 0
+  thetaOffset: 0
 --- !u!114 &11419128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,11 +299,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 1
+  type: 2
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 10000
+  burstDelay: 0
+  perturbation: 0.1
+  bulletLifetime: -1
   radius: 6
   numberOfBullets: 2
   angularVelocity: 60
-  type: 2
-  isPassable: 0
+  thetaOffset: 0
 --- !u!114 &11426270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,11 +334,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 1
+  type: 2
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 10000
+  burstDelay: 0
+  perturbation: 0.1
+  bulletLifetime: -1
   radius: 3
   numberOfBullets: 2
   angularVelocity: 60
-  type: 2
-  isPassable: 0
+  thetaOffset: 0
 --- !u!114 &11450972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,11 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 1
+  type: 2
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 10000
+  burstDelay: 0
+  perturbation: 0.1
+  bulletLifetime: -1
   radius: 5
   numberOfBullets: 2
   angularVelocity: 60
-  type: 2
-  isPassable: 0
+  thetaOffset: 0
 --- !u!114 &11479778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,11 +382,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 172414, guid: 29ba5f59f890f6a48a0c0d5f8a96dfa1, type: 2}
+  speed: 1
+  type: 2
+  isPassable: 0
+  shotDelay: 0.3
+  burstTime: 10000
+  burstDelay: 0
+  perturbation: 0.1
+  bulletLifetime: -1
   radius: 2
   numberOfBullets: 2
   angularVelocity: 60
-  type: 2
-  isPassable: 0
+  thetaOffset: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

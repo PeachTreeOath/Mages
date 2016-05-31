@@ -55,7 +55,10 @@ public class BarrelWheel : Barrel
 
     // Update is called once per frame
     protected override void Update()
-    {
+	{
+		if (!fireOn && burstDelay == 0) {
+			FireOn ();
+		}
         if (!inBurst && Time.time > burstTimer + burstDelay)
         {
             inBurst = true;

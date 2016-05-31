@@ -83,7 +83,7 @@ MonoBehaviour:
   speed: 0.5
   type: 2
   isPassable: 0
-  shotDelay: 1
+  shotDelay: 1.25
   burstTime: 1
   burstDelay: 3
   perturbation: 0.1

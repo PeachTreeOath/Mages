@@ -53,8 +53,13 @@ public class BossScroller : MonoBehaviour
 		int layer1 = LayerMask.NameToLayer ("Enemies");
 		int layer2 = LayerMask.NameToLayer ("EnemyBullets");
 		foreach (GameObject obj in objs) {
-			if (obj.layer == layer1 || obj.layer == layer2) {
+			if (obj.layer == layer1) {
 				if (obj.name != "Genie" && obj.name != "Sphinx" && obj.name != "Aladdin") {
+					Destroy (obj);
+				}
+			}
+			if (obj.layer == layer2) {
+				if (obj.GetComponent<Bullet>() != null && obj.GetComponent<Bullet>().type != 2) {
 					Destroy (obj);
 				}
 			}

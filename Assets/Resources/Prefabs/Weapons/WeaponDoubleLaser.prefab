@@ -99,9 +99,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 176500, guid: 6ea705d002b4ba44c98615aa79622470, type: 2}
   speed: 40
-  shotDelay: 0.05
   type: 0
   isPassable: 0
+  shotDelay: 0.2
+  burstTime: 1
+  burstDelay: 3
+  perturbation: 0.1
+  bulletLifetime: -1
+  angularSpeed: 0
+  angularDrag: 0
+  ammoCount: -1
+  useParentVelocity: 0
 --- !u!114 &11446532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,9 +134,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 176500, guid: 6ea705d002b4ba44c98615aa79622470, type: 2}
   speed: 40
-  shotDelay: 0.05
   type: 0
   isPassable: 0
+  shotDelay: 0.2
+  burstTime: 1
+  burstDelay: 3
+  perturbation: 0.1
+  bulletLifetime: -1
+  angularSpeed: 0
+  angularDrag: 0
+  ammoCount: -1
+  useParentVelocity: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

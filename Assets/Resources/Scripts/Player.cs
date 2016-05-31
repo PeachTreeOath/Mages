@@ -15,7 +15,7 @@ public class Player : NetLifecycleObj
 	public DeathState deathState;
 	public bool initDone = false;
 	public float speed = 0;
-	public float timeToDie = 2.0f;
+	public float timeToDie = 3.0f;
 	public List<Weapon> weaponLoadout = new List<Weapon> ();
 	public float reviveDistance = 1f;
 	public float timeToRevive = 5f;
@@ -53,13 +53,13 @@ public class Player : NetLifecycleObj
 		if (head == null) {
 			head = GetComponentInChildren<Head> ();
 		}
-
-		SpawnPlayer ();
-
 		int rand = UnityEngine.Random.Range (0, weaponLoadout.Count);
 		nextWeapon = weaponLoadout [rand];
-		ToggleBarrels (nextWeapon, true);
+
 		currentWeapon = nextWeapon;
+
+		SpawnPlayer ();
+	
 	}
 
 	void Update ()
@@ -142,12 +142,18 @@ public class Player : NetLifecycleObj
 
 	private void ToggleBarrels (Weapon weapon, bool enable)
 	{
-		Shoot[] barrels = weapon.GetComponentsInChildren<Shoot> ();
-		foreach (Shoot barrel in barrels) {
+		Barrel[] barrels = weapon.GetComponentsInChildren<Barrel> ();
+		foreach (Barrel barrel in barrels) {
 			barrel.enabled = enable;
 		}
 	}
-
+	private void DestroyBarrels ()
+	{
+		Barrel[] barrels = this.GetComponentsInChildren<Barrel> ();
+		foreach (Barrel barrel in barrels) {
+			Destroy (barrel.gameObject);
+		}
+	}
 	public void SpawnPlayer ()
 	{
 		currTimeToRevive = 0;
@@ -167,6 +173,7 @@ public class Player : NetLifecycleObj
 		if (rend == null) {
 			rend = GetComponent<SpriteRenderer> ().GetComponent<Renderer> ();
 		}
+		ToggleBarrels (currentWeapon, true);
 		rend.enabled = true;
 		head.GetComponent<SpriteRenderer> ().enabled = true;
 		initDone = true;
@@ -249,6 +256,7 @@ public class Player : NetLifecycleObj
 	private void CmdDie ()
 	{
 		//time transitions between states are handled in update
+		DestroyBarrels();
 		if (deathState == DeathState.STARTING) {
 			Debug.Log ("CmdDie starting");
 			// Go unconscious for a few secs then explode
@@ -277,7 +285,7 @@ public class Player : NetLifecycleObj
 		}
 
 		bool actionPressed = false;
-		if (soloPlay) {
+		if (soloPlay &&  playerNum < 4)  {
 			if (Input.GetButton ("Action_p" + playerNum + "_solo")) {
 				actionPressed = true;
 			}

@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 			//TODO
 			playerList = GlobalObject.instance.playerList;
 			weaponMap = GlobalObject.instance.weaponMap;
-			easyModeOn = GlobalObject.instance.easyModeOn;
+			//easyModeOn = GlobalObject.instance.easyModeOn;
 			section = GlobalObject.instance.section;
 		}
 
@@ -238,12 +238,14 @@ public class GameManager : MonoBehaviour
 	{
 		// Debugging, just attach something
 		if (weaponMap == null) {
-			
-			player.AddWeapon (((GameObject)Instantiate (normalShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (firestickNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			/*
+			//player.AddWeapon (((GameObject)Instantiate (wheelNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (mineNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (twinShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (spreadShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			player.AddWeapon (((GameObject)Instantiate (bigShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
-			player.AddWeapon (((GameObject)Instantiate (aegisShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
+			player.AddWeapon (((GameObject)Instantiate (aegisShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());*/
 /*
 			player.AddWeapon (((GameObject)Instantiate (aegisShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());
 			//player.AddWeapon (((GameObject)Instantiate (mineNegShot, Vector2.zero, Quaternion.identity)).GetComponent<Weapon> ());

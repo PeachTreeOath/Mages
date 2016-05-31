@@ -96,7 +96,7 @@ public class LoadoutManager : MonoBehaviour
 	{
 		readyList [player - 1] = ready;
 		if (ready && GlobalObject.instance != null) {
-			GlobalObject.instance.weaponMap.Add (player - 1, weapons);
+			GlobalObject.instance.weaponMap [player - 1] = weapons;
 		}
 	}
 }
